@@ -29,17 +29,17 @@ const Blog = ({ posts }: PostsProps) => {
 
   return (
     <Layout>
-      <SEO title="Blog" />
+      <SEO title="Articles" />
       <Flex sx={{ alignItems: `center`, justifyContent: `space-between`, flexFlow: `wrap` }}>
         <Heading as="h1" variant="styles.h1" sx={{ marginY: 2 }}>
-          Blog
+          Articles
         </Heading>
         <TLink
           as={Link}
           sx={{ variant: `links.secondary`, marginY: 2 }}
           to={replaceSlashes(`/${basePath}/${tagsPath}`)}
         >
-          View all tags
+          View all catagories
         </TLink>
       </Flex>
       <Listing posts={posts} sx={{ mt: [4, 5] }} />

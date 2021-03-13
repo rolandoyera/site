@@ -13,9 +13,17 @@ import Toggle from './Toggle'
 
 Easily target any HTML element's CSS class with a couple of lines of simple Javascript. This can serve many use cases such as hidding an element with a <code>.hidden</code> class or triggering an element with an <code>.active</code> or <code>.inactive</code> class.
 
+### Example
+
+<br/>
+
+<Card>
+<Toggle/>
+</Card>
+
 ### Toggling CSS
 
-Toggling CSS is a must and very simple to implement with JavaScript. In this example, there are three things that we’re going to focus on, a button, a function to target and toggle the element, and lastly, the CSS classes to toggle.
+Toggling CSS is a must and very simple to implement with JavaScript. In this example, there are three things that we’re going to focus on, a button, a function to target and toggle the element, and lastly our statement to toggle the CSS classes.
 
 ### The Button 
 
@@ -50,7 +58,7 @@ We still have to choose a target and assign a variable to it. We’re going to d
 
 Lastly, we’ll use “styleOne” and “styleTwo” as our class names to toggle.
 
-```js {3-7}
+```js {4-8}
 document.getElementById("theButton").addEventListener (
   "click", theFunction )
   function theFunction() {
@@ -64,7 +72,7 @@ document.getElementById("theButton").addEventListener (
 ```
 
 And there’s you’re complete function. To recap, we used a button and listened for a click to target our element. We used a locally scoped variable and used the if…else statement to toggle our CSS classes. Here’s the complete code with HTML and CSS.
-<Toggle />
+
 
 
 ```html

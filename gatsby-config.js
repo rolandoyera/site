@@ -6,10 +6,10 @@ const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 
 module.exports = {
   siteMetadata: {
-    siteTitle: `Rolando Yera`,
-    siteTitleAlt: `Rolando Yera`,
-    siteHeadline: `Rolando Yera`,
-    siteUrl: `https://rolandoyera.com`,
+    siteTitle: `JavaScript Articles`,
+    siteTitleAlt: `JavaScript Articles`,
+    siteHeadline: `JavaScript Articles`,
+    siteUrl: `https://javascriptarticles.com`,
     siteDescription: `My personal site.`,
     siteLanguage: `en`,
     siteImage: `/banner.jpg`,
@@ -22,24 +22,24 @@ module.exports = {
       options: {
         navigation: [
           {
-            title: `Blog`,
+            title: `Articles`,
             slug: `/blog`,
           },
-          {
-            title: `About`,
-            slug: `/about`,
-          },
+          // {
+          //   title: `About`,
+          //   slug: `/about`,
+          // },
         ],
-        externalLinks: [
-          {
-            name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`,
-          },
-          {
-            name: `Instagram`,
-            url: `https://www.instagram.com/rolandoyera`,
-          },
-        ],
+        // externalLinks: [
+        //   {
+        //     name: `Twitter`,
+        //     url: `https://twitter.com/lekoarts_de`,
+        //   },
+        //   {
+        //     name: `Instagram`,
+        //     url: `https://www.instagram.com/rolandoyera`,
+        //   },
+        // ],
       },
     },
     {
@@ -52,8 +52,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Rolando Yera`,
-        short_name: `Rolando Yera`,
+        name: `JavaScript Articles`,
+        short_name: `JavaScript Articles`,
         description: `My personal blog site.`,
         start_url: `/`,
         background_color: `#fff`,

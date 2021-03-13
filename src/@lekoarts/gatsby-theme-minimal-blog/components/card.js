@@ -8,8 +8,9 @@ const Card = ({ children }) => {
       <div sx={{
         backgroundColor: `cardBg`,
         paddingLeft: `20px`,
-        paddingTop: `1px`,
+        paddingTop: `10px`,
         paddingBottom: `20px`,
+        paddingRight: `20px`,
         borderRadius: `5px`,
         border: `1px`,
         borderStyle: `solid`,
