@@ -6,8 +6,14 @@ const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 
 module.exports = {
   siteMetadata: {
-    siteTitleAlt: `Rolando Yera - Gatsby Theme`,
     siteTitle: `Rolando Yera`,
+    siteTitleAlt: `Rolando Yera`,
+    siteHeadline: `Rolando Yera`,
+    siteUrl: `https://rolandoyera.com`,
+    siteDescription: `My personal site.`,
+    siteLanguage: `en`,
+    siteImage: `/banner.jpg`,
+    author: `Rolando Yera`,
   },
   plugins: [
     {
@@ -31,7 +37,7 @@ module.exports = {
           },
           {
             name: `Instagram`,
-            url: `https://www.instagram.com/lekoarts.de/`,
+            url: `https://www.instagram.com/rolandoyera`,
           },
         ],
       },
@@ -46,9 +52,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `minimal-blog - @lekoarts/gatsby-theme-minimal-blog`,
-        short_name: `minimal-blog`,
-        description: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and code highlighting.`,
+        name: `Rolando Yera`,
+        short_name: `Rolando Yera`,
+        description: `My personal blog site.`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#6B46C1`,

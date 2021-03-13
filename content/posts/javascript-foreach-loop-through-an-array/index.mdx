@@ -10,7 +10,7 @@ tags:
 
 
 
-The`forEach()` method will call a provided function once for each element in the array.The function will have direct access to the array element, the index number, and the entire array.That didn't help, right? Let's start with a look at the syntax and see if we can figure this out:
+The `forEach()` method will call a provided function once for each element in the array. The function will have direct access to the array element, the index number, and the entire array. That didn't help, right? Let's start with a look at the syntax and see if we can figure this out:
 
 ```
 const numbers = [1, 2, 3, 4, 5]
@@ -34,7 +34,7 @@ const numbers = [1, 2, 3, 4, 5]
 
 numbers.forEach()
 ```
-In the `forEach()` parenthesis we pass a parameter of 'numberItem' which is the name of our function, which is next.
+In the `forEach()` parenthesis we pass a parameter or an argument of "numberItem " which is the name of our function, which is next.
 
 ```js
 const numbers = [1, 2, 3, 4, 5]
@@ -45,7 +45,7 @@ function numberItem() {
 } 
 ```
 
-Whoa! Hold on a second. This just threw a monkey wrench into the whole thing. Why did we do this? Well, "numberItem", as of line 2, is not defined. We passed that in as a "parameter" in the `forEach()` method. When we use it as our function name, the JavaScript compiler will tie the two together, our `function` using the `forEach()` method. 
+Things can get a little confusing at this point, so let me explain the code above. We passed our function in as a "parameter" or also called an "argument" in the `forEach()` method. That's what is powerful about the `forEach()` method, it allows us to pass a function as an argument.
 
 Now, as part of our function and since were using the forEach() method we need to pass two parameters into our function parenthesis. 
 
@@ -80,9 +80,43 @@ export const ForEachButton = () => {
   )
 }
 
-
-
 <ForEachButton/>
+
+<br/><br/>
+
+To be clear for a moment I wanted to speak about the item and index arguments we passed into our function. The formal forEach() method uses a syntax with three arguments, item, index, and array. So the formal syntax is as follows:
+
+```js
+const numbers = [1, 2, 3, 4, 5]
+
+numbers.forEach(numberItem)
+function numberItem(item, index, array) { 
+  console.log(item)
+} 
+```
+The index and array arguments are not neccessary as it's built in to the method. So you can actually write it as so:
+```js
+const numbers = [1, 2, 3, 4, 5]
+
+numbers.forEach(numberItem)
+function numberItem(item) { 
+  console.log(item)
+} 
+```
+
+
+I hope this will was able to help you on your learning journey.
+
+<br/><br/>
+
+<Card>
+<h4>Resources</h4>
+<br />
+<a className="footnote" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">MDN- forEach</a><br />
+<a className="footnote" href="https://developer.mozilla.org/en-US/docs/Glossary/Parameter">MDN- Parameters</a><br />
+<a className="footnote" href="https://en.wikipedia.org/wiki/Parameter_(computer_programming)">wikipedia- Parameters</a><br />
+
+</Card>
 
 
 
