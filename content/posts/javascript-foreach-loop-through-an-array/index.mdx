@@ -1,0 +1,88 @@
+---
+title: JavaScript for each - Loop Through An Array
+date: 2021-03-02
+banner: ./unsplash.jpg
+tags:
+  - JavaScript
+---
+![Potions Class](./unsplash.jpg)
+
+
+
+
+The`forEach()` method will call a provided function once for each element in the array.The function will have direct access to the array element, the index number, and the entire array.That didn't help, right? Let's start with a look at the syntax and see if we can figure this out:
+
+```
+const numbers = [1, 2, 3, 4, 5]
+
+numbers.forEach(numberItem)
+function numberItem(item, index) { 
+  console.log(item)
+} 
+ //expected output 1, 2, 3, 4, 5
+```
+
+Nope. That didn't help either so let's take it step by step. The code above shows an array of 5 numbers. I named the variable 'numbers' but you can call it whatever you'd like (foo, pizza, unicorn). And of course, the array can be anything like numbers, names, or whatever data your working with. The important thing is that we learn how forEach will iterate through your array.
+```js
+const numbers = [1, 2, 3, 4, 5]  // Or
+
+const things = ["pizza", "unicorn", "pandas"]
+```
+Next we use the `forEach()` method to execute our function and we start this line of code with the 'numbers' variable. 
+```js
+const numbers = [1, 2, 3, 4, 5]
+
+numbers.forEach()
+```
+In the `forEach()` parenthesis we pass a parameter of 'numberItem' which is the name of our function, which is next.
+
+```js
+const numbers = [1, 2, 3, 4, 5]
+
+numbers.forEach(numberItem)
+function numberItem() { 
+
+} 
+```
+
+Whoa! Hold on a second. This just threw a monkey wrench into the whole thing. Why did we do this? Well, "numberItem", as of line 2, is not defined. We passed that in as a "parameter" in the `forEach()` method. When we use it as our function name, the JavaScript compiler will tie the two together, our `function` using the `forEach()` method. 
+
+Now, as part of our function and since were using the forEach() method we need to pass two parameters into our function parenthesis. 
+
+```js
+const numbers = [1, 2, 3, 4, 5]
+
+numbers.forEach(numberItem)
+function numberItem(item, index) { 
+
+} 
+```
+
+In the function above we pass two parameters, item and index. Item respresents the numbers in the array, or the "item" in the array as it's current value being processed. Index is used so JavaScript knows which <em>item</em> is currently being processed, in our case, which <em>number</em> is being processed.
+
+Lastly, we input our statement. How are we going to output our code? In my case, for this tutorial, I'll just pass "item" to the console.
+
+```js
+const numbers = [1, 2, 3, 4, 5]
+
+numbers.forEach(numberItem)
+function numberItem(item, index) { 
+  console.log(item)
+} 
+ //expected output 1, 2, 3, 4, 5
+```
+
+Well, that was anticlimactic! Press the button!
+
+export const ForEachButton = () => {
+  const numbers = [1, 2, 3, 4, 5]
+  return (<button onClick={() => numbers.forEach(number => alert(number))} >CLICK!!</button>
+  )
+}
+
+
+
+<ForEachButton/>
+
+
+

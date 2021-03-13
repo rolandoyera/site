@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&display=swap");
+
+pre code {
+	font-size: 0.95rem;
+	font-family: "Fira Code", monospace;
+	border-radius: 0.35rem !important;
+}
+
+pre {
+	border-radius: 0.35rem !important;
+}
+.gatsby-highlight .css-mpgjfc-Layout {
+	border-radius: 0.35rem !important;
+	margin-bottom: 30em !important;
+}
+
+.code-copy-button {
+	border-radius: 0rem !important;
+	font-size: 0.7rem !important;
+	font-family: "Fira Code", monospace;
+	height: 1.8rem !important;
+	width: 5em;
+	margin-right: 1em;
+}
+pre.prism-code.language-js::before,
+pre.prism-code.language-jsx::before,
+pre.prism-code.language-html::before {
+	left: 1rem !important;
+	border-radius: 0rem !important;
+	font-size: 0.7rem !important;
+	font-family: "Fira Code", monospace;
+	height: 1.5rem !important;
+	text-shadow: none !important;
+}
+.gatsby-highlight {
+	border-radius: 0.5rem !important;
+	margin-bottom: 3em !important;
+}
+.css-mpgjfc-Layout .gatsby-highlight pre::-webkit-scrollbar-track {
+	background-color: aliceblue !important;
+	height: 8px !important;
+}
+.css-mpgjfc-Layout .gatsby-highlight pre::-webkit-scrollbar-thumb {
+	width: auto !important;
+	height: 8px !important;
+	background-color: grey !important;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	padding: 5px 0 !important;
+}
+
+.gatsby-resp-image-wrapper {
+	max-width: 1100px !important;
+}
+
+.card {
+	background: hsl(225, 38%, 13%);
+}
+button {
+	display: inline-block;
+	font-weight: 400;
+	line-height: 1.5;
+	color: hsla(199, 89%, 58%, 1);
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	border: 1px solid transparent;
+	padding: 0.375rem 1rem;
+	font-size: 1rem;
+	border-radius: 0.25rem;
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+		border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	background-color: hsla(199, 89%, 68%, 0.25);
+	border-color: hsla(199, 89%, 68%, 0.5);
+	margin-right: 1rem;
+}

@@ -1,92 +1,35 @@
 ---
-title: Fantastic Beasts and Where to Find Them
-date: 2019-11-01
+title: Pure CSS Tooltip
+date: 2021-02-02
 tags:
-  - Javascript
+  - CSS
 ---
-Live code example:
+import ToolTip from "./ToolTip";
 
-```js react-live
-const onClick = () => {
-  alert("You opened me");
-};
-render(<button onClick={onClick}>Alohomora!</button>);
+
+
+Tooltips have been one of those components that have flown under the radar for me. I've never given it much thought until I was working on a project recently and needed to use one. SEO was of upmost importance and after some fiddling around with it, I relized that they're not that many solid options to build one. After A LOT of research and rabbit holes, this is what I came up with:
+<br />
+
+<ToolTip />
+
+<br />
+
+The awesome thing about these is that they're SEO friendly and use nothing but CSS. Have a look at the code:
+
+<br />
+
+```html
+<button 
+  class="btn btn-primary" 
+    tooltip="Tooltip up here!" 
+      flow="up">
+        Up
+</button>
 ```
+<br />
 
-Here will a normal code block go:
-
-```js
-(function() {
-
-var cache = {};
-var form = $('form');
-var minified = true;
-
-var dependencies = {};
-
-var treeURL = 'https://api.github.com/repos/PrismJS/prism/git/trees/gh-pages?recursive=1';
-var treePromise = new Promise(function(resolve) {
-	$u.xhr({
-		url: treeURL,
-		callback: function(xhr) {
-			if (xhr.status < 400) {
-				resolve(JSON.parse(xhr.responseText).tree);
-			}
-		}
-	});
-});
-```
-
-A code block with a JSDoc comment, short, and long comment:
-
-```js
-/**
- * Get value out of string (e.g. rem => px)
- * If value is px strip the px part
- * If the input is already a number only return that value
- * @param {string | number} input
- * @param {number} [rootFontSize]
- * @return {number} Number without last three characters
- * @example removeLastThree('6rem') => 6
- */
-const getValue = (input, rootFontSize = 16) => {
-  if (typeof input === `number`) {
-    return input / rootFontSize;
-  }
-
-  const isPxValue = input.slice(-2) === `px`;
-
-  if (isPxValue) {
-    return parseFloat(input.slice(0, -2));
-  }
-
-  return parseFloat(input.slice(0, -3));
-};
-
-// This is a little helper function
-const helper = (a, b) => a + b;
-
-// This is also a little helper function but this time with a really long one-line comment that should show some more details
-const morehelper = (a, b) => a * b;
-
-export { getValue, helper, morehelper };
-```
-
-Normal block without language:
-
-```
-import Test from "../components/test"
-
-const Layout = ({ children }) => (
-  <Test>
-    {children}
-  </Test>
-)
-
-export default Layout
-```
-
-Code block with code highlighting:
+As you can see, the "tooltip" attribute holds the text and doesn't interfere with the document flow. Most tooltips require tags.
 
 ```jsx:title=src/components/post.jsx {5-7,10}
 import React from "react";
