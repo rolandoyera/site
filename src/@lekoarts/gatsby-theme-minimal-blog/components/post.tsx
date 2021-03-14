@@ -5,6 +5,7 @@ import React from "react"
 import Layout from "./layout"
 import ItemTags from "./item-tags"
 import SEO from "./seo"
+import Img from "gatsby-image"
 
 type PostProps = {
   data: {
@@ -59,6 +60,7 @@ const Post = ({ data: { post } }: PostProps) => (
       {post.timeToRead && ` — `}
       {post.timeToRead && <span>{post.timeToRead} min read</span>}
     </p>
+    
     <section
       sx={{
         my: 5,
@@ -74,4 +76,8 @@ const Post = ({ data: { post } }: PostProps) => (
   </Layout>
 )
 
+
+
 export default Post
+
+

@@ -11,7 +11,7 @@ const Footer = () => {
         boxSizing: `border-box`,
         display: `flex`,
         justifyContent: `space-between`,
-        mt: [6],
+        mt: [5],
         color: `secondary`,
         a: {
           variant: `links.secondary`,
@@ -20,7 +20,7 @@ const Footer = () => {
         variant: `dividers.top`,
       }}
     >
-      <div>
+      <div style={{padding:"2rem"}}>
         &copy; {new Date().getFullYear()} by {siteTitle}. All rights reserved.
       </div>
 

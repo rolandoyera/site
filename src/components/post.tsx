@@ -57,6 +57,7 @@ const Post = ({ data: { post } }: PostProps) => (
       )}
       {post.timeToRead && ` — `}
       {post.timeToRead && <span>{post.timeToRead} min read</span>}
+      <img src={post.banner} alt=""/>
     </p>
     <section
       sx={{

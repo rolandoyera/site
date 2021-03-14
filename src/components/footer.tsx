@@ -20,7 +20,7 @@ const Footer = () => {
         variant: `dividers.top`,
       }}
     >
-      <div>
+      <div style={{padding:"2rem"}}>
         &copy; {new Date().getFullYear()} by {siteTitle}. All rights reserved.
       </div>
 

@@ -25,10 +25,10 @@ module.exports = {
             title: `Articles`,
             slug: `/blog`,
           },
-          // {
-          //   title: `About`,
-          //   slug: `/about`,
-          // },
+          {
+            title: `Catagories`,
+            slug: `/tags`,
+          },
         ],
         // externalLinks: [
         //   {

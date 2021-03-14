@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from 'react';
 import { jsx } from "theme-ui"
 
 const Card = ({ children }) => {
@@ -16,6 +15,7 @@ const Card = ({ children }) => {
         borderStyle: `solid`,
         borderColor: `cardBorder`,
         boxShadow: `0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important`,
+        color: `text`
       }
       }>
         {children}

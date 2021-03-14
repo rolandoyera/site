@@ -13,6 +13,7 @@ const theme = merge(tailwind, {
     divide: tailwind.colors.gray[4],
     cardBorder: `hsl(225, 38%, 92%)`,
     secondaryBg: tailwind.colors.gray[3],
+    text: tailwind.colors.gray[9],
 
     modes: {
       dark: {
@@ -24,6 +25,7 @@ const theme = merge(tailwind, {
         background: `#141a2c`,
         cardBg: `hsla(199, 89%, 68%, .1)`,
         cardBorder: `hsla(199, 89%, 68%, .5)`,
+        quoteBg: `#0c101f`,
         heading: tailwind.colors.white,
         divide: tailwind.colors.gray[8],
         muted: tailwind.colors.gray[8],
@@ -106,18 +108,20 @@ const theme = merge(tailwind, {
       borderLeftWidth: `6px`,
       marginTop: `3rem`,
       marginBottom: `3rem`,
-
+      backgroundColor: `quoteBg`,
       mx: 0,
       pl: 4,
+      py: 2,
       p: {
         fontStyle: `italic`,
       },
     },
     table: {
-      width: `100%`,
+      color: 'text',
       my: 4,
-      borderCollapse: `separate`,
+      borderCollapse: `collapse`,
       borderSpacing: 0,
+      verticalAlign: `top`,
       [[`th`, `td`]]: {
         textAlign: `left`,
         py: `4px`,
@@ -142,7 +146,7 @@ const theme = merge(tailwind, {
   },
   layout: {
     container: {
-      padding: [3, 4],
+      padding: [2, 2],
       maxWidth: `1024px`,
     },
   },
