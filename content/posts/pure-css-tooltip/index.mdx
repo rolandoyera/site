@@ -8,7 +8,7 @@ import ToolTip from "./ToolTip";
 
 
 
-Tooltips have been one of those components that have flown under the radar for me. I've never given it much thought until I was working on a project recently and needed to use one. SEO was of upmost importance and after some fiddling around with it, I relized that they're not that many solid options to build one. After A LOT of research and rabbit holes, this is what I came up with:
+I've never given tooltips much thought until I worked on a project recently and needed to use one. I realized that they're not that many solid options to build one, and after A LOT of research and rabbit holes, this is what I came up with:
 <br />
 
 <ToolTip />
@@ -20,124 +20,20 @@ The awesome thing about these is that they're SEO friendly and use nothing but C
 <br />
 
 ```html
-<button 
-  class="btn btn-primary" 
-    tooltip="Tooltip up here!" 
-      flow="up">
-        Up
+<button class="btn" tooltip="Tooltip up here!" flow="up">
+  Up
+  </button>
+  <button class="btn" tooltip="Tooltip down way over here!" flow="down">
+  Down
+  </button>
+  <button class="btn" tooltip="This one is a lefty with a really long sentence!" flow="left">
+  Left
+  </button>
+  <button class="btn" tooltip="Tooltip right" flow="right">
+  Right
 </button>
 ```
 <br />
 
-As you can see, the "tooltip" attribute holds the text and doesn't interfere with the document flow. Most tooltips require tags.
+As you can see, the "tooltip" attribute holds the text for your tooltip and doesn't interfere with the document flow. Most tooltips require `span` tags to store your information you want to display. How will a search engine know you're using a tooltip with span tags or will it think that your information is terrible and not consider the page for search?
 
-```jsx:title=src/components/post.jsx {5-7,10}
-import React from "react";
-
-const Post = ({ data: { post } }) => (
-  <Layout>
-    <Heading variant="h2" as="h2">
-      {post.title}
-    </Heading>
-    <p
-      sx={{
-        color: `secondary`,
-        mt: 3,
-        a: { color: `secondary` },
-        fontSize: [1, 1, 2],
-      }}
-    >
-      <span>{post.date}</span>
-      {post.tags && (
-        <React.Fragment>
-          {` — `}
-          <ItemTags tags={post.tags} />
-        </React.Fragment>
-      )}
-    </p>
-    <section
-      sx={{
-        ...CodeStyles,
-        my: 5,
-        ".gatsby-resp-image-wrapper": { my: 5, boxShadow: `lg` },
-      }}
-    >
-      <MDXRenderer>{post.body}</MDXRenderer>
-    </section>
-  </Layout>
-);
-
-export default Post;
-```
-
-Code block without title:
-
-```
-Harry Potter and the Philosopher's Stone
-```
-
-Code block without lineNumbers (but lang):
-
-```text noLineNumbers
-Harry Potter and the Chamber of Secrets
-```
-
-Code block without lineNumbers (and without lang):
-
-```noLineNumbers
-Harry Potter and the Chamber of Secrets
-```
-
-Code block with only the title:
-
-```:title=src/utils/scream.js
-const scream = (input) => window.alert(input)
-```
-
-Code block with only the title but without lineNumbers:
-
-```:title=src/utils/scream.js noLineNumbers
-const scream = (input) => window.alert(input)
-```
-
-Line highlighting without code title:
-
-```js {2,4-5}
-const test = 3;
-const foo = "bar";
-const harry = "potter";
-const hermione = "granger";
-const ron = "weasley";
-```
-
-Here will `inline code` go, just inside the text. Wow!
-
-Code block without line numbers but with highlighting, language, and title:
-
-```tsx:title=src/components/blog.tsx {7-9,16} noLineNumbers
-import React from "react";
-
-const Blog = ({ posts }: PostsProps) => {
-  const { tagsPath, basePath } = useSiteMetadata();
-
-  return (
-    <Layout>
-      <Flex sx={{ alignItems: `center`, justifyContent: `space-between` }}>
-        <Heading variant="h2" as="h2">
-          Blog
-        </Heading>
-        <Styled.a
-          as={Link}
-          sx={{ variant: `links.secondary` }}
-          to={`/${basePath}/${tagsPath}`.replace(/\/\/+/g, `/`)}
-        >
-          View all tags
-        </Styled.a>
-      </Flex>
-      <Listing posts={posts} sx={{ mt: [4, 5] }} />
-    </Layout>
-  );
-};
-
-export default Blog;
-```

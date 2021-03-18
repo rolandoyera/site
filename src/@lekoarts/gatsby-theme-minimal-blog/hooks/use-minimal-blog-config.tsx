@@ -39,6 +39,7 @@ const useMinimalBlogConfig = () => {
         }
         showLineNumbers
         showCopyButton
+
       }
     }
   `)
