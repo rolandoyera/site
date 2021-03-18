@@ -14,6 +14,7 @@ const code = {
   ".prism-code": {
     fontSize: [1, 1, 2],
     padding: `1rem 1rem 1rem 1rem`,
+    maxHeight: `500px`,
     webkitOverflowScrolling: `touch`,
     backgroundColor: `transparent`,
     minWidth: `100%`,
