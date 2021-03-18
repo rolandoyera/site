@@ -17,27 +17,11 @@ const Header = () => {
   }
 
   return (
-    <header sx={{ mb: [3, 5] }}>
-      <Flex sx={{ alignItems: `center`, justifyContent: `space-between` }}>
+<header sx={{ mb: [5, 6], height: 70, pt: `.5rem`, backgroundColor:`navBar`, width: `100%` }}>
+      <Flex sx={{ alignItems: `center`, justifyContent: `space-between`, maxWidth: `1024px`, mx: `auto` }}>
         <HeaderTitle />
-        <ColorModeToggle isDark={isDark} toggle={toggleColorMode} />
+        <ColorModeToggle isDark={isDark} toggle={toggleColorMode} /><Navigation nav={nav} />
       </Flex>
-      <div
-        sx={{
-          boxSizing: `border-box`,
-          display: `flex`,
-          variant: `dividers.bottom`,
-          alignItems: `center`,
-          justifyContent: `space-between`,
-          mt: 3,
-          color: `secondary`,
-          a: { color: `secondary`, ":hover": { color: `heading` } },
-          flexFlow: `wrap`,
-        }}
-      >
-        <Navigation nav={nav} />
-        <HeaderExternalLinks />
-      </div>
     </header>
   )
 }

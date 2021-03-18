@@ -4,7 +4,7 @@ import { jsx, Link as TLink } from "theme-ui"
 import { Box } from "@theme-ui/components"
 import { Link } from "gatsby"
 import ItemTags from "./item-tags"
-import Img from "gatsby-image"
+
 
 
 type BlogListItemProps = {
@@ -15,13 +15,6 @@ type BlogListItemProps = {
     excerpt: string
     description: string
     timeToRead?: number
-    banner?: {
-        childImageSharp: {
-          resize: {
-            src: string
-          }
-        }
-      }
     tags?: {
       name: string
       slug: string
@@ -32,7 +25,7 @@ type BlogListItemProps = {
 
 const BlogListItem = ({ post, showTags = true }: BlogListItemProps) => (
   <Box mb={4}>
-    <Img src={post.banner ? post.banner.childImageSharp.resize.src : undefined} />
+
     
     <TLink as={Link} to={post.slug} sx={{ fontSize: [1, 2, 3], color: `text` }}>
       {post.title}

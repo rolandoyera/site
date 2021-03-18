@@ -142,3 +142,12 @@ table {
 .table > :not(:last-child) > :last-child > * {
 	border-bottom-color: currentColor;
 }
+body {
+  margin:0 !important;
+  padding:0 !important
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box !important;
+}

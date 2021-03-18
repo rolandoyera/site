@@ -6,7 +6,7 @@ const theme = merge(tailwind, {
   initialColorModeName: `dark`,
   useCustomProperties: true,
   colors: {
-    primary: "hsl(199, 89%, 67%)",
+    primary: "hsl(199, 89%, 47%)",
     secondary: `#5f6c80`,
     toggleIcon: tailwind.colors.gray[8],
     heading: tailwind.colors.black,
@@ -14,7 +14,7 @@ const theme = merge(tailwind, {
     cardBorder: `hsl(225, 38%, 92%)`,
     secondaryBg: tailwind.colors.gray[3],
     text: tailwind.colors.gray[9],
-
+    navBar: `hsl(225, 38%, 96%)`,
     modes: {
       dark: {
         text: tailwind.colors.gray[4],
@@ -29,11 +29,13 @@ const theme = merge(tailwind, {
         heading: tailwind.colors.white,
         divide: tailwind.colors.gray[8],
         muted: tailwind.colors.gray[8],
+        navBar: `hsl(225, 38%, 7%)`,
+        tertiery: `hsla(199, 89%, 68%, .5)`
       },
     },
   },
   fonts: {
-    body: `"IBM Plex Sans", -apple-system, BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"`,
+    body: `"IBM Plex Sans", -apple-system, BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial, sans-serif`,
   },
   styles: {
     root: {
@@ -75,7 +77,7 @@ const theme = merge(tailwind, {
     h1: {
       variant: `text.heading`,
       fontSize: [5, 6, 6, 7],
-      mt: 4,
+
     },
     h2: {
       variant: `text.heading`,
@@ -146,9 +148,12 @@ const theme = merge(tailwind, {
   },
   layout: {
     container: {
-      padding: [2, 2],
+      padding: `0 .5rem`,
       maxWidth: `1024px`,
     },
+  },
+  a: {
+    color: `#fff  !important`,
   },
   text: {
     heading: {
@@ -195,6 +200,10 @@ const theme = merge(tailwind, {
       pt: 3,
     },
   },
+  listItem: {
+    fontSize: [1, 2, 3],
+    color: `text`,
+  },
   links: {
     secondary: {
       color: `primary`,
@@ -207,10 +216,7 @@ const theme = merge(tailwind, {
         color: `heading`,
       },
     },
-    listItem: {
-      fontSize: [1, 2, 3],
-      color: `text`,
-    },
+
   },
 })
 
