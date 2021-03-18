@@ -14,6 +14,7 @@ const code = {
   ".prism-code": {
     fontSize: [1, 1, 2],
     padding: `1rem 1rem 1rem 1rem`,
+    maxHeight: `500px`,
     webkitOverflowScrolling: `touch`,
     backgroundColor: `transparent`,
     minWidth: `100%`,
@@ -50,6 +51,7 @@ const code = {
     webkitOverflowScrolling: `touch`,
     bg: `rgb(1, 22, 39)`,
     borderRadius: `5px`,
+    
     mx: [0, 0, 0, -3],
     ".token-line": {
       mx: -3,
