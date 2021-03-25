@@ -34,8 +34,8 @@ import {
 } from './templates.style';
 
 const BlogPostTemplate = (props: any) => {
-  const post = props.data.markdownRemark;
-  const { edges } = props.data.allMarkdownRemark;
+  const post = props.data.mdx;
+  const { edges } = props.data.allMdx;
   const title = post.frontmatter.title;
   const slug = post.fields.slug;
   const siteUrl = props.data.site.siteMetadata.siteUrl;
