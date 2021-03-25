@@ -32,8 +32,10 @@ import {
   PostTags,
   BlogPostComment,
 } from './templates.style';
-
+  const shortcodes = {
+  }
 const BlogPostTemplate = (props: any) => {
+
   const post = props.data.mdx;
   const { edges } = props.data.allMdx;
   const title = post.frontmatter.title;
@@ -60,9 +62,13 @@ const BlogPostTemplate = (props: any) => {
               ? null
               : post.frontmatter.cover.childImageSharp.fluid
           }
-          description={post.body}
+          description={post.excerpt}
           imagePosition="left"
+          
         />
+        <MDXProvider components={shortcodes}>
+						<MDXRenderer>{post.body}</MDXRenderer>
+					</MDXProvider>
 
         <BlogPostFooter
           className={post.frontmatter.cover == null ? 'center' : ''}
