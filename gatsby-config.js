@@ -106,9 +106,7 @@ module.exports = {
         icon: `content/assets/favicon.png`,
       },
     },
-    {
-      resolve: `gatsby-plugin-offline`,
-    },
+
     {
       resolve: `gatsby-plugin-lodash`,
     },
