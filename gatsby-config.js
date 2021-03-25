@@ -11,6 +11,7 @@ module.exports = {
     siteUrl: `https://javascriptarticles.com`,
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     {
       resolve: 'gatsby-transformer-remark',
       options: {
