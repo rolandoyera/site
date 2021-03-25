@@ -1,4 +1,6 @@
 import React from 'react';
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import { MDXProvider } from "@mdx-js/react";
 import { graphql, Link } from 'gatsby';
 import _ from 'lodash';
 import urljoin from 'url-join';
@@ -58,7 +60,7 @@ const BlogPostTemplate = (props: any) => {
               ? null
               : post.frontmatter.cover.childImageSharp.fluid
           }
-          description={post.html}
+          description={post.body}
           imagePosition="left"
         />
 
@@ -137,13 +139,13 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx( slug: { eq: $slug } ) {
       id
       excerpt(pruneLength: 160)
-      html
-      fields {
+      body
+
         slug
-      }
+
       frontmatter {
         title
         date(formatString: "DD MMM, YYYY")
@@ -159,19 +161,16 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
+    allMdx(
       limit: 3
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: {
-        frontmatter: { tags: { in: $tag } }
-        fields: { slug: { ne: $slug } }
-      }
+      filter: {slug: {ne: $slug }, frontmatter: {tags: {in: $tag}}}
     ) {
       edges {
         node {
-          fields {
+
             slug
-          }
+
           frontmatter {
             title
             tags
