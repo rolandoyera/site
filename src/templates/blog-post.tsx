@@ -37,7 +37,7 @@ const BlogPostTemplate = (props: any) => {
   const post = props.data.mdx;
   const { edges } = props.data.allMdx;
   const title = post.frontmatter.title;
-  const slug = post.fields.slug;
+  const slug = post.slug;
   const siteUrl = props.data.site.siteMetadata.siteUrl;
   const shareUrl = urljoin(siteUrl, slug);
 
@@ -110,10 +110,10 @@ const BlogPostTemplate = (props: any) => {
           <RelatedPostTitle>Related Posts</RelatedPostTitle>
           <RelatedPostItems>
             {edges.map(({ node }: any) => (
-              <RelatedPostItem key={node.fields.slug}>
+              <RelatedPostItem key={node.slug}>
                 <PostCard
-                  title={node.frontmatter.title || node.fields.slug}
-                  url={node.fields.slug}
+                  title={node.frontmatter.title || node.slug}
+                  url={node.slug}
                   image={
                     node.frontmatter.cover == null
                       ? null

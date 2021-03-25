@@ -8,7 +8,7 @@ import { BlogPostsWrapper } from './templates.style';
 
 const BlogList = (props: any) => {
   const { data } = props;
-  const Posts = data.allMarkdownRemark.edges;
+  const Posts = data.allMdx.edges;
   const { currentPage, numPages } = props.pageContext;
   const isFirst = currentPage === 1;
   const isLast = currentPage === numPages;
@@ -26,14 +26,14 @@ const BlogList = (props: any) => {
         {Posts.map(({ node }: any) => {
           return (
             <PostCardMinimal
-              key={node.fields.slug}
-              title={node.frontmatter.title || node.fields.slug}
+              key={node.slug}
+              title={node.frontmatter.title || node.slug}
               image={
                 node.frontmatter.cover == null
                   ? null
                   : node.frontmatter.cover.childImageSharp.fluid
               }
-              url={node.fields.slug}
+              url={node.slug}
               description={node.frontmatter.description || node.excerpt}
               date={node.frontmatter.date}
               tags={node.frontmatter.tags}
@@ -64,7 +64,7 @@ export const pageQuery = graphql`
     sitePage {
       path
     }
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip
@@ -72,9 +72,7 @@ export const pageQuery = graphql`
       edges {
         node {
           excerpt(pruneLength: 300)
-          fields {
             slug
-          }
           frontmatter {
             date(formatString: "DD [<span>] MMMM [</span>]")
             title
