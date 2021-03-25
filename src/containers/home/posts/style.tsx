@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
-const BlogPostsWrapper = styled.main`
+const BlogPostsWrapper = styled.div`
   margin: 0 auto;
   position: relative;
   .post_card {

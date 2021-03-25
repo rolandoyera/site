@@ -59,7 +59,7 @@ export const PostDate = styled.div`
   }
 `;
 
-export const PostContent = styled.article`
+export const PostContent = styled.div`
   align-self: center;
 `;
 

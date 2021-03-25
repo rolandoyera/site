@@ -1,7 +1,4 @@
 const path = require(`path`)
-require("@babel/core").transformSync("code", {
-  presets: ["@babel/preset-react"],
-});
 const _ = require('lodash')
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
@@ -15,7 +12,7 @@ exports.createPages = ({ graphql, actions }) => {
   return graphql(
     `
       {
-        allMdx(
+        allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
         ) {
@@ -26,7 +23,6 @@ exports.createPages = ({ graphql, actions }) => {
               }
               frontmatter {
                 title
-                canonical
                 tags
               }
             }
@@ -40,7 +36,7 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
     // Create blog posts pages.
-    const posts = result.data.allMdx.edges
+    const posts = result.data.allMarkdownRemark.edges
 
     posts.forEach((post, index) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1].node
@@ -104,7 +100,7 @@ exports.createPages = ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === `Mdx`) {
+  if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
     if (typeof node.frontmatter.slug !== 'undefined') {
       createNodeField({

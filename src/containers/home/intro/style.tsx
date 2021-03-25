@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
-export const IntroWrapper = styled.header`
+export const IntroWrapper = styled.div`
   width: 940px;
   max-width: 100%;
   margin: 0 auto;

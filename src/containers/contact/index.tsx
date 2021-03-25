@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Formik, FormikProps, Form } from 'formik';
 import * as Yup from 'yup';
 import Input from '../../components/input/input';
-import ButtonLoader from '../../components/ButtonLoader';
+import Button from '../../components/button/button';
 import {
   ContactWrapper,
   ContactPageTitle,
@@ -92,7 +92,7 @@ const Contact: React.SFC<{}> = () => {
                     errors.message && touched.message ? errors.message : ''
                   }
                 />
-                <ButtonLoader
+                <Button
                   title="Submit"
                   type="submit"
                   isLoading={isSubmitting ? true : false}

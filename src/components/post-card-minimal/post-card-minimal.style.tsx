@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
-export const PostCardWrapper = styled.article`
+export const PostCardWrapper = styled.div`
   position: relative;
   &:hover {
     .post_preview {
