@@ -5,7 +5,6 @@ import ScrollToTop from "react-scroll-up";
 import Navbar from "./navbar/navbar";
 import Footer from "./footer/footer";
 import ScrollUpButton from "./ScrollUpButton";
-import ResetCss from "./reset-css";
 import { theme } from "../theme";
 
 
@@ -17,7 +16,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
 	return (
 		<ThemeProvider theme={theme}>
 			<>
-				<ResetCss />
+
 				<Sticky top={0} innerZ={9999} activeClass='nav-sticky'>
 					<Navbar />
 				</Sticky>

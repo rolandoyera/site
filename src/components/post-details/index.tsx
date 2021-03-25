@@ -16,7 +16,7 @@ type PostDetailsProps = {
 	title: string;
 	date?: string;
 	preview?: any;
-	description: any;
+	description?: any;
 	tags?: [];
 	className?: string;
 	imagePosition?: "left" | "top";
