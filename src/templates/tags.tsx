@@ -20,9 +20,9 @@ const Tags = ({ pageContext, data }: any) => {
         </TagPageHeading>
         {edges.map(({ node, index }: any) => (
           <PostCard
-            key={node.fields.slug}
+            key={node.slug}
             title={node.frontmatter.title}
-            url={node.fields.slug}
+            url={node.slug}
             description={node.frontmatter.description || node.excerpt}
             date={node.frontmatter.date}
             tags={node.frontmatter.tags}
@@ -46,9 +46,7 @@ export const pageQuery = graphql`
       edges {
         node {
           excerpt(pruneLength: 300)
-
             slug
-
           frontmatter {
             date(formatString: "DD [<span>] MMMM [</span>]")
             title
