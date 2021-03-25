@@ -9,9 +9,7 @@ const HeaderWrapper = styled.nav`
 
 export const HeaderWrapperHome = styled.div`
 	position: relative;
-  
   max-width: 1400px;
-
 	z-index: 99999;
 	transition: 0.25s ease-in-out;
   margin: 0 auto 4rem;
@@ -26,7 +24,6 @@ export const NavbarWrapper = styled.div`
 	justify-content: space-between;
 	padding: 30px 75px;
 	background-color: #fff;
-
 	transition: 0.25s ease-in-out;
 	@media (max-width: 1400px) {
 		padding: 25px 45px;
