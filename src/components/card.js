@@ -1,11 +1,10 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui"
+import React from 'react';
 
 const Card = ({ children }) => {
   return (
     <div>
-      <div sx={{
-        backgroundColor: `cardBg`,
+      <div style={{
+        backgroundColor: `hsl(0, 0%, 68%, .1)`,
         paddingLeft: `20px`,
         paddingTop: `10px`,
         paddingBottom: `20px`,
@@ -13,8 +12,8 @@ const Card = ({ children }) => {
         borderRadius: `5px`,
         border: `1px`,
         borderStyle: `solid`,
-        borderColor: `cardBorder`,
-        boxShadow: `0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important`,
+        borderColor: `hsl(0, 0%, 68%, .1)`,
+        boxShadow: `0 0.125rem 0.25rem rgba(0, 0, 0, 0.775) !important`,
       }
       }>
         {children}

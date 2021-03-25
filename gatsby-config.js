@@ -1,87 +1,118 @@
-require(`dotenv`).config({
-  path: `.env`,
-})
-
-const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 module.exports = {
   siteMetadata: {
-    siteTitle: `JavaScript Articles`,
-    siteTitleAlt: `JavaScript Articles`,
-    siteHeadline: `JavaScript Articles`,
+    title: `JavaScript Articles`,
+    author: `Rolando`,
+    about: `Welcome to my blog about JavaScript, CSS, and all the things web.`,
+    description: `A blog about JavaScript, CSS, and all the things web.`,
     siteUrl: `https://javascriptarticles.com`,
-    siteDescription: `My personal site.`,
-    siteLanguage: `en`,
-    siteImage: `/banner.jpg`,
-    author: `Rolando Yera`,
   },
   plugins: [
     {
-      resolve: `@lekoarts/gatsby-theme-minimal-blog`,
-      // See the theme's README for all available options
+      resolve: 'gatsby-transformer-remark',
       options: {
-        navigation: [
+        plugins: [
           {
-            title: `Articles`,
-            slug: `/blog`,
+            resolve: `gatsby-remark-code-titles`,
+            options: {
+              className: `gatsby-remark-code-title`,
+            },
+          }, // IMPORTANT: this must be ahead of other plugins that use code blocks
+          `gatsby-remark-prismjs`,
+        ],
+      },
+    },
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+      options: {
+        siteUrl: `https://www.javascriptarticles.com`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/assets`,
+        name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.md`, `.mdx`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+              linkImagesToOriginal: true,
+            },
           },
           {
-            title: `Catagories`,
-            slug: `/tags`,
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+
+          {
+            resolve: `gatsby-remark-mermaid`,
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+          },
+
+          {
+            resolve: `gatsby-remark-copy-linked-files`,
+          },
+          {
+            resolve: `gatsby-remark-smartypants`,
           },
         ],
-        // externalLinks: [
-        //   {
-        //     name: `Twitter`,
-        //     url: `https://twitter.com/lekoarts_de`,
-        //   },
-        //   {
-        //     name: `Instagram`,
-        //     url: `https://www.instagram.com/rolandoyera`,
-        //   },
-        // ],
       },
+    },
+    {
+      resolve: `gatsby-transformer-sharp`,
+    },
+    {
+      resolve: `gatsby-plugin-sharp`,
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "G-5VRT4FFLS2",
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
       },
     },
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-feed`,
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `JavaScript Articles`,
         short_name: `JavaScript Articles`,
-        description: `My personal blog site.`,
         start_url: `/`,
-        background_color: `#fff`,
-        theme_color: `#6B46C1`,
-        display: `standalone`,
-        icons: [
-          {
-            src: `/android-chrome-192x192.png`,
-            sizes: `192x192`,
-            type: `image/png`,
-          },
-          {
-            src: `/android-chrome-512x512.png`,
-            sizes: `512x512`,
-            type: `image/png`,
-          },
-        ],
+        background_color: `#ffffff`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `content/assets/favicon.png`,
       },
     },
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-netlify`,
-    shouldAnalyseBundle && {
-      resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
-      options: {
-        analyzerMode: `static`,
-        reportFilename: `_bundle.html`,
-        openAnalyzer: false,
-      },
+    {
+      resolve: `gatsby-plugin-offline`,
     },
-  ].filter(Boolean),
-}
+    {
+      resolve: `gatsby-plugin-lodash`,
+    },
+  ],
+};

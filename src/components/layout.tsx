@@ -1,60 +1,43 @@
-/** @jsx jsx */
-import React from "react"
-import { Global } from "@emotion/core"
-import { Box, Container, jsx } from "theme-ui"
-import "typeface-ibm-plex-sans"
-import SEO from "./seo"
-import Header from "./header"
-import Footer from "./footer"
-import CodeStyles from "../styles/code"
-import SkipNavLink from "./skip-nav"
+import React from "react";
+import Sticky from "react-stickynode";
+import { ThemeProvider } from "styled-components";
+import ScrollToTop from "react-scroll-up";
+import Navbar from "./navbar/navbar";
+import Footer from "./footer/footer";
+import ScrollUpButton from "./ScrollUpButton";
+import ResetCss from "./reset-css";
+import { theme } from "../theme";
 
-type LayoutProps = { children: React.ReactNode; className?: string }
 
-const Layout = ({ children, className = `` }: LayoutProps) => (
-  <React.Fragment>
-    <Global
-      styles={(theme) => ({
-        "*": {
-          boxSizing: `inherit`,
-        },
-        html: {
-          WebkitTextSizeAdjust: `100%`,
-        },
-        img: {
-          borderStyle: `none`,
-        },
-        code: {
-          color:`#d63384 `
-        },
-        pre: {
-          fontFamily: `monospace`,
-          fontSize: `1em`,
-          color:`#d63384`
-        },
-        "[hidden]": {
-          display: `none`,
-        },
-        "::selection": {
-          backgroundColor: theme.colors.text,
-          color: theme.colors.background,
-        },
-        a: {
-          transition: `all 0.3s ease-in-out`,
-          color: `text`,
-        },
-      })}
-    />
-    <SEO />
-    <SkipNavLink>Skip to content</SkipNavLink>
-    <Container>
-      <Header />
-      <Box id="skip-nav" sx={{ ...CodeStyles }} className={className}>
-        {children}
-      </Box>
-      <Footer />
-    </Container>
-  </React.Fragment>
-)
+type LayoutProps = {
+	children: React.ReactNode;
+};
 
-export default Layout
+const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
+	return (
+		<ThemeProvider theme={theme}>
+			<>
+				<ResetCss />
+				<Sticky top={0} innerZ={9999} activeClass='nav-sticky'>
+					<Navbar />
+				</Sticky>
+
+				{children}
+
+				<Footer>
+					Copyright &copy; {new Date().getFullYear()} • JavaScript Articles
+				</Footer>
+				<ScrollToTop
+					showUnder={300}
+					duration={700}
+					easing='easeInOutCubic'
+					style={{ bottom: 30, right: 20 }}
+				>
+					<ScrollUpButton />
+				</ScrollToTop>
+			</>
+		</ThemeProvider>
+	);
+};
+
+export default Layout;
