@@ -82,19 +82,26 @@ const ResetCSS = createGlobalStyle`
   }
 
   blockquote{
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Fira Sans',sans-serif;
     font-weight: 500;
   }
 
   :not(pre) > code[class*="language-"], pre[class*="language-"] {
-    background: #f5f5f5;
+    color: #D10068;
+    font-family: 'Fira Code', monospace;
   }
+p > code {
+  background-color: #f1f1f1 !important;
+}
 
   pre[class*="language-"] {
     padding: 1.5em;
     margin: 2em 0;
     overflow: auto;
+    font-family: 'Fira Code', monospace;
+    
   }
+
 
   table {
     display: block;
