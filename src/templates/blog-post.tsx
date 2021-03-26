@@ -1,10 +1,8 @@
 import React from 'react';
-import { MDXRenderer } from "gatsby-plugin-mdx";
-import { MDXProvider } from "@mdx-js/react";
 import { graphql, Link } from 'gatsby';
 import _ from 'lodash';
 import urljoin from 'url-join';
-
+import { DiscussionEmbed } from 'disqus-react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PostCard from '../components/post-card/post-card';
@@ -32,17 +30,19 @@ import {
   PostTags,
   BlogPostComment,
 } from './templates.style';
-  const shortcodes = {
-  }
-const BlogPostTemplate = (props: any) => {
 
-  const post = props.data.mdx;
-  const { edges } = props.data.allMdx;
+const BlogPostTemplate = (props: any) => {
+  const post = props.data.markdownRemark;
+  const { edges } = props.data.allMarkdownRemark;
   const title = post.frontmatter.title;
-  const slug = post.slug;
+  const slug = post.fields.slug;
   const siteUrl = props.data.site.siteMetadata.siteUrl;
   const shareUrl = urljoin(siteUrl, slug);
 
+  const disqusConfig = {
+    shortname: process.env.GATSBY_DISQUS_NAME,
+    config: { identifier: slug, title },
+  };
   return (
     <Layout>
       <SEO
@@ -58,13 +58,9 @@ const BlogPostTemplate = (props: any) => {
               ? null
               : post.frontmatter.cover.childImageSharp.fluid
           }
-          description={post.excerpt}
-          imagePosition="left"
-          
+          description={post.html}
+          imagePosition="top"
         />
-        <MDXProvider components={shortcodes}>
-						<MDXRenderer>{post.body}</MDXRenderer>
-					</MDXProvider>
 
         <BlogPostFooter
           className={post.frontmatter.cover == null ? 'center' : ''}
@@ -103,7 +99,7 @@ const BlogPostTemplate = (props: any) => {
         <BlogPostComment
           className={post.frontmatter.cover == null ? 'center' : ''}
         >
-
+          <DiscussionEmbed {...disqusConfig} />
         </BlogPostComment>
       </BlogPostDetailsWrapper>
 
@@ -112,10 +108,10 @@ const BlogPostTemplate = (props: any) => {
           <RelatedPostTitle>Related Posts</RelatedPostTitle>
           <RelatedPostItems>
             {edges.map(({ node }: any) => (
-              <RelatedPostItem key={node.slug}>
+              <RelatedPostItem key={node.fields.slug}>
                 <PostCard
-                  title={node.frontmatter.title || node.slug}
-                  url={node.slug}
+                  title={node.frontmatter.title || node.fields.slug}
+                  url={node.fields.slug}
                   image={
                     node.frontmatter.cover == null
                       ? null
@@ -141,13 +137,13 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
-    mdx( slug: { eq: $slug } ) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
-      body
-
+      html
+      fields {
         slug
-
+      }
       frontmatter {
         title
         date(formatString: "DD MMM, YYYY")
@@ -163,16 +159,19 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMdx(
+    allMarkdownRemark(
       limit: 3
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: {slug: {ne: $slug }, frontmatter: {tags: {in: $tag}}}
+      filter: {
+        frontmatter: { tags: { in: $tag } }
+        fields: { slug: { ne: $slug } }
+      }
     ) {
       edges {
         node {
-
+          fields {
             slug
-
+          }
           frontmatter {
             title
             tags

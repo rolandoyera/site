@@ -17,12 +17,12 @@ function Search() {
 
   const data = useStaticQuery(graphql`
     query {
-      allMdx {
+      allMarkdownRemark {
         edges {
           node {
-
+            fields {
               slug
-
+            }
             frontmatter {
               date(formatString: "MMMM D, YYYY")
               title
@@ -42,7 +42,7 @@ function Search() {
     }
   `);
 
-  const dataset = data.allMdx.edges;
+  const dataset = data.allMarkdownRemark.edges;
 
   /**
    * handles the input change and perfom a search with js-search
@@ -65,7 +65,7 @@ function Search() {
       dataset.forEach(({ node }: any) => {
         let formatedData = {
           ...node.frontmatter,
-          slug: node.slug,
+          slug: node.fields.slug,
         };
         data.push(formatedData);
       });

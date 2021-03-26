@@ -4,32 +4,18 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `JavaScript Articles`,
-    author: `Rolando`,
-    about: `Welcome to my blog about JavaScript, CSS, and all the things web.`,
-    description: `A blog about JavaScript, CSS, and all the things web.`,
-    siteUrl: `https://javascriptarticles.com`,
+    title: `StoryHub`,
+    author: `David`,
+    about: `Breakfast procuring no end happiness allowance assurance frank. Met simplicity nor difficulty unreserved who. Entreaties mr conviction dissimilar me
+    astonished estimating cultivated.`,
+    description: `A Gatsby Blog`,
+    siteUrl: `https://storyhub-minimal-tarex.redq.now.sh`,
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: `gatsby-plugin-styled-components`,
       options: {
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-code-titles`,
-            options: {
-              className: `gatsby-remark-code-title`,
-            },
-          }, // IMPORTANT: this must be ahead of other plugins that use code blocks
-          `gatsby-remark-prismjs`,
-        ],
-      },
-    },
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
-      options: {
-        siteUrl: `https://www.javascriptarticles.com`,
+        minify: false, // Breaks styles if not set to false
       },
     },
     {
@@ -47,10 +33,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: `gatsby-transformer-remark`,
       options: {
-        extensions: [`.md`, `.mdx`],
-        gatsbyRemarkPlugins: [
+        plugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -64,7 +49,13 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
+              strict: `ignore`,
+            },
+          },
           {
             resolve: `gatsby-remark-mermaid`,
           },
@@ -90,14 +81,17 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "G-5VRT4FFLS2",
+        //trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,//`ADD YOUR TRACKING ID HERE`,
       },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `JavaScript Articles`,
-        short_name: `JavaScript Articles`,
+        name: `StoryHub - Personal Blog Minimal`,
+        short_name: `StoryHub`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
@@ -105,9 +99,25 @@ module.exports = {
         icon: `content/assets/favicon.png`,
       },
     },
-
+    {
+      resolve: `gatsby-plugin-offline`,
+    },
+    {
+      resolve: `gatsby-plugin-react-helmet`,
+    },
     {
       resolve: `gatsby-plugin-lodash`,
+    },
+    {
+      resolve: `gatsby-plugin-web-font-loader`,
+      options: {
+        google: {
+          families: [
+            'Poppins:300,400,500,600,700',
+            'Fira Sans:100,300,400,500,600,700',
+          ],
+        },
+      },
     },
   ],
 };

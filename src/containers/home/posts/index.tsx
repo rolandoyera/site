@@ -22,7 +22,7 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
           }
         }
       }
-      allMdx(
+      allMarkdownRemark(
         sort: { fields: [frontmatter___date], order: DESC }
         limit: 5
       ) {
@@ -30,9 +30,9 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
         edges {
           node {
             excerpt(pruneLength: 300)
-
+            fields {
               slug
-
+            }
             frontmatter {
               date(formatString: "DD [<span>] MMM [</span>]")
               title
@@ -52,7 +52,7 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
     }
   `);
 
-  const Posts = Data.allMdx.edges;
+  const Posts = Data.allMarkdownRemark.edges;
   const TotalPage = Data.allSitePage.nodes[0].context.numPages;
   const CurrentPage = Data.allSitePage.nodes[0].context.currentPage;
 
@@ -60,17 +60,17 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
     <BlogPostsWrapper>
       <SecTitle>Leatest Stories</SecTitle>
       {Posts.map(({ node }: any) => {
-        const title = node.frontmatter.title || node.slug;
+        const title = node.frontmatter.title || node.fields.slug;
         return (
           <PostCardMinimal
-            key={node.slug}
+            key={node.fields.slug}
             title={title}
             image={
               node.frontmatter.cover == null
                 ? null
                 : node.frontmatter.cover.childImageSharp.fluid
             }
-            url={node.slug}
+            url={node.fields.slug}
             description={node.frontmatter.description || node.excerpt}
             date={node.frontmatter.date}
             tags={node.frontmatter.tags}

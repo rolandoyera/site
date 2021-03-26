@@ -1,6 +1,5 @@
 declare module "rc-drawer"
 declare module "react-custom-scrollbars"
-declare module "@mdx-js/react"
 declare module "react-stickynode"
 declare module "react-scroll-up"
 declare module "gatsby-plugin-mailchimp"

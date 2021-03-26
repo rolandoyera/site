@@ -1,0 +1,48 @@
+---
+title: Javascript if else Statement
+date: "2021-03-05"
+tags: ["javascript"]
+description: The if...else is a conditional statement that executes if a specified condition is truthy. If the condition is falsy, JavaScript will execute another statement if provided.
+cover: ./unsplash.jpg
+---
+
+The if...else is a conditional statement that executes if a specified condition is truthy. If the condition is falsy, JavaScript will execute another statement if provided. Consider the following syntax:
+
+```javascript
+if (condition) {  👈 // If this is true
+  statement1      👈 // Do this
+  } else {        👈 // Else
+      statement2  👈 // Do this
+    }
+```
+
+The if...else statement is something that you'll often use and for a good reason. This statement comes in very handy and allows for fundamental conditional logic in your application. If this button is showing, hide it; if this modal is not showing, show it. And so on. Let's have a look at another example:
+
+```javascript
+if (x.className === "styleOne") {
+	x.className = "styleTwo";
+} else {
+	x.className = "styleOne";
+}
+```
+
+In the code above, we're stating that if "x" has a class equal to "styleOne," then change it to "styleTwo." The only other prominent alternative is that "styleTwo" is present, so we state "else" to switch it to "styleOne." Granted, this is a trivial snippet of code, but it comes in handy for toggling DOM elements such as opening and closing nav menus.
+
+## What About else...if?
+
+If a third condition is needed in your logic it's possible to use "else if" following your first "if" statement. You can add as many "else if" statements as needed, just make sure there's a space between else and if. There is no "elseif" keyword in Javascript.
+
+```javascript
+if (condition1) {
+	statement1;
+} else if (condition2) {
+	statement2;
+} else {
+	statement3;
+}
+```
+
+<h4>Resources</h4>
+<br />
+<a className="footnote" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else">MDN- if...else</a><br />
+<a className="footnote" href="https://developer.mozilla.org/en-US/docs/Glossary/Parameter">MDN- Parameters</a><br />
