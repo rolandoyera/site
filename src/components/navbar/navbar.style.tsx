@@ -9,6 +9,8 @@ const HeaderWrapper = styled.header`
 
 export const NavbarWrapper = styled.div`
   display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
   align-items: center;
   justify-content: space-between;
   padding: 10px 75px;

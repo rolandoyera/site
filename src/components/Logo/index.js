@@ -4,8 +4,9 @@ import styled from "styled-components";
 
 const StyledLogo = styled.h2`
   font-family: "Merriweather", serif;
-  font-weight: 800;
-	font-size: 1.7rem ;
+  letter-spacing: -.9px;
+  font-weight: 900;
+	font-size: 1.4rem ;
   color: #D10068;
   margin: 0 50px 0 0 !important;
   @media (max-width: 575px) {
@@ -23,7 +24,7 @@ const Thin = styled.span`
 const Logo = () => {
   return (
     <StyledLogo>
-      <Thin>JavaScript</Thin> Articles
+      <Thin>JavaScript</Thin>Articles
     </StyledLogo>
   );
 }

@@ -3,6 +3,7 @@ import { themeGet } from '@styled-system/theme-get';
 
 const BlogPostsWrapper = styled.div`
   margin: 0 auto;
+  max-width: 1000px;
   position: relative;
   .post_card {
     margin-bottom: 120px;
