@@ -4,12 +4,11 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `StoryHub`,
-    author: `David`,
-    about: `Breakfast procuring no end happiness allowance assurance frank. Met simplicity nor difficulty unreserved who. Entreaties mr conviction dissimilar me
-    astonished estimating cultivated.`,
-    description: `A Gatsby Blog`,
-    siteUrl: `https://storyhub-minimal-tarex.redq.now.sh`,
+    title: `JavaScript Articles`,
+    author: `Rolando`,
+    about: `Welcome to my blog about JavaScript, CSS, and all the things web.`,
+    description: `A blog about JavaScript, CSS, and all the things web.`,
+    siteUrl: `https://javascriptarticles.com`,
   },
   plugins: [
     {
@@ -49,13 +48,7 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          {
-            resolve: `gatsby-remark-katex`,
-            options: {
-              // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
-              strict: `ignore`,
-            },
-          },
+
           {
             resolve: `gatsby-remark-mermaid`,
           },
