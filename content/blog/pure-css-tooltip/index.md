@@ -1,10 +1,9 @@
 ---
-title: Can I Use Hooks Today?
-date: "2019-03-20"
-description: Node.js is an open-source, cross-platform JavaScript run-time environment for executing JavaScript code server-side. Historically, JavaScript was used primarily for client-side scripting, in which scripts written in JavaScript are embedded in a webpage’s HTML, to be run client-side by a JavaScript engine in the user’s web browser.
-tags: ["javascript", "hooks", "test"]
-cover: "./preview.jpg"
-slug: "can-i-use-hooks-today"
+title: Pure CSS Tooltip
+date: "2021-02-16"
+tags: ["css"]
+description: Easy to use and pure CSS tootip
+cover: ./unsplash.jpeg
 ---
 
 I've never given tooltips much thought until I worked on a project recently and needed to use one. I realized that they're not that many solid options to build one, and after A LOT of research and rabbit holes, this is what I came up with:
@@ -42,7 +41,6 @@ The <em>tooltip</em> and <em>flow</em> attributes are the two operators, so to s
 	cursor: pointer;
 }
 
-/* Applies to all tooltips */
 [tooltip]::before,
 [tooltip]::after {
 	text-transform: none;
