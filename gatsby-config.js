@@ -86,7 +86,7 @@ module.exports = {
         short_name: `StoryHub`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#D10068`,
         display: `minimal-ui`,
         icon: `content/assets/favicon.png`,
       },
@@ -96,6 +96,12 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-react-helmet`,
+    },
+    {
+      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+      options: {
+        siteUrl: `https://javascriptarticles.com`,
+      },
     },
     {
       resolve: `gatsby-plugin-lodash`,

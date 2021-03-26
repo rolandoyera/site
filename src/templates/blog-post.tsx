@@ -63,6 +63,7 @@ const BlogPostTemplate = (props: any) => {
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        canonical={post.frontmatter.canonical}
       />
       <BlogPostDetailsWrapper>
         <Article>
