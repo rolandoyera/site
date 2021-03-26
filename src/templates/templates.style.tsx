@@ -232,7 +232,7 @@ export const BlogPostFooter = styled.div`
 `;
 
 export const BlogPostComment = styled.div`
-  margin: 0 0 0 auto;
+  margin: 0  auto;
   width: 58%;
   max-width: 100%;
   padding-top: 80px;

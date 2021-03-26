@@ -61,7 +61,7 @@ const BlogPostTemplate = (props: any) => {
           description={post.html}
           imagePosition="top"
         />
-</Article>
+
         <BlogPostFooter
           className={post.frontmatter.cover == null ? 'center' : ''}
         >
@@ -91,6 +91,7 @@ const BlogPostTemplate = (props: any) => {
             </RedditShareButton>
           </PostShare>
         </BlogPostFooter>
+        </Article>
         <BlogPostComment
           className={post.frontmatter.cover == null ? 'center' : ''}
         >
