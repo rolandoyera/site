@@ -4,6 +4,7 @@ date: "2021-02-21"
 tags: ["javascript"]
 cover: ./unsplash.jpg
 description: In simple terms, an object is a data type represented in the computing language of Javascript.
+excerpt: In simple terms, an object is a data type represented in the computing language of Javascript.
 ---
 
 In simple terms, an `object` is a data type represented in the computing language of Javascript. You can use an `object` to store keyed <em>named values</em>, written as `{name: value}`, and can be scaled in complexity to define larger or more detailed "objects".
