@@ -68,7 +68,7 @@ const BlogPostTemplate = (props: any) => {
           <MDXProvider >
 						<MDXRenderer>{post.body}</MDXRenderer>
 					</MDXProvider>
-</PostDescription>
+        </PostDescription>
         <BlogPostFooter
           className={post.frontmatter.cover == null ? 'center' : ''}
         >

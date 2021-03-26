@@ -7,6 +7,8 @@ cover: ./unsplash.jpg
 canonical: https://javascriptarticles.com/how-to-use-styled-components-with-reactjs/
 ---
 
+import { FirstStageButton, PrimaryButton, SecondaryButton } from "./button.js";
+
 Styled-components is a CSS in JS library and is not a concept unique to React.js but broadly used in single-page applications such as React.js, Angular.js, etc. It essentially allows you to write CSS as part of your "component."
 
 We'll examine some concepts using styled-components with React.js, but these concepts will work with any framework using react.js, such as Gatsby.js or Next.js.
@@ -176,6 +178,8 @@ const Button = styled.button`
 `;
 ```
 
+<FirstStageButton> Button </FirstStageButton>
+
 <br />
 <br />
 
@@ -202,6 +206,11 @@ const Button = styled.button`
 	}
 `;
 ```
+
+<PrimaryButton> Button </PrimaryButton>
+
+<br />
+<br />
 
 That’s better. There’s a lot of power by using this functionality, and we’ll make use of it a little later. Let’s extend our button and make a secondary variant.
 
@@ -271,6 +280,13 @@ export const SecondaryButton = styled(PrimaryButton)`
 ```
 
 Since we’re expanding on the first button, we only add styling that’s different from the primary. Here’s the secondary button:
+
+<PrimaryButton> Primary </PrimaryButton>{" "}
+
+<SecondaryButton>Secondary</SecondaryButton>
+
+<br />
+<br />
 
 Not the best-looking secondary, but I think it gets the point across. If you’re wondering about a tertiary button, here’s what that code would look like:
 
