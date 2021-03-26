@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components"
 
 const ResetCSS = createGlobalStyle`
   html {
-    font-size: 15px;
+    font-size: 1.1rem;
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
   }
@@ -47,20 +47,21 @@ const ResetCSS = createGlobalStyle`
   h5,
   h6{
     margin-top: 0;
-    font-family: 'Poppins',sans-serif;
+    font-family: "Merriweather", serif;
+    font-weight: 800;
   }
 
   body {
     font-family: 'Fira Sans',sans-serif;
     margin: 0;
     padding: 0;
-    font-size: 15px;
+    font-size: 1.1rem;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
   }
 
   p{
-    line-height: 2;
+    line-height: 1.65;
     margin: 0 0 1.7em 0;
   }
   

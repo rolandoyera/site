@@ -53,7 +53,7 @@ export const RelatedPostWrapper = styled.div`
 export const RelatedPostTitle = styled.h2`
   color: ${themeGet('colors.textColor', '#292929')};
   font-size: 16px;
-  font-weight: 500;
+
   font-family: ${themeGet('fontFamily.0', "'Fira Sans',sans-serif")};
   letter-spacing: 0.17em;
   position: relative;
@@ -204,7 +204,7 @@ export const TagPageHeading = styled.div`
 
 export const TagName = styled.h1`
   font-size: 30px;
-  font-weight: 700;
+
   color: ${themeGet('colors.primary', '#D10068')};
   margin-bottom: 8px;
   @media (max-width: 990px) {
@@ -215,7 +215,7 @@ export const TagName = styled.h1`
   }
 `;
 export const BlogPostFooter = styled.div`
-  margin: 0 0 0 auto;
+  margin: 0  auto;
   width: 58%;
   max-width: 100%;
   padding-top: 60px;

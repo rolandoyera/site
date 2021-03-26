@@ -37,13 +37,14 @@ export const PostDetailsWrapper = styled.div`
 `;
 
 export const PostTitle = styled.h1`
-  font-size: 30px;
-  font-weight: 700;
+  font-size: 2rem;
+  font-family: "Merriweather", serif;
+  font-weight: 800;
   color: ${themeGet('colors.textColor', '#292929')};
   line-height: 1.53;
   margin-bottom: 10px;
   @media (max-width: 1200px) {
-    font-size: 26px;
+    font-size: 2rem;
     margin-bottom: 15px;
   }
   @media (max-width: 990px) {
@@ -112,6 +113,8 @@ export const PostDescriptionWrapper = styled.div`
 
 export const PostDescription = styled.div`
   font-size: ${themeGet('fontSizes.4', '16')}px;
+  max-width: 620px;
+  margin: 0 auto;
 
   .mermaid {
     margin-bottom: 60px;
@@ -131,14 +134,11 @@ export const PostDescription = styled.div`
   h4,
   h5,
   h6 {
-    font-weight: 500;
     margin-bottom: 0.75em;
+    font-family: "Merriweather", serif ;
   }
 
-  h1 {
-    font-size: 30px;
-    margin-bottom: 0.75em;
-  }
+
 
   h2 {
     font-size: 25px;

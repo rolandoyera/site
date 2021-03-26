@@ -7,6 +7,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PostCard from '../components/post-card/post-card';
 import PostDetails from '../components/post-details/post-details';
+import Article from '../components/Article'
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -50,6 +51,7 @@ const BlogPostTemplate = (props: any) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <BlogPostDetailsWrapper>
+        <Article>
         <PostDetails
           title={post.frontmatter.title}
           date={post.frontmatter.date}
@@ -61,7 +63,7 @@ const BlogPostTemplate = (props: any) => {
           description={post.html}
           imagePosition="top"
         />
-
+</Article>
         <BlogPostFooter
           className={post.frontmatter.cover == null ? 'center' : ''}
         >

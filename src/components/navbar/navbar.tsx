@@ -5,9 +5,9 @@ import { DrawerProvider } from '../drawer/drawer-context';
 import Menu from './menu';
 import MobileMenu from './mobile-menu';
 import SearchContainer from '../../containers/search/search';
+import Logo from '../Logo'
 import HeaderWrapper, {
   NavbarWrapper,
-  Logo,
   MenuWrapper,
   NavSearchButton,
   NavSearchWrapper,
@@ -25,18 +25,7 @@ const MenuItems = [
     label: 'Home',
     url: '/',
   },
-  {
-    label: 'About',
-    url: '/about',
-  },
-  {
-    label: 'Contact',
-    url: '/contact',
-  },
-  {
-    label: '404 Page',
-    url: '/404',
-  },
+
 ];
 
 const Navbar: React.FunctionComponent<NavbarProps> = ({
@@ -69,11 +58,7 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({
         <DrawerProvider>
           <MobileMenu items={MenuItems} logo={LogoImage} />
         </DrawerProvider>
-        <Logo>
-          <Link to="/">
-            <img src={LogoImage} alt="logo" />
-          </Link>
-        </Logo>
+        <Link to='/'><Logo/></Link>
         <MenuWrapper>
           <Menu items={MenuItems} />
         </MenuWrapper>
