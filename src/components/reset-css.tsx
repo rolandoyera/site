@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components"
 
 const ResetCSS = createGlobalStyle`
   html {
-    font-size: 1.1rem;
+    font-size: 1rem;
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
   }
@@ -55,7 +55,7 @@ const ResetCSS = createGlobalStyle`
     font-family: 'Fira Sans',sans-serif;
     margin: 0;
     padding: 0;
-    font-size: 1.1rem;
+    font-size: 1rem;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
   }
@@ -63,6 +63,7 @@ const ResetCSS = createGlobalStyle`
   p{
     line-height: 1.65;
     margin: 0 0 1.7em 0;
+    font-weight:300;
   }
   
   input, textarea, select, button{font-family: 'Fira Sans',sans-serif;}

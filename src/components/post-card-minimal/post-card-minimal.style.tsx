@@ -80,37 +80,23 @@ export const PostContent = styled.div`
 `;
 
 export const PostTitle = styled.h2`
-  font-size: 21px;
+  font-size: calc(1.325rem + 0.9vw);
   font-weight: 700;
   color: ${themeGet('colors.textColor', '#292929')};
-  line-height: 1.53;
+  line-height: 1.2;
   margin-bottom: 10px;
   font-family: 'Fira Sans', sans-serif;
   a {
     color: ${themeGet('colors.textColor', '#292929')};
   }
-  @media (max-width: 1200px) {
-    font-size: 21px;
-  }
-  @media (max-width: 990px) {
-    font-size: 19px;
-    margin-bottom: 12px;
-  }
-  @media (max-width: 575px) {
-    font-size: 17px;
-    margin-bottom: 10px;
-  }
+
 `;
 
 export const Excerpt = styled.p`
-  font-size: ${themeGet('fontSizes.3', '15')}px;
+  font-size: 1rem;
   color: ${themeGet('textColor', '#292929')};
-  font-weight: 400;
-  line-height: 2;
+  font-weight: 300;
   margin-bottom: 0;
-  @media (max-width: 990px) {
-    font-size: 14px;
-  }
 `;
 
 export const PostTags = styled.div`
@@ -154,7 +140,7 @@ export const PostDateAndPreview = styled.div`
 export const ReadMore = styled.div`
   margin-top: 16px;
   a {
-    font-size: 13px;
+    font-size: .85rem;
     font-weight: 500;
     color: ${themeGet('textColor', '#292929')};
     transition: 0.15s ease-in-out;
