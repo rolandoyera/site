@@ -6,8 +6,8 @@ module.exports = {
   siteMetadata: {
     title: `JavaScript Articles`,
     author: `Rolando`,
-    about: `Welcome to my blog about JavaScript, CSS, and all the things web.`,
-    description: `A blog about JavaScript, CSS, and all the things web.`,
+    about: `Welcome to my blog with JavaScript articles, CSS articles, and all the things web.`,
+    description: `A blog with JavaScript articles, CSS articles, and all the things web.`,
     siteUrl: `https://javascriptarticles.com`,
   },
   plugins: [
