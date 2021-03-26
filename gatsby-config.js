@@ -12,9 +12,9 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        plugins: [
+        gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-code-titles`,
             options: {
