@@ -11,6 +11,8 @@ import PostCard from '../components/post-card/post-card';
 import PostDetails from '../components/post-details/post-details';
 import Article from '../components/Article'
 import {PostDescription} from '../components/post-details/post-details.style'
+import Card from '../components/Card'
+import Button from '../components/ButtonComponent'
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -32,6 +34,17 @@ import {
   PostTags,
   BlogPostComment,
 } from './templates.style';
+
+interface IProps {
+    children: any;
+    // any other props that come into the component
+}
+const shortcodes = {
+
+	Card: ({ children, ...props }: IProps) => <Card {...props}>{children}</Card>,
+  Button: ({ children, ...props }: IProps) => <Button {...props}>{children}</Button>,
+
+};
 
 const BlogPostTemplate = (props: any) => {
   const post = props.data.mdx;
@@ -65,7 +78,7 @@ const BlogPostTemplate = (props: any) => {
           imagePosition="top"
         />
         <PostDescription>
-          <MDXProvider >
+          <MDXProvider components={shortcodes} >
 						<MDXRenderer>{post.body}</MDXRenderer>
 					</MDXProvider>
         </PostDescription>
