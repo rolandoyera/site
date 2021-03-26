@@ -7,7 +7,7 @@ import { TagPostsWrapper, TagPageHeading, TagName } from './templates.style';
 
 const Tags = ({ pageContext, data }: any) => {
   const { tag } = pageContext;
-  const { edges, totalCount } = data.allMarkdownRemark;
+  const { edges, totalCount } = data.allMdx;
 
   return (
     <Layout>
@@ -37,7 +37,7 @@ export default Tags;
 
 export const pageQuery = graphql`
   query($tag: String) {
-    allMarkdownRemark(
+    allMdx(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }

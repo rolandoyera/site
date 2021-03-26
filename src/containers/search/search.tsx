@@ -17,7 +17,7 @@ function Search() {
 
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark {
+      allMdx {
         edges {
           node {
             fields {
@@ -42,7 +42,7 @@ function Search() {
     }
   `);
 
-  const dataset = data.allMarkdownRemark.edges;
+  const dataset = data.allMdx.edges;
 
   /**
    * handles the input change and perfom a search with js-search

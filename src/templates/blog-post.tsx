@@ -1,4 +1,6 @@
 import React from 'react';
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import { MDXProvider } from "@mdx-js/react";
 import { graphql, Link } from 'gatsby';
 import _ from 'lodash';
 import urljoin from 'url-join';
@@ -8,6 +10,7 @@ import SEO from '../components/seo';
 import PostCard from '../components/post-card/post-card';
 import PostDetails from '../components/post-details/post-details';
 import Article from '../components/Article'
+import {PostDescription} from '../components/post-details/post-details.style'
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -31,8 +34,8 @@ import {
 } from './templates.style';
 
 const BlogPostTemplate = (props: any) => {
-  const post = props.data.markdownRemark;
-  const { edges } = props.data.allMarkdownRemark;
+  const post = props.data.mdx;
+  const { edges } = props.data.allMdx;
   const title = post.frontmatter.title;
   const slug = post.fields.slug;
   const siteUrl = props.data.site.siteMetadata.siteUrl;
@@ -58,10 +61,14 @@ const BlogPostTemplate = (props: any) => {
               ? null
               : post.frontmatter.cover.childImageSharp.fluid
           }
-          description={post.html}
+          
           imagePosition="top"
         />
-
+        <PostDescription>
+          <MDXProvider >
+						<MDXRenderer>{post.body}</MDXRenderer>
+					</MDXProvider>
+</PostDescription>
         <BlogPostFooter
           className={post.frontmatter.cover == null ? 'center' : ''}
         >
@@ -133,10 +140,10 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
-      html
+      body
       fields {
         slug
       }
@@ -155,7 +162,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
+    allMdx(
       limit: 3
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {

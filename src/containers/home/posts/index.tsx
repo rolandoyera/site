@@ -22,7 +22,7 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
           }
         }
       }
-      allMarkdownRemark(
+      allMdx(
         sort: { fields: [frontmatter___date], order: DESC }
         limit: 5
       ) {
@@ -52,7 +52,7 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
     }
   `);
 
-  const Posts = Data.allMarkdownRemark.edges;
+  const Posts = Data.allMdx.edges;
   const TotalPage = Data.allSitePage.nodes[0].context.numPages;
   const CurrentPage = Data.allSitePage.nodes[0].context.currentPage;
 

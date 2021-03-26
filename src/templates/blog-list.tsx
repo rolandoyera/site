@@ -8,7 +8,7 @@ import { BlogPostsWrapper } from './templates.style';
 
 const BlogList = (props: any) => {
   const { data } = props;
-  const Posts = data.allMarkdownRemark.edges;
+  const Posts = data.allMdx.edges;
   const { currentPage, numPages } = props.pageContext;
   const isFirst = currentPage === 1;
   const isLast = currentPage === numPages;
@@ -64,7 +64,7 @@ export const pageQuery = graphql`
     sitePage {
       path
     }
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip

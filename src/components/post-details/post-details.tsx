@@ -16,7 +16,6 @@ type PostDetailsProps = {
   title: string;
   date?: string;
   preview?: any;
-  description: any;
   tags?: [];
   className?: string;
   imagePosition?: 'left' | 'top';
@@ -26,7 +25,6 @@ const PostDetails: React.FunctionComponent<PostDetailsProps> = ({
   title,
   date,
   preview,
-  description,
   tags,
   className,
   imagePosition,
@@ -85,8 +83,7 @@ const PostDetails: React.FunctionComponent<PostDetailsProps> = ({
         ) : (
           ''
         )}
-        <PostDescription
-          dangerouslySetInnerHTML={{ __html: description }}
+        <PostDescription 
           className="post_des"
         />
         {tags == null ? null : (
