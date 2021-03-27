@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import PostCard from '../components/post-card/post-card';
 import SEO from '../components/seo';
@@ -53,6 +53,7 @@ export const pageQuery = graphql`
             date(formatString: "DD [<span>] MMMM [</span>]")
             title
             tags
+            canonical
             description
           }
         }
