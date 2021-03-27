@@ -18,6 +18,7 @@ type PostDetailsProps = {
   preview?: any;
   tags?: [];
   className?: string;
+  readingTime?: string;
   imagePosition?: 'left' | 'top';
 };
 
@@ -26,6 +27,7 @@ const PostDetails: React.FunctionComponent<PostDetailsProps> = ({
   date,
   preview,
   tags,
+  readingTime,
   className,
   imagePosition,
   ...props
@@ -57,7 +59,8 @@ const PostDetails: React.FunctionComponent<PostDetailsProps> = ({
       {imagePosition == 'top' ? (
         <>
           <PostTitle>{title}</PostTitle>
-          <PostDate>{date}</PostDate>
+          <PostDate>{date} • {readingTime}</PostDate>
+
         </>
       ) : (
         ''

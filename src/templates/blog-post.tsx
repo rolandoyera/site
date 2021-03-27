@@ -50,10 +50,11 @@ const BlogPostTemplate = (props: any) => {
   const post = props.data.mdx;
   const { edges } = props.data.allMdx;
   const title = post.frontmatter.title;
-  const date = post.frontmatter.date;
+  const readingTime = post.fields.readingTime.text;
   const slug = post.fields.slug;
   const siteUrl = props.data.site.siteMetadata.siteUrl;
   const shareUrl = urljoin(siteUrl, slug);
+  console.log(readingTime)
 
   const disqusConfig = {
     shortname: process.env.GATSBY_DISQUS_NAME,
@@ -71,6 +72,7 @@ const BlogPostTemplate = (props: any) => {
         <PostDetails
           title={post.frontmatter.title}
           date={post.frontmatter.date}
+          readingTime={readingTime}
           preview={
             post.frontmatter.cover == null
               ? null
@@ -79,6 +81,7 @@ const BlogPostTemplate = (props: any) => {
           
           imagePosition="top"
         />
+      
         <PostDescription>
           <MDXProvider components={shortcodes} >
 						<MDXRenderer>{post.body}</MDXRenderer>
@@ -165,8 +168,11 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       body
       fields {
-        slug
-      }
+          readingTime {
+            text
+          }
+          slug
+        }
       frontmatter {
         title
         date(formatString: "DD MMM, YYYY")
@@ -193,8 +199,11 @@ export const pageQuery = graphql`
       edges {
         node {
           fields {
-            slug
+          readingTime {
+            text
           }
+          slug
+        }
           frontmatter {
             title
             tags

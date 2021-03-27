@@ -19,8 +19,11 @@ exports.createPages = ({ graphql, actions }) => {
           edges {
             node {
               fields {
-                slug
-              }
+          readingTime {
+            text
+          }
+          slug
+        }
               frontmatter {
                 title
                 canonical

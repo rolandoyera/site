@@ -11,6 +11,7 @@ module.exports = {
     siteUrl: `https://javascriptarticles.com`,
   },
   plugins: [
+    `gatsby-remark-reading-time`,
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
