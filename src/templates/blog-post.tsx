@@ -7,7 +7,7 @@ import urljoin from 'url-join';
 import { DiscussionEmbed } from 'disqus-react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import PostCard from '../components/post-card/post-card';
+import RelatedPostCard from '../components/related-posts/related-post-card';
 import PostDetails from '../components/post-details/post-details';
 import Article from '../components/Article'
 import {PostDescription} from '../components/post-details/post-details.style'
@@ -50,6 +50,7 @@ const BlogPostTemplate = (props: any) => {
   const post = props.data.mdx;
   const { edges } = props.data.allMdx;
   const title = post.frontmatter.title;
+  const date = post.frontmatter.date;
   const slug = post.fields.slug;
   const siteUrl = props.data.site.siteMetadata.siteUrl;
   const shareUrl = urljoin(siteUrl, slug);
@@ -126,7 +127,8 @@ const BlogPostTemplate = (props: any) => {
           <RelatedPostItems>
             {edges.map(({ node }: any) => (
               <RelatedPostItem key={node.fields.slug}>
-                <PostCard
+                
+                <RelatedPostCard
                   title={node.frontmatter.title || node.fields.slug}
                   url={node.fields.slug}
                   image={
@@ -134,8 +136,12 @@ const BlogPostTemplate = (props: any) => {
                       ? null
                       : node.frontmatter.cover.childImageSharp.fluid
                   }
+                  date={post.frontmatter.date}
                   tags={node.frontmatter.tags}
+
+                  
                 />
+                
               </RelatedPostItem>
             ))}
           </RelatedPostItems>

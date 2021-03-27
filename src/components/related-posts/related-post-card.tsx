@@ -11,11 +11,9 @@ import {
   Excerpt,
   PostContent,
   PostTags,
-  PostDateAndPreview,
-  ReadMore,
-} from './post-card-minimal.style';
+} from './related-post-card.style';
 
-interface PostCardMinimalProps {
+interface PostCardProps {
   image?: any;
   title: string;
   description?: string;
@@ -26,7 +24,7 @@ interface PostCardMinimalProps {
   imageType?: 'fixed' | 'fluid';
 }
 
-const PostCardMinimal: React.FunctionComponent<PostCardMinimalProps> = ({
+const RelatedPostCard: React.FunctionComponent<PostCardProps> = ({
   image,
   title,
   description,
@@ -47,30 +45,26 @@ const PostCardMinimal: React.FunctionComponent<PostCardMinimalProps> = ({
 
   return (
     <PostCardWrapper className={addAllClasses.join(' ')} {...props}>
+      {image == null ? null : (
+        <PostPreview className="post_preview">
+          <Link to={url}>
+            {imageType === 'fluid' ? (
+              <Img fluid={image} alt="post preview" />
+            ) : (
+              <Img fixed={image} alt="post preview" />
+            )}
+          </Link>
+        </PostPreview>
+      )}
+
       <PostDetails className="post_details">
-        <PostDateAndPreview>
-          {date && (
-            <PostDate
-              dangerouslySetInnerHTML={{
-                __html: date,
-              }}
-              className="post_date"
-            />
-          )}
-          {image == null ? null : (
-            <PostPreview className="post_preview">
-              <Link to={url}>
-                {imageType === 'fluid' ? (
-                  <Img fluid={image} alt="post preview" />
-                ) : (
-                  <Img fixed={image} alt="post preview" />
-                )}
-              </Link>
-            </PostPreview>
-          )}
-        </PostDateAndPreview>
+        
 
         <PostContent className="post_content">
+          <PostTitle className="post_title">
+            <Link to={url}>{title}</Link>
+          </PostTitle>
+
           {tags == null ? null : (
             <PostTags className="post_tags">
               {tags.map((tag: string, index: number) => (
@@ -80,23 +74,14 @@ const PostCardMinimal: React.FunctionComponent<PostCardMinimalProps> = ({
               ))}
             </PostTags>
           )}
-          <PostTitle className="post_title">
-            <Link to={url}>{title}</Link>
-          </PostTitle>
-          {description && (
-            <Excerpt className="excerpt">{description}</Excerpt>
-          )}
-          <ReadMore>
-            <Link to={url}>Read More</Link>
-          </ReadMore>
         </PostContent>
       </PostDetails>
     </PostCardWrapper>
   );
 };
 
-PostCardMinimal.defaultProps = {
+RelatedPostCard.defaultProps = {
   imageType: 'fluid',
 };
 
-export default PostCardMinimal;
+export default RelatedPostCard;
