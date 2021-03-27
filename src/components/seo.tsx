@@ -8,7 +8,7 @@ type SEOProps = {
   meta?: any
   keywords?: any
   title: string
-  canonical?: string
+  canonical?: any
 }
 
 const SEO: React.FunctionComponent<SEOProps> = ({
@@ -29,6 +29,13 @@ const SEO: React.FunctionComponent<SEOProps> = ({
             author
           }
         }
+        allMdx {
+    nodes {
+      frontmatter {
+        canonical
+      }
+    }
+  }
       }
     `
   )
@@ -99,6 +106,7 @@ SEO.defaultProps = {
   meta: [],
   keywords: [],
   description: ``,
+  canonical: [],
 }
 
 export default SEO
