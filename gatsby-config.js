@@ -12,6 +12,8 @@ module.exports = {
   },
   plugins: [
     `gatsby-remark-reading-time`,
+    `gatsby-plugin-sitemap`,
+
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
