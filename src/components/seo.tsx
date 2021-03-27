@@ -8,7 +8,7 @@ type SEOProps = {
   meta?: any
   keywords?: any
   title: string
-  canonical?: any
+  canonical?: string
 }
 
 const SEO: React.FunctionComponent<SEOProps> = ({
@@ -50,9 +50,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       link={
-              canonical
-                ? [{ rel: 'canonical', key: canonical, href: canonical }]
-                : []
+              canonical ? [{ rel: 'canonical', key: canonical, href: canonical }] : []
             }
       meta={[
         {
@@ -106,7 +104,7 @@ SEO.defaultProps = {
   meta: [],
   keywords: [],
   description: ``,
-  canonical: [],
+
 }
 
 export default SEO
