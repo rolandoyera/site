@@ -92,6 +92,7 @@ function Search() {
           value={searchQuery}
           onChange={searchData}
           placeholder="Enter Your Search Topic"
+          autoComplete="off"
         />
       </SearchForm>
       <SearchResult>
