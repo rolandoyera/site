@@ -13,6 +13,7 @@ module.exports = {
   plugins: [
     `gatsby-remark-reading-time`,
     `gatsby-plugin-sitemap`,
+    `prism-react-renderer`,
 
     {
       resolve: `gatsby-plugin-styled-components`,
@@ -59,7 +60,6 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
           },
-
           {
             resolve: `gatsby-remark-copy-linked-files`,
           },

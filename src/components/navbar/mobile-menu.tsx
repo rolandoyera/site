@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import Drawer from '../drawer/drawer';
 import { DrawerContext } from '../drawer/drawer-context';
 import Menu from './menu';
+import Logo from '../Logo'
 import {
   MobileMenuWrapper,
   DrawerContentWrapper,
@@ -51,7 +52,7 @@ const MobileMenu: React.FunctionComponent<MobileMenuProps> = ({
           <DrawerHead>
             <DrawerLogo>
               <Link to="/">
-                <img src={logo} alt="logo" />
+                <Logo/>
               </Link>
             </DrawerLogo>
             <DrawerClose onClick={toggleDrawer}>

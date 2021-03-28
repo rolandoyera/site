@@ -13,6 +13,7 @@ import Article from '../components/Article'
 import {PostDescription} from '../components/post-details/post-details.style'
 import Card from '../components/Card'
 import Button from '../components/ButtonComponent'
+
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -83,7 +84,7 @@ const BlogPostTemplate = (props: any) => {
         />
       
         <PostDescription>
-          <MDXProvider components={shortcodes} >
+          <MDXProvider components={ shortcodes} >
 						<MDXRenderer>{post.body}</MDXRenderer>
 					</MDXProvider>
         </PostDescription>
@@ -165,7 +166,7 @@ export const pageQuery = graphql`
     }
     mdx(fields: { slug: { eq: $slug } }) {
       id
-      excerpt(pruneLength: 160)
+      excerpt(pruneLength: 200)
       body
       fields {
           readingTime {

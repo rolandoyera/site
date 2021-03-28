@@ -29,7 +29,7 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
         totalCount
         edges {
           node {
-            excerpt(pruneLength: 300)
+            excerpt(pruneLength: 200)
             fields {
               slug
             }
