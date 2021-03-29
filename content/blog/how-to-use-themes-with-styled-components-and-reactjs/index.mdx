@@ -1,0 +1,77 @@
+---
+title: How To Use Themes With Styled-Components & React.js
+date: "2021-03-24"
+tags: ["reactjs", "css", "styled-components"]
+description: Styled-components is a CSS in JS library and is not a concept unique to React.js but broadly used in single page applications such as React.js, Angular.js, etc.
+cover: ./unsplash.jpg
+canonical: https://javascriptarticles.com/how-to-use-themes-with-styled-components-and-reactjs/
+published: false
+---
+
+import { FirstStageButton, PrimaryButton, SecondaryButton } from "./button.js";
+
+Styled-components is a great library for themeing your site. We'll go through setting up global styles for the entire site and we'll also set-up a dark mode theme complete with local-storage to remember the users preference. I'm not going to add a lot of components so the learining water doesn't get too cloudy.
+
+## Pre-requisites
+
+Basic knowledge of JavaScript and React.js is all that is needed here. We'll go through everything else. I would suggest using a styled-components plug-in for your code editor, if you don't already have one. It is a syntax highlighter and IntelliSense for styled-components and you can look at it [here](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components).
+
+## Installation
+
+Let's start by creating our handy-dandy "CRA":
+
+```text
+npx create-react-app my-app
+```
+
+Three more packages that we will be installing are styled-components for themeimg, a local-storage library called local-storage-fallback, and react-icons for our dark-mode toggle:
+
+```text
+npm install styled-components local-storage-fallback react-icons
+```
+
+## Basic Structure
+
+We can create a unique tag naming convention using styled-components that utilizes es6 syntax. This concept makes it easy to read and understand code but, consider how it will render on the client-side. Instead of `div` tags, consider using `section` or `article` tags as wrappers for better structure. Doing this makes for good practice and accessibility for search engines and browsers.
+
+## Basic Usage
+
+Our CSS syntax will use regular kabob-case instead of camel-case, such as margin-top instead of marginTop. All of the same rules apply here as if we were using a standard CSS stylesheet. We can, and will, use JavaScript inside our CSS, which is powerful and fun to use. This functionality makes it easy for theme application or component state changes.
+
+## Global Styles
+
+Functionality for global styles is offered with styled-components, and we’ll make use of it. First, we need to create a separate file and import the module:
+
+```js
+// GlobalStyles.js
+
+import { createGlobalStyle } from "styled-components";
+```
+
+We can use this file for styling the entire app, and resetting CSS is what comes to mind, for me at least. I believe that any other styling should stay with the component if it’s not global. Now, we need to use the `createGlobalStyle` name we just imported and use it as so:
+
+Everyone has their method for global styles, so once you’re done with yours, we need to import it into our app.js file.
+
+## Naming Our Components
+
+A Styled Component is the combination of an element and the CSS rules that style it. Your regular h1 element will need to be named something different and follow es6 syntax guidelines. For example:
+
+```jsx
+const Title = styled.h1`
+	font-size: 2rem;
+`;
+```
+
+## Extending Classes for Different Variants
+
+Extending is an easy way to have different variants of your components. It keeps your styling code organized, and it’ll also cut down on the amount of code. Let’s make two different variants from our button component and make a primary and secondary button.
+
+First, I’ll change the Button name we just created to “PrimaryButton” and add another JavaScript variable and call it SecondaryButton. So this is what we have for or two buttons so far:
+
+<Card>
+<h4>Resources</h4>
+<br />
+<a className="footnote" href="https://styled-components.com/docs/basics#getting-started">styled-components- Getting Started</a><br />
+<a className="footnote" href="https://reactjs.org/docs/components-and-props.html">reactjs.org- Components and Props</a><br />
+
+</Card>

@@ -17,10 +17,11 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
     <ThemeProvider theme={theme}>
       <>
         <ResetCss />
+        <header>
         <Sticky top={0} innerZ={9999} activeClass="nav-sticky">
           <Navbar />
         </Sticky>
-
+    </header>
         {children}
 
         <Footer>

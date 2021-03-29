@@ -13,8 +13,7 @@ module.exports = {
   plugins: [
     `gatsby-remark-reading-time`,
     `gatsby-plugin-sitemap`,
-    `prism-react-renderer`,
-
+    `gatsby-remark-prismjs`,
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {

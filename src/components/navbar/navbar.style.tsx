@@ -7,7 +7,7 @@ const HeaderWrapper = styled.header`
   transition: 0.25s ease-in-out;
 `;
 
-export const NavbarWrapper = styled.div`
+export const NavbarWrapper = styled.nav`
   display: flex;
   max-width: 1100px;
   margin: 0 auto;

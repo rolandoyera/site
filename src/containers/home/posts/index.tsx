@@ -25,6 +25,7 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
       allMdx(
         sort: { fields: [frontmatter___date], order: DESC }
         limit: 5
+        filter: { frontmatter: { published: { eq: true } } }
       ) {
         totalCount
         edges {

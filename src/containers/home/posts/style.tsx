@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
-const BlogPostsWrapper = styled.div`
+const BlogPostsWrapper = styled.main`
   margin: 0 auto;
   max-width: 1000px;
   position: relative;

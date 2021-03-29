@@ -33,7 +33,7 @@ export const BlogPostsWrapper = styled.div`
   }
 `;
 
-export const RelatedPostWrapper = styled.div`
+export const RelatedPostWrapper = styled.section`
   margin: 0 auto;
   padding-left: 75px;
   padding-right: 75px;
@@ -231,7 +231,7 @@ export const BlogPostFooter = styled.div`
   }
 `;
 
-export const BlogPostComment = styled.div`
+export const BlogPostComment = styled.section`
   margin: 0  auto;
   width: 58%;
   max-width: 100%;
@@ -272,7 +272,7 @@ export const PostShare = styled.div`
   }
 `;
 
-export const BlogPostDetailsWrapper = styled.div`
+export const BlogPostDetailsWrapper = styled.main`
   margin: 0 auto;
   padding: 90px 0 120px 0;
   padding-left: 75px;
