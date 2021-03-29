@@ -193,9 +193,16 @@ export const pageQuery = graphql`
       limit: 3
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
-        frontmatter: { tags: { in: $tag } }
-        fields: { slug: { ne: $slug } }
+        frontmatter: 
+        { 
+          tags: { in: $tag } 
+          published: {eq: true}
+        } 
+          
+        fields: { slug: { ne: $slug } 
+  }
       }
+      
     ) {
       edges {
         node {
