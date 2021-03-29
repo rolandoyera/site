@@ -84,8 +84,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `StoryHub - Personal Blog Minimal`,
-        short_name: `StoryHub`,
+        name: `JavaScript Articles`,
+        short_name: `JavaScript Articles`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#D10068`,
@@ -97,7 +97,7 @@ module.exports = {
       resolve: `gatsby-plugin-offline`,
       options: {
         precachePages: ['/**/!(404).html'],
-        debug: true,
+        debug: false,
       }
     },
     {
