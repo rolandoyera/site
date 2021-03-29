@@ -7,10 +7,12 @@ export const FirstStageButton = styled.button`
 	font-size: 1.1rem;
 	padding: 0.5rem 1rem;
 	border-radius: 5px;
+  font-weight:300;
 `;
 
 export const PrimaryButton = styled.button`
   color: #fff;
+  font-weight:500 !important;
   background-color: #0d6efd;
   border-color: #0d6efd;
   font-size:1.1rem;

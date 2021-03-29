@@ -48,14 +48,14 @@ const ResetCSS = createGlobalStyle`
   h6{
     margin-top: 0;
     font-family: "Merriweather", serif;
-    font-weight: 800;
+    font-weight: 900;
   }
 
   body {
     font-family: 'Fira Sans',sans-serif;
     margin: 0;
     padding: 0;
-    font-size: 1rem;
+    font-size: 1.1rem;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
   }
@@ -63,7 +63,8 @@ const ResetCSS = createGlobalStyle`
   p {
     line-height: 1.65;
     margin: 0 0 2em;
-    font-weight:300;
+    font-weight: 300 !important;
+    font-size:1.1rem;
   }
   
   input, textarea, select, button{font-family: 'Fira Sans',sans-serif;}

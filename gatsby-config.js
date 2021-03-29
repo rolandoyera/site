@@ -111,16 +111,5 @@ module.exports = {
     {
       resolve: `gatsby-plugin-lodash`,
     },
-    {
-      resolve: `gatsby-plugin-web-font-loader`,
-      options: {
-        google: {
-          families: [
-            'Poppins:300,400,500,600,700',
-            'Fira Sans:100,300,400,500,600,700',
-          ],
-        },
-      },
-    },
   ],
 };
