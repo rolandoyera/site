@@ -90,11 +90,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#D10068`,
         display: `minimal-ui`,
-        icon: [{
-          src: `content/assets/maskable_icon.png`,
-          purpose: `any maskable`
-        }
-        ],
+        icon: `content/assets/maskable_icon.png`,
       },
     },
     {
