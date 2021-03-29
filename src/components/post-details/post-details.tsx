@@ -8,7 +8,6 @@ import {
   PostDate,
   PostPreview,
   PostDescriptionWrapper,
-  PostDescription,
   PostTags,
 } from './post-details.style';
 
@@ -86,9 +85,7 @@ const PostDetails: React.FunctionComponent<PostDetailsProps> = ({
         ) : (
           ''
         )}
-        <PostDescription 
-          className="post_des"
-        />
+
         {tags == null ? null : (
           <PostTags>
             {tags.map((tag, index) => (

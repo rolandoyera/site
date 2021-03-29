@@ -111,7 +111,7 @@ export const PostDescriptionWrapper = styled.div`
   }
 `;
 
-export const PostDescription = styled.div`
+export const PostContainer = styled.div`
   font-size: ${themeGet('fontSizes.4', '16')}px;
   max-width: 700px;
   margin: 0 auto;
@@ -121,11 +121,6 @@ export const PostDescription = styled.div`
     @media (max-width: 767px) {
       margin-bottom: 40px;
     }
-  }
-
-  p {
-    font-size: ${themeGet('fontSizes.4', '16')}px;
-    margin-bottom: 2em;
   }
 
   h1,
@@ -170,10 +165,6 @@ export const PostDescription = styled.div`
 
   li {
     margin-bottom: 0.45rem;
-
-    p {
-      margin-bottom: 1em;
-    }
   }
 
   blockquote {

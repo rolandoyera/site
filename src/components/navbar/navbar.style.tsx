@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
-const HeaderWrapper = styled.header`
+const HeaderWrapper = styled.nav`
   position: relative;
   z-index: 99999;
   transition: 0.25s ease-in-out;
 `;
 
-export const NavbarWrapper = styled.nav`
+export const NavbarWrapper = styled.div`
   display: flex;
   max-width: 1100px;
   margin: 0 auto;

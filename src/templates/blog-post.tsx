@@ -10,9 +10,8 @@ import SEO from '../components/seo';
 import RelatedPostCard from '../components/related-posts/related-post-card';
 import PostDetails from '../components/post-details/post-details';
 import Article from '../components/Article'
-import {PostDescription} from '../components/post-details/post-details.style'
-import Card from '../components/Card'
-import Button from '../components/ButtonComponent'
+import {PostContainer} from '../components/post-details/post-details.style'
+import {ShortCodes} from '../components/ShortCodes'
 
 import {
   FacebookShareButton,
@@ -36,17 +35,6 @@ import {
   BlogPostComment,
 } from './templates.style';
 
-interface IProps {
-    children: any;
-    // any other props that come into the component
-}
-const shortcodes = {
-
-	Card: ({ children, ...props }: IProps) => <Card {...props}>{children}</Card>,
-  Button: ({ children, ...props }: IProps) => <Button {...props}>{children}</Button>,
-
-};
-
 const BlogPostTemplate = (props: any) => {
   const post = props.data.mdx;
   const { edges } = props.data.allMdx;
@@ -55,7 +43,6 @@ const BlogPostTemplate = (props: any) => {
   const slug = post.fields.slug;
   const siteUrl = props.data.site.siteMetadata.siteUrl;
   const shareUrl = urljoin(siteUrl, slug);
-  console.log(readingTime)
 
   const disqusConfig = {
     shortname: process.env.GATSBY_DISQUS_NAME,
@@ -83,11 +70,11 @@ const BlogPostTemplate = (props: any) => {
           imagePosition="top"
         />
       
-        <PostDescription>
-          <MDXProvider components={ shortcodes} >
+        <PostContainer>
+          <MDXProvider components={ ShortCodes} >
 						<MDXRenderer>{post.body}</MDXRenderer>
 					</MDXProvider>
-        </PostDescription>
+        </PostContainer>
         <BlogPostFooter
           className={post.frontmatter.cover == null ? 'center' : ''}
         >

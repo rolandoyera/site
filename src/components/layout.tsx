@@ -21,7 +21,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
         <Sticky top={0} innerZ={9999} activeClass="nav-sticky">
           <Navbar />
         </Sticky>
-    </header>
+        </header>
         {children}
 
         <Footer>

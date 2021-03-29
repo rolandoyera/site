@@ -60,9 +60,9 @@ const ResetCSS = createGlobalStyle`
     -webkit-tap-highlight-color: transparent;
   }
 
-  p{
+  p {
     line-height: 1.65;
-    margin: 0 0 1.7em 0;
+    margin: 0 0 2em;
     font-weight:300;
   }
   
