@@ -12,7 +12,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-remark-reading-time`,
-    `gatsby-plugin-sitemap`,
     `gatsby-remark-prismjs`,
     {
       resolve: `gatsby-plugin-styled-components`,
