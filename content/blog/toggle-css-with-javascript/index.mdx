@@ -75,8 +75,12 @@ function theFunction() {
 And there’s you’re complete function. To recap, we used a button and listened for a click to target our element. We used a locally scoped variable and used the if…else statement to toggle our CSS classes. Here’s the complete code with HTML and CSS.
 
 ```html
+
 <style>
 	.styleOne {
+    display: none !important;
+	}
+	.styleTwo {
 		width: 100%;
 		padding: 25px;
 		background-color: coral;
@@ -85,15 +89,12 @@ And there’s you’re complete function. To recap, we used a button and listene
 		box-sizing: border-box;
 		text-align: center;
 	}
-	.styleTwo {
-		display: none !important;
-	}
 </style>
 
 <button class="btn btn-primary" id="theButton">Toggle Me</button>
 
 <div style="height: 130px;">
-	<div class="theFirstStyle" id="theTarget">
+	<div class="styleOne" id="theTarget">
 		This is a CSS toggle targeted element.
 	</div>
 </div>

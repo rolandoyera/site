@@ -74,12 +74,14 @@ module.exports = {
       resolve: `gatsby-plugin-sharp`,
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+        trackingIds: ["G-5VRT4FFLS2"]
+      },
+      pluginConfig: {
+        head: true,
       },
     },
-
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

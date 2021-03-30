@@ -15,7 +15,7 @@
 		"formik": "^2.1.5",
 		"gatsby": "^3.1.2",
 		"gatsby-image": "^3.1.0 ",
-		"gatsby-plugin-google-analytics": "^3.1.0",
+		"gatsby-plugin-google-gtag": "^3.1.0",
 		"gatsby-plugin-lodash": "^4.1.0",
 		"gatsby-plugin-manifest": "^3.1.0",
 		"gatsby-plugin-mdx": "^2.1.0",
