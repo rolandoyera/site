@@ -10,7 +10,6 @@ pre[class*="language-"] {
 	font-family: "Fira Code", monospace;
 	font-size: 1em;
 	line-height: 1.5em;
-	border-radius: 5px;
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
 	tab-size: 4;
@@ -206,4 +205,16 @@ pre[class*="language-"] {
 
 .footnote {
 	line-height: 2;
+}
+.code-title {
+	background-color: #2f2f2f;
+	font-family: "Source Code Pro", monospace;
+	font-size: 0.9rem;
+	color: white;
+	padding: 10px 20px;
+	margin-bottom: -32px;
+	font-style: italic;
+	border-bottom: #616161 1px solid;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 }

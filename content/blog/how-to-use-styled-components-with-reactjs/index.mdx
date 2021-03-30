@@ -10,23 +10,52 @@ published: true
 
 import { FirstStageButton, PrimaryButton, SecondaryButton } from "./button.js";
 
-Styled-components is a CSS in JS library and is not a concept unique to React.js but broadly used in single-page applications such as React.js, Angular.js, etc. It essentially allows you to write CSS as part of your "component."
+Styled-components is a CSS in JS library and is not a concept unique to React.js but broadly used in single-page applications such as React.js, Angular.js, etc. It essentially allows you to write CSS as part of your “component.” We’re going to use styled-components with create-react-app (CRA) to cover some concepts and core functionality.
 
-We'll examine some concepts using styled-components with React.js, but these concepts will work with any framework using react.js, such as Gatsby.js or Next.js.
+These concepts will work with any framework using react.js, such as Gatsby.js or Next.js.
 
 ## Pre-requisites
 
-I'm assuming you have a framework of your choice installed and ready to go. I'm also assuming that you have styled-components installed; if not, you can follow installation instructions [here](https://styled-components.com/docs/basics#installation).
+You’ll have to have some knowledge of React’s framework, CSS, and styled-components. A small amount of JavaScript understanding will keep you from getting lost, also. If you’ve used create-react-app already, no need to hold you up any longer; let’s get started.
 
-Consider using a syntax highlighting extension for your IDE; I use [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components) have a look at it [here](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components).
+## Syntax Highlighting & Intellisense
 
-## What I'm Using
+Consider using a syntax highlighting extension for your IDE; I use [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components). Since we’ll be coding CSS-in-JS, this helps tremendously. Have a look at the one I use [here](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components).
 
-I'll be using the barebones App.js file that you get when you use “npx create-react-app”. I removed everything except app.js and index.js. All the other items have been deleted and after a little bit of clean-up this is my app.js file:
+## Environment
 
+First, let’s install react.js’ create-react-app template, our styled-components dependency, and clean-up the files.
+
+```
+npx create-react-app styled-components-starter
+```
+
+Next, we’re going to add our dependencies for our project, which is styled-components.
+
+```
+npm install styled-components
+```
+
+There are multiple files and images that I remove from the src folder to keep things tidy. This is what I’m left with after the clean-up:
+
+```css
+📦 styled-components-starter
+ ┣ 📁 node_modules
+ ┣ 📁 public
+ ┣ 📂 src
+ ┃ ┣ 📜 App.js
+ ┃ ┗ 📜 index.js
+ ┣ 📜 .DS_Store
+ ┣ 📜 .gitignore
+ ┣ 📜 README.md
+ ┣ 📜 package.json
+ ┗ 📜 yarn.lock
+```
+
+I removed everything except the app.js and index.js files in the src folder and cleaned-up the code in the app.js file:
+
+<pre className="code-title">src/App.js</pre>
 ```jsx
-// App.js
-
 function App() {
 	return <div>Hello World</div>;
 }
@@ -34,63 +63,118 @@ function App() {
 export default App;
 ```
 
+Here's the index.js file:
+
+<pre className="code-title">src/index.js</pre>
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+```
+
 ## Basic Structure
 
-We can create a unique tag naming convention using styled-components that utilizes es6 syntax. This concept makes it easy to read and understand code but, consider how it will render on the client-side. Instead of `div` tags, consider using `section` or `article` tags as wrappers for better structure. Doing this makes for good practice and accessibility for search engines and browsers.
+We can create a unique tag naming convention using styled-components that utilizes es6 syntax. We can name the element whatever we like, put some styling on it, and re-use it throughout our project.
+
+This concept makes it easy to read and understand code but, consider how it will render on the client-side. Instead of div tags, consider using section or article tags as wrappers for better structure and accessibility when possible. Doing this makes for good practice, plus search engines and browsers like it.
 
 ## Basic Usage
 
-Our CSS syntax will use regular kabob-case instead of camel-case, such as margin-top instead of marginTop. All of the same rules apply here as if we were using a standard CSS stylesheet. We can, and will, use JavaScript inside our CSS, which is powerful and fun to use. This functionality makes it easy for theme application or component state changes.
+Our CSS syntax will use regular kebab-case instead of camel-case, such as margin-top instead of marginTop. All of the same CSS rules apply here as if we were using a standard CSS stylesheet. We can, and will, use JavaScript inside our CSS, which is powerful and fun to use. This functionality makes it easy for theme application or component state changes.
+
+Let’s put an h1 tag on our “Hello World” title, and we’ll make a new element called "H1". We’ll do this by importing styled-components and creating a JavaScript variable with it. Have a look at the code then we’ll discuss it below.
+
+<pre className="code-title">src/App.js</pre>
+```jsx
+import styled from 'styled-components'
+
+const H1 = styled.h1`
+font-size: 2.5rem;
+font-family: sans-serif;
+text-align: center;
+`;
+
+function App() {
+  return <H1>Hello World</H1>;
+}
+
+export default App;
+
+```
+
+We’re using the standard JavaScript syntax to assign our variable const H1; then, we attach our import “styled” via dot notation to our HTML element, h1. To encase our CSS, we use ` backticks thanks to JavaScript’s es6 syntax:
+
+```jsx
+const H1 = styled.h1` CSS here `;
+```
+
+This would be perfectly acceptable, and is, if we were not exporting the title as a component outside of our file. Meaning, if we had other elements in this file and wanted to export just the title as a component, we could not. This is a perfect segway for using the global styles library from styled-components.
 
 ## Global Styles
 
 Functionality for global styles is offered with styled-components, and we’ll make use of it. First, we need to create a separate file and import the module:
 
+<pre className="code-title">src/GlobalStyle.js</pre>
 ```jsx
-// GlobalStyles.js
-
 import { createGlobalStyle } from "styled-components";
 ```
 
-We can use this file for styling the entire app, and resetting CSS is what comes to mind, for me at least. I believe that any other styling should stay with the component if it’s not global. Now, we need to use the `createGlobalStyle` name we just imported and use it as so:
+We can use this file for styling the entire app, and resetting CSS is one of the things that comes to mind, for me at least. We'll do some global styling and also move our newly designed "H1" jsx element to this file. 
 
+Let start by using the createGlobalStyle name we just imported and apply it as so:
+
+<pre className="code-title">src/GlobalStyle.js</pre>
 ```jsx
-// GlobalStyles.js
-
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
- * {
+* {
   box-sizing:border-box;
   margin: 0;
   padding: 0;
   list-style: none;
- }
+}
  body {
-   background-color: white;
-   line-height: 1.5;
-   font-size: 1.1rem;
-   font-family: sans-serif;
-   font-weight:300;
-   color: black;
- }
+  background-color: #141a2c;
+  line-height: 1.5;
+  font-size: 1.1rem;
+  font-family: sans-serif;
+  font-weight:300;
+  color: black;
+}
  `;
+
+export const H1 = styled.h1`
+  font-size: 2.5rem;
+  font-family: sans-serif;
+  text-align: center;
+  color: #ffffff;
+`;
 ```
 
-Everyone has their method for global styles, so once you’re done with yours, we need to import it into our app.js file.
+Now that we’ve seen the code above notice how we used `export const` this time instead of just const. Using export will allow you to use multiple elements in a file and export each one individually. Not to be confused with export default. Export default will only allow one component in the file to be exported.
 
+So let’s now have a look at exporting our GlobalStyle and our H1 into our App.js file.
+
+<pre className="code-title">src/App.js</pre>
 ```jsx
-// App.js
-
-import { GlobalStyle } from "./GlobalStyle";
+import { GlobalStyle, H1 } from "./GlobalStyle";
 
 function App() {
-	return (
-		<div>
-			<GlobalStyle />
-			Hello World
-		</div>
-	);
+  return (
+    <>
+      <GlobalStyle />
+      <H1>Hello World</H1>
+    </>
+  )
 }
 
 export default App;
@@ -110,9 +194,8 @@ In the code above, we’re declaring “Title” as our variable, which is equal
 
 Let’s use this for our nifty “Hello World,” also, we will import styled-components and make a title component using the h1 element as we previously discussed.
 
+<pre className="code-title">src/App.js</pre>
 ```jsx
-// App.js
-
 import { GlobalStyle } from "./GlobalStyle";
 import styled from "styled-components";
 
@@ -184,7 +267,7 @@ const Button = styled.button`
 <br />
 <br />
 
-We’ve added a button, but it’s not very interactive. To add a hover class using styled-components, we’ll have to add it similar to SCSS. We’ll need to nest it and use `&:hover` or `&:yourPsuedoClass` as follows:
+We’ve added a button, but it’s not very interactive. To add a hover class using styled-components, we’ll have to add it similar to SCSS. We’ll need to nest it and use &:hover or &:yourPsuedoClass as follows:
 
 ```jsx
 const Button = styled.button`
