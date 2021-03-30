@@ -5,7 +5,7 @@ tags: ["css", "javascript"]
 cover: ./unsplash.jpeg
 description: Easily target any HTML element's CSS class with a couple of lines of simple Javascript.
 canonical: https://javascriptarticles.com/toggle-css-with-javascript/
-published: false
+published: true
 ---
 
 import Toggle from "./Toggle";
@@ -35,11 +35,11 @@ Our button is on the ready so next we have to add a method to listen for the cli
 document.getElementById("theButton").addEventListener("click");
 ```
 
-To recap this section, we're accessing our code via the "document" object then passing two methods to it via "dot notation." The first method, getElementById, allows us to access our button by its "id." The second method, addEventListener, will listen for an event on our document, a click.
+To recap this section, we're accessing our code via the "document" object then passing two methods to it via dot notation. The first method, getElementById, allows us to access our button by its "id." The second method, addEventListener, will listen for an event in our document, a click.
 
 ## The Function
 
-Next, we’re going to implement our function. We have to name our function, or we can make it anonymous. Again, for brevity, we’ll name our function and leave anonymous functions for another time. We’re going to call our function “theFunction,” but you can name it whatever you’d like and pass it as a parameter next to “click.”
+Next, we’re going to implement our function. We have to name our function, and again, for brevity, we’ll name our function “theFunction,” but you can name it whatever you’d like and pass it as a parameter next to “click.”
 
 ```javascript
 document.getElementById("theButton").addEventListener("click", theFunction);
@@ -48,11 +48,17 @@ function theFunction() {}
 
 ## The Statement
 
-We’re going to use the if…else statement here to toggle our CSS class. The if…else statement is straightforward to implement; if our class has “x,” then show “y”; else, if “y” is present, show “x.” If you want to learn more about the JavaScript if...else statement [read this article](https://javascriptarticles.com/javascript-if-else-statement/ "JavaScript If...else Statement").
+We still have to choose a target and assign a variable to it. We’re going to do this inside the function, so the variable is only available to this function and will not get executed by any other functions. This is called a locally scoped variable, and scope determines the accessibility of variables to the function. We’re going to use “x” as our variable name and once again use the `getElementById()` method and assign “theTarget” as our id.
 
-We still have to choose a target and assign a variable to it. We’re going to do this inside the function, so the variable is only available to this function and will not get executed by any other functions. This is a locally scoped variable, and scope determines the accessibility of variables to the function. We’re going to use “x” as our variable and once again use the `getElementById()` method and assign “theTarget” as our id.
+```js
+document.getElementById("theButton").addEventListener("click", theFunction);
+function theFunction() {
+	let x = document.getElementById("theTarget");
 
-Lastly, we’ll use “styleOne” and “styleTwo” as our class names to toggle.
+}
+```
+
+We’re going to use the if…else statement here to toggle our CSS class. The if...else is a conditional statement that executes given a specified condition.The if…else is straightforward to implement; if our class has “x,” then show “y”; else, if “y” is present, show “x.” If you want to learn more about the JavaScript if...else statement [read this article](https://javascriptarticles.com/javascript-if-else-statement/ "JavaScript If...else Statement"). Lastly, we’ll use “styleOne” and “styleTwo” as our class names to toggle.
 
 ```js
 document.getElementById("theButton").addEventListener("click", theFunction);
@@ -104,6 +110,8 @@ And there’s you’re complete function. To recap, we used a button and listene
 	}
 </script>
 ```
+
+I hope this will was able to help you on your learning journey.
 
 <Card>
 <h4>Resources</h4>
