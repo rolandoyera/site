@@ -12,7 +12,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-remark-reading-time`,
-    `gatsby-plugin-netlify-cache`,
     `gatsby-remark-prismjs`,
     {
       resolve: `gatsby-plugin-styled-components`,
@@ -51,6 +50,9 @@ module.exports = {
             options: {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
+          },
+          {
+            resolve: `gatsby-plugin-netlify-cache`,
           },
 
           {
