@@ -11,6 +11,7 @@ module.exports = {
     siteUrl: `https://javascriptarticles.com`,
   },
   plugins: [
+    `gatsby-plugin-netlify`,
     `gatsby-remark-reading-time`,
     `gatsby-remark-prismjs`,
     {
@@ -116,5 +117,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-lodash`,
     },
+    {
+      resolve: 'gatsby-redirect-from',
+      options: {
+        query: 'allMdx'
+      }
+    },
+    'gatsby-plugin-meta-redirect', // make sure this is always the last one
   ],
 };
