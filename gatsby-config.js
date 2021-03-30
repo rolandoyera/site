@@ -12,6 +12,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-remark-reading-time`,
+    `gatsby-plugin-netlify-cache`,
     `gatsby-remark-prismjs`,
     {
       resolve: `gatsby-plugin-styled-components`,
