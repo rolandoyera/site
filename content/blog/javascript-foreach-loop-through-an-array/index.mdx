@@ -10,7 +10,7 @@ published: true
 
 import "./foreach.css";
 
-The JavaScript `forEach()` method will call a function once for each element in the array. The function will have direct access to the array element, the index number, and the entire array. That didn't help, right? Let's start with a look at the syntax and see if we can figure this out:
+The JavaScript forEach() method will call a function once for each element in the array. The function will directly access the array element, the index number, and the entire array. That didn’t help. Let’s start with a look at the syntax and see if we can figure this out:
 
 ```
 const numbers = [1, 2, 3, 4, 5]
@@ -22,7 +22,7 @@ function numberItem(item, index) {
  //expected output 1, 2, 3, 4, 5
 ```
 
-Nope. That didn't help either so let's take it step by step. The code above shows an array of 5 numbers. I named the variable 'numbers' but you can call it whatever you'd like (foo, pizza, unicorn). And of course, the array can be anything like numbers, names, or whatever data your working with. The important thing is that we learn how forEach will iterate through your array.
+Nope. That didn’t help either, so let’s take it step by step. The code above shows an array of 5 numbers. I named the variable’ numbers,’ but you can call it whatever you’d like (foo, pizza, unicorn). Of course, the array can be anything like numbers, names, or whatever data you’re using. The important thing is that we learn how forEach will iterate through your array.
 
 ```js
 const numbers = [1, 2, 3, 4, 5]; // Or
@@ -30,7 +30,7 @@ const numbers = [1, 2, 3, 4, 5]; // Or
 const things = ["pizza", "unicorn", "pandas"];
 ```
 
-Next we use the `forEach()` method to execute our function and we start this line of code with the numbers variable.
+Next, we use the `forEach()` method to execute our function, and we start this line of code with the numbers variable.
 
 ```js
 const numbers = [1, 2, 3, 4, 5];
@@ -38,7 +38,7 @@ const numbers = [1, 2, 3, 4, 5];
 numbers.forEach();
 ```
 
-In the `forEach()` parenthesis we pass a parameter or an argument of "numberItem " which is the name of our function, which is next.
+In the `forEach()` parenthesis, we pass a parameter or an argument of “numberItem,” which is the name of our function, which is next.
 
 ```js
 const numbers = [1, 2, 3, 4, 5];
@@ -47,9 +47,11 @@ numbers.forEach(numberItem);
 function numberItem() {}
 ```
 
-Things can get a little confusing at this point, so let me explain the code above. We passed our function in as a "parameter" or also called an "argument" in the `forEach()` method. That's what is powerful about the `forEach()` method, it allows us to pass a function as an argument.
+Things can get a little confusing at this point, so let me explain the code above. We passed our function in as a “parameter” or also called an “argument” in the forEach() method. 
 
-Now, as part of our function and since were using the forEach() method we need to pass two parameters into our function parenthesis.
+That’s what is powerful about the forEach() method; it allows us to pass a function as an argument and is the main difference between the `for` or `forEach` methods. The `for` method will not accept a function as a parameter, but that doesn’t mean it’s any better or worse. But I digressed; let’s save that for another time. 
+
+As part of our function, and since we are using the forEach() method, we need to pass two parameters into our function parenthesis.
 
 ```js
 const numbers = [1, 2, 3, 4, 5];
@@ -58,9 +60,9 @@ numbers.forEach(numberItem);
 function numberItem(item, index) {}
 ```
 
-In the function above we pass two parameters, item and index. Item respresents the numbers in the array, or the "item" in the array as it's current value being processed. Index is used so JavaScript knows which <em>item</em> is currently being processed, in our case, which <em>number</em> is being processed.
+In the function above, we pass two parameters, item, and index. The item parameter represents the numbers in the array or the “item” in the array as its current value being evaluated. JavaScript will use the index to know which item is currently being processed, in our case, which number.
 
-Lastly, we input our statement. How are we going to output our code? In my case, for this tutorial, I'll just pass "item" to the console.
+Lastly, we input our statement. How are we going to output our code? In my case, for this tutorial, I’ll just pass “item” to the console.
 
 ```js
 const numbers = [1, 2, 3, 4, 5];
@@ -91,29 +93,29 @@ export const ForEachButton = () => {
 <br />
 <br />
 
-To be clear for a moment I wanted to speak about the item and index arguments we passed into our function. The formal forEach() method uses a syntax with three arguments, item, index, and array. So the formal syntax is as follows:
+To be clear, for a moment, I wanted to speak about the item and index arguments we passed into our function. The forEach() method officially uses a syntax with three arguments, item, index, and array. It is part of the method and whether you use the index and array parameters or not is up to you. JavaScript will use index and array if you choose nothing since it’s already baked into the method. So the formal syntax is as follows:
 
 ```js
 const numbers = [1, 2, 3, 4, 5];
 
 numbers.forEach(numberItem);
 function numberItem(item, index, array) {
-	console.log(item);
+                     ☝️     ☝️     ☝️
 }
 ```
 
-The index and array arguments are not necessary as it's built in to the method. So you can actually write it as so:
+The index and array arguments are not necessary as it’s built into the method. So you can actually write it as so:
 
 ```js
 const numbers = [1, 2, 3, 4, 5];
 
 numbers.forEach(numberItem);
 function numberItem(item) {
-	console.log(item);
+
 }
 ```
 
-I hope this will was able to help you on your learning journey.
+I hope this will help you on your learning journey.
 
 <br />
 <br />
