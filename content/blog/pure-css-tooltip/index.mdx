@@ -2,7 +2,7 @@
 title: Pure CSS Tooltip
 date: "2021-02-16"
 tags: ["css"]
-description: Easy to use and pure CSS tootip
+description: Easy to use, SEO friendly, and pure CSS tootip
 cover: ./unsplash.jpeg
 canonical: https://javascriptarticles.com/pure-css-tooltip/
 published: true
@@ -10,13 +10,13 @@ published: true
 
 import ToolTip from "./ToolTip";
 
-I've never given tooltips much thought until I worked on a project recently and needed to use one. I realized that they're not that many solid options to build one, and after A LOT of research and rabbit holes, this is what I came up with:
+I’ve never given tooltips much thought until I worked on a project recently and needed to use one. I realized that they’re not that many solid options to build one, and after A LOT of research and rabbit holes, this is what I came up with:
 
 <ToolTip />
 
 <br />
 
-The awesome thing about these is that they're SEO friendly and use nothing but pure CSS. Have a look at the code:
+The fantastic thing about these tooltips is that they’re SEO-friendly and use nothing but pure CSS. The tooltip text is held in the button element and not in CSS or span tags, so they’re components you can use over and over again. Have a look at the code:
 
 ```html
 <button class="btn" tooltip="Tooltip up here!" flow="up"> 
@@ -35,11 +35,13 @@ The awesome thing about these is that they're SEO friendly and use nothing but p
 
 <br />
 
-As you can see, the "tooltip" attribute holds the text for your tooltip and doesn't interfere with the document flow. Most tooltips require `span` tags to store your information you want to display. How will a search engine know you're using a tooltip with span tags or will it think that your information is terrible and not consider the page for search?
+As you can see, the “tooltip” attribute holds the text for your tooltip and doesn’t interfere with the document flow. Most tooltips require `span` tags to store your information you want to display. How will a search engine know you’re using a tooltip with span tags, or will it think your data is terrible and not consider the page for search?
 
 ### Usage
 
-The <em>tooltip</em> and <em>flow</em> attributes are the two operators, so to speak. Tooltip will hold your information to display and insert the direction you'd like to use up, right, down, or left in the flow attribute. Here's the CSS code for all four directions:
+The tooltip and flow attributes are the two “operators,” so to speak. These attributes will hold the text to display and insert it in the direction you’d like to use; up, right, down, or left. Styling these are extremely easy since it’s nothing but vanilla CSS. 
+
+You can copy and paste the code or [download it from my repo](https://github.com/rolandoyera/pure-css-tooltip "Pure CSS Tooltip").  Here's the CSS code for all four directions:
 
 ```css
 [tooltip] {
