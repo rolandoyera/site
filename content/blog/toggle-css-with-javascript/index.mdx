@@ -10,7 +10,7 @@ published: false
 
 import Toggle from "./Toggle";
 
-Easily and quickly target any HTML element’s CSS class with a couple of lines of simple Javascript. This is helpful for hiding an element with a `.hidden` class or triggering an element with a `.active` or `.inactive` class. Toggling CSS is a must and very simple to implement with JavaScript. In this example, there are three things that we’re going to focus on, a button, a function to target and toggle the element, and lastly, the statement that will allow us to toggle CSS with JavaScript.
+Easily and quickly target any HTML element’s CSS class with a couple of lines of simple JavaScript. This is helpful for hiding an element with a `.hidden` class or triggering an element with a `.active` or `.inactive` class. Toggling CSS is a must and very simple to implement with JavaScript. In this example, there are three things that we’re going to focus on, a button, a function to target and toggle the element, and lastly, the statement that will allow us to toggle CSS with JavaScript.
 
 ## Example
 
@@ -23,17 +23,19 @@ Easily and quickly target any HTML element’s CSS class with a couple of lines 
 
 ## The Button
 
-We’re going first to query the button and access it by its id with the `getElementById()` method. For brevity, we’ll name the button “theButton,” but you can call it whatever you’d like and pass it as a parameter.
+Let's start by targeting our button and we'll access it by its id with the `getElementById()` method. For brevity, we’ll name the button “theButton,” but you can call it whatever you’d like and pass it as a parameter.
 
 ```js
 document.getElementById("theButton");
 ```
 
-Next, we have to add a method to listen for the click on the button. We’ll add the `addEventListener()` function method to the code and pass “click” as a parameter.
+Our button is on the ready so next we have to add a method to listen for the click on the button. We’ll use the `addEventListener()` method and pass “click” as a parameter.
 
 ```js
 document.getElementById("theButton").addEventListener("click");
 ```
+
+To recap this section, we're accessing our code via the "document" object then passing two methods to it via "dot notation." The first method, getElementById, allows us to access our button by its "id." The second method, addEventListener, will listen for an event on our document, a click.
 
 ## The Function
 

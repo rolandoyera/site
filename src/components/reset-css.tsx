@@ -1,6 +1,14 @@
 import { createGlobalStyle } from "styled-components"
 
 const ResetCSS = createGlobalStyle`
+::selection {
+  background: #D10068;
+  color: white; 
+}
+::-moz-selection {
+  background: #D10068;
+  color: white; 
+}
   html {
     font-size: 1rem;
     box-sizing: border-box;
