@@ -176,7 +176,7 @@ export const TagPostsWrapper = styled.div`
 `;
 export const TagPageHeading = styled.div`
   padding-left: 210px;
-  font-size: 15px;
+  font-size: .95rem;
   font-weight: 400;
   margin-bottom: 120px;
   position: relative;

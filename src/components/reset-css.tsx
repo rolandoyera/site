@@ -75,12 +75,25 @@ const ResetCSS = createGlobalStyle`
     font-size:1.1rem;
   }
   
-  input, textarea, select, button{font-family: 'Fira Sans',sans-serif;}
-
-  ul,ol {
-    margin: 0;
-    padding: 0;
+  input, 
+  textarea, 
+  select, 
+  button {
+    font-family: 'Fira Sans', sans-serif;
   }
+  ul {
+    margin-left: 1.5rem;
+
+  }
+
+  article  ul {
+    margin-bottom: 2.5rem;
+  }
+
+  article ul li{
+    margin-bottom: 1rem;
+  }
+
 
   a {
     text-decoration: none;
@@ -99,9 +112,17 @@ const ResetCSS = createGlobalStyle`
   :not(pre) > code[class*="language-"], pre[class*="language-"] {
     color: #D10068;
     font-family: 'Fira Code', monospace;
+    font-size: 1rem;
   }
 p > code {
-  background-color: #f1f1f1 !important;
+  background-color: transparent !important;
+  padding: 0 .2rem !important;
+  letter-spacing: -.05rem 
+}
+li > code {
+  background-color: transparent !important;
+  padding: 0 .2rem !important;
+  letter-spacing: -.05rem 
 }
 
   pre[class*="language-"] {
@@ -146,14 +167,9 @@ p > code {
     .header {
       box-shadow: 0 0 15px rgba(0,0,0,.08);
       .navbar{
-        @media (min-width: 1400px) {
-          padding-top: 25px;
-          padding-bottom: 25px;
-        }
-        @media (min-width: 1200px) {
-          padding-top: 20px;
-          padding-bottom: 20px;
-        }
+        padding-top: 10px;
+        padding-bottom: 10px;
+
       }
     }
     

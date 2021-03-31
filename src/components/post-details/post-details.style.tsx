@@ -156,16 +156,6 @@ export const PostContainer = styled.div`
     font-size: 13px;
   }
 
-  ol,
-  ul {
-    margin-left: 1.5rem;
-    margin-bottom: 2rem;
-    line-height: 2;
-  }
-
-  li {
-    margin-bottom: 0.45rem;
-  }
 
   blockquote {
     font-family: 'Poppins', sans-serif;

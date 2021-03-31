@@ -13,11 +13,11 @@ export const NavbarWrapper = styled.div`
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 75px;
+  padding: 0px 75px;
   background-color: #fff;
   transition: 0.25s ease-in-out;
   @media (max-width: 1400px) {
-    padding: 10px 45px;
+    padding: 0px 45px;
   }
   @media (max-width: 990px) {
     padding: 15px 25px;
@@ -55,13 +55,16 @@ export const MenuItemWrapper = styled.ul`
   display: flex;
   align-items: center;
   margin-left: auto;
+
 `;
 
 export const MenuItem = styled.li`
   margin: 0 20px;
   list-style: none;
+  align-items: center;
   a {
-    padding: 5px 10px;
+    padding: 0px 10px;
+    align-items: center;
     white-space: nowrap;
     font-size: ${themeGet('fontSizes.3', '15')}px;
     line-height: ${themeGet('lineHeights.normal', '1')};
