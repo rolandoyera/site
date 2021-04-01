@@ -15,6 +15,15 @@ module.exports = {
     `gatsby-remark-reading-time`,
     `gatsby-remark-prismjs`,
     {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        custom: {
+          families: ["Operator Mono, Merriweather, Fira Sans"],
+          urls: ["/fonts/fonts.css"],
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-styled-components`,
       options: {
         minify: false, // Breaks styles if not set to false

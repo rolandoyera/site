@@ -38,7 +38,6 @@ export const PostDetailsWrapper = styled.div`
 
 export const PostTitle = styled.h1`
   font-size: 2rem;
-  font-family: "Merriweather", serif;
   font-weight: 800;
   color: ${themeGet('colors.textColor', '#292929')};
   line-height: 1.53;
@@ -122,18 +121,6 @@ export const PostContainer = styled.div`
       margin-bottom: 40px;
     }
   }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-bottom: 0.75em;
-    font-family: "Merriweather", serif ;
-  }
-
-
 
   h2 {
     font-size: 25px;

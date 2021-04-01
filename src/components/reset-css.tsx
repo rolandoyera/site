@@ -111,7 +111,7 @@ const ResetCSS = createGlobalStyle`
 
   :not(pre) > code[class*="language-"], pre[class*="language-"] {
     color: #D10068;
-    font-family: 'Fira Code', monospace;
+    font-family: 'Operator Mono', monospace;
     font-size: 1rem;
   }
 p > code {
@@ -129,7 +129,7 @@ li > code {
     padding: 1.5em;
     margin: 2em 0;
     overflow: auto;
-    font-family: 'Fira Code', monospace;
+    font-family: 'Operator Mono', monospace;
     
   }
 
