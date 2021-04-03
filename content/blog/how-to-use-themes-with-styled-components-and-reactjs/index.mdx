@@ -3,70 +3,372 @@ title: How To Use Themes With Styled-Components & React.js
 date: "2021-03-24"
 tags: ["reactjs", "css", "styled-components"]
 description: Styled-components is a CSS in JS library and is not a concept unique to React.js but broadly used in single page applications such as React.js, Angular.js, etc.
-cover: ./unsplash.jpg
+cover: ./monica.jpg
 canonical: https://javascriptarticles.com/how-to-use-themes-with-styled-components-and-reactjs/
-published: false
+published: true
 ---
 
 import { FirstStageButton, PrimaryButton, SecondaryButton } from "./button.js";
 
-Styled-components is a great library for themeing your site. We'll go through setting up global styles for the entire site and we'll also set-up a dark mode theme complete with local-storage to remember the users preference. I'm not going to add a lot of components so the learining water doesn't get too cloudy.
+## Table of Contents
 
-## Pre-requisites
-
-Basic knowledge of JavaScript and React.js is all that is needed here. We'll go through everything else. I would suggest using a styled-components plug-in for your code editor, if you don't already have one. It is a syntax highlighter and IntelliSense for styled-components and you can look at it [here](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components).
-
-## Installation
-
-Let's start by creating our handy-dandy "CRA":
-
-```text
-npx create-react-app my-app
+```toc
+exclude: Table of Contents
+from-heading: 1
+to-heading: 6
 ```
 
-Three more packages that we will be installing are styled-components for themeimg, a local-storage library called local-storage-fallback, and react-icons for our dark-mode toggle:
+In this article we'll learn how to apply a theme and toggle a dark mode with the provided tools from styled-components. Applying themes with styled-components and a react.js framework is something that's easy to implement so this will be a sinch. 
 
-```text
-npm install styled-components local-storage-fallback react-icons
-```
+If you're not ready for theming and want to know the basics on how to style with styled-components, read my article [How To Use Styled-Components With React.js](https://javascriptarticles.com/how-to-use-styled-components-with-reactjs/). 
 
-## Basic Structure
+I would suggest using a styled-components plug-in for your code editor, if you don't already have one. It's a [syntax highlighter and IntelliSense](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components) for styled-components. It doesn't have to be this one but make sure you get one to handle the whole CSS-in-Js thing.
 
-We can create a unique tag naming convention using styled-components that utilizes es6 syntax. This concept makes it easy to read and understand code but, consider how it will render on the client-side. Instead of `div` tags, consider using `section` or `article` tags as wrappers for better structure. Doing this makes for good practice and accessibility for search engines and browsers.
+## Getting Started
 
-## Basic Usage
+You can find the [source files on my GitHub repo](https://github.com/rolandoyera/styled-components-themes) to follow along or if you're in a rush and just want the files, enjoy ( leave me a star ⭐ ). 
 
-Our CSS syntax will use regular kabob-case instead of camel-case, such as margin-top instead of marginTop. All of the same rules apply here as if we were using a standard CSS stylesheet. We can, and will, use JavaScript inside our CSS, which is powerful and fun to use. This functionality makes it easy for theme application or component state changes.
+If you want to start from scratch, build your framework with "create-react-app". Sames rules apply here for Gatsby.js or Next.js. You can use anything that utilizes React.
 
-## Global Styles
+## Using ThemeProvider
 
-Functionality for global styles is offered with styled-components, and we’ll make use of it. First, we need to create a separate file and import the module:
+Styled-components theming API requires that we wrap our program with a wrapper component called `<ThemeProvider>`. Everything in that wrapper, no matter the depth will have access to the API. Creating global styles with `<createGlobalStyle>` does not depend on this wrapper. 
 
-```js
-// GlobalStyles.js
+This is what my Layout Component looks like at the moment:
 
-import { createGlobalStyle } from "styled-components";
-```
-
-We can use this file for styling the entire app, and resetting CSS is what comes to mind, for me at least. I believe that any other styling should stay with the component if it’s not global. Now, we need to use the `createGlobalStyle` name we just imported and use it as so:
-
-Everyone has their method for global styles, so once you’re done with yours, we need to import it into our app.js file.
-
-## Naming Our Components
-
-A Styled Component is the combination of an element and the CSS rules that style it. Your regular h1 element will need to be named something different and follow es6 syntax guidelines. For example:
-
+<pre className="code-title">src/Components/Layout/index.js</pre>
 ```jsx
-const Title = styled.h1`
-	font-size: 2rem;
+import { React } from 'react';
+import { GlobalStyle } from "../Theme/GlobalStyle";
+import Footer from '../Footer'
+import HomeIntro from '../HomeIntro'
+import NavBar from '../Nav'
+
+const Layout = ({ children }) => {
+
+  return (
+    <>
+      <GlobalStyle />
+      <NavBar />
+      <HomeIntro />
+      {children}
+      <Footer />
+    </>
+  );
+}
+
+export default Layout;
+```
+
+<br />
+
+Let's import ThemeProvider from styled-components at the top of our file, wrap our components with the ThemeProvider wrapper and pass a `{theme}` variable to it (which we haven't defined yet).
+
+<br />
+
+<pre className="code-title">src/Components/Layout/index.js</pre>
+```jsx{2,11,17}
+import { React } from 'react';
+import { ThemeProvider } from "styled-components"
+import { GlobalStyle } from "../Theme/GlobalStyle";
+import Footer from '../Footer'
+import HomeIntro from '../HomeIntro'
+import NavBar from '../Nav'
+
+const Layout = ({ children }) => {
+
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <NavBar />
+      <HomeIntro />
+      {children}
+      <Footer />
+    </ThemeProvider>
+  );
+}
+
+export default Layout;
+```
+
+Next, we're going to import React's state hook and define our `{theme}` variable. Also, we'll use the ternary operator to specify our theme conditions to the ThemeProvider. 
+
+<pre className="code-title">src/Components/Layout/index.js</pre>
+```jsx{1,9,12}
+import { React, useState } from 'react';
+import { ThemeProvider } from "styled-components"
+import { GlobalStyle } from "../Theme/GlobalStyle";
+import Footer from '../Footer'
+import HomeIntro from '../HomeIntro'
+import NavBar from '../Nav'
+
+const Layout = ({ children }) => {
+  const [theme, setTheme] = useState(true);
+
+  return (
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <GlobalStyle />
+      <NavBar />
+      <HomeIntro />
+      {children}
+      <Footer />
+    </ThemeProvider>
+  );
+}
+
+export default Layout;
+```
+
+In the code above, we're telling the ThemeProvider that if the theme is equal to "light" display lightTheme, otherwise, display darkTheme. This all works thanks to React's state hook. But it's not working at the moment, we haven't defined lightTheme or darkTheme, so let's do that. 
+
+## Setting Theme Properties
+
+I have a Theme folder where my global styles file is and I'm going to create a Theme.js file in there as well. In that file, we can start creating the light and dark color modes.
+
+<pre className="code-title">src/Components/Theme/Theme.js</pre>
+```jsx
+export const lightTheme = {
+  bodyBg: "white",
+  headings: "black",
+  text: "#818181",
+}
+export const darkTheme = {
+  bodyBg: "#141a2c",
+  headings: "white",
+  text: "#c1c1c1",
+}
+```
+
+We now need to import both themes into the top of our Layout file.
+
+<pre className="code-title">src/Components/Layout/index.js</pre>
+```jsx{4}
+import { React, useState } from 'react';
+import { ThemeProvider } from "styled-components"
+import { GlobalStyle } from "../Theme/GlobalStyle";
+import { lightTheme, darkTheme } from '../Theme/Theme'
+import Footer from '../Footer'
+import HomeIntro from '../HomeIntro'
+import NavBar from '../Nav'
+```
+
+## Interpolation
+
+This next step will help us apply our dynamic styles to our light and dark modes. The interpolation that styled-components uses is performed by template literals and `${expressions}` as placeholders. Our expressions will define the colors and we'll use props along with the `theme` variable and the names we defined in our lightTheme and darkTheme objects. We're going to apply that in a function expression via es6's arrow function.
+
+That was way to much to describe this: `${props => props.theme.bodyBg}`. I'll use this in place of any hard coded property values that I have in the gobal styles file as so:
+
+<pre className="code-title">src/Components/Theme/GlobalStyles.js</pre>
+```js
+import { createGlobalStyle } from 'styled-components'
+
+export const GlobalStyles = createGlobalStyle`
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+ }
+body {
+  background-color: ${props => props.theme.bodyBg};
+  line-height: 1.5;
+  font-size: 1.1rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 300;
+  transition: all ${props => props.theme.transitionTime};
+ }
+p {
+  color: ${props => props.theme.text};
+  transition: color ${props => props.theme.transitionTime};
+}
+h1 {
+  font-size: calc(1.775rem + 1.5vw);
+  font-weight: 900;
+}
+h2 {
+  font-size: calc(1.325rem + 0.9vw);
+}
+strong {
+  font-weight: 800;
+}
+h1,h2,h3,h4,h5,h6 {
+  color: ${props => props.theme.headings};
+  transition: color ${props => props.theme.transitionTime};
+  font-family: 'Merriweather', serif;
+}
 `;
 ```
 
-## Extending Classes for Different Variants
+Notice that I used a new property name called `transitionTime`. Lets apply this in our light and dark theme objects to gain a better understanding of how this works.
 
-Extending is an easy way to have different variants of your components. It keeps your styling code organized, and it’ll also cut down on the amount of code. Let’s make two different variants from our button component and make a primary and secondary button.
+<pre className="code-title">src/Components/Theme/Theme.js</pre>
+```js
+export const lightTheme = {
+  bodyBg: "white",
+  headings: "black",
+  text: "#818181",
+  transitionTime: ".25s",
+}
+export const darkTheme = {
+  bodyBg: "#141a2c",
+  headings: "white",
+  text: "#c1c1c1",
+  transitionTime: ".25s",
+}
+```
 
-First, I’ll change the Button name we just created to “PrimaryButton” and add another JavaScript variable and call it SecondaryButton. So this is what we have for or two buttons so far:
+We create `name: value` properties and make the necessary adjustments in the light and dark theme objects. We then place our newly created property in place of our CSS value wherever we'd like to use it. You can see in the code above that I have a `headings` property. I use this in place of any color values for "h" tags. 
+
+I use the `transitionTime` property for anything that changes when toggled for light and dark mode. This way it's not abrupt and if I want to change the timing I can do it in one spot to change them all.
+
+```CSS
+h1 {
+  color: ${prop => prop.theme.headings}
+  transition: color ${props => props.theme.transitionTime};
+}
+```
+
+## Theme Toggling
+
+We're going to create an arrow function to toggle the theme with the ternary operator. Once again, if light is equal to light, set it to dark, otherwise set it to light.
+
+<pre className="code-title">src/Components/Layout/index.js</pre>
+```jsx{11}
+import { React, useState } from 'react';
+import { ThemeProvider } from "styled-components"
+import { GlobalStyle } from "../Theme/GlobalStyle";
+import { lightTheme, darkTheme } from '../Theme/Theme'
+import Footer from '../Footer'
+import HomeIntro from '../HomeIntro'
+import NavBar from '../Nav'
+
+const Layout = ({ children }) => {
+  const [theme, setTheme] = useState(true);
+  const toggleTheme = () => { theme === "light" ? setTheme("dark") : setTheme("light") }
+
+  return (
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <GlobalStyle />
+      <NavBar />
+      <HomeIntro />
+      {children}
+      <Footer />
+    </ThemeProvider>
+  );
+}
+
+export default Layout;
+```
+
+We can't toggle without a toggle. I made a Styles.js file which is in my Layout folder, and placed the CSS there made with styled-components. It's going to be a button and we'll switch it up with icons for light and dark mode.
+
+<pre className="code-title">src/Components/Layout/Styles.js</pre>
+```jsx
+import styled from "styled-components"
+
+export const Toggler = styled.button`
+display: flex;
+position: absolute;
+right: 20px;
+top: 10px;
+width: 35px;
+height: 35px;
+align-items: center;
+justify-content: center;
+color: ${props => props.theme.toggleIcon};
+background-color: transparent;
+transition: all ${props => props.theme.transitionTime};
+border: none;
+outline: none;
+cursor: pointer;
+@media (max-width: 768px) {
+  top: 5px;
+  right:50%;
+  transform: translate(50%, 0%);
+}
+`;
+```
+
+Let's import our toggle button and we're going to use the onClick method to toggle the theme.
+
+<pre className="code-title">src/Components/Layout/Styles.js</pre>
+```jsx{8,17}
+import { React, useState } from 'react';
+import { ThemeProvider } from "styled-components"
+import { GlobalStyle } from "../Theme/GlobalStyle";
+import { lightTheme, darkTheme } from '../Theme/Theme'
+import Footer from '../Footer'
+import HomeIntro from '../HomeIntro'
+import NavBar from '../Nav'
+import { Toggler } from './Styles'
+
+const Layout = ({ children }) => {
+  const [theme, setTheme] = useState(true);
+  const toggleTheme = () => { theme === "light" ? setTheme("light") : setTheme("dark") }
+
+  return (
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <GlobalStyle />
+      <NavBar><Toggler onClick={() => toggleTheme()}></Toggler></NavBar>
+      <HomeIntro />
+      {children}
+      <Footer />
+    </ThemeProvider>
+  );
+}
+
+export default Layout;
+```
+
+We're almost ready to fire this thing up! Let's make our icon.
+
+We're going set a new variable using the ternary operator, once again. Our `icon` is equal to theme which is === to "light", if it's light show the moon icon, if it's dark show the sun icon. We'll then pass the `{icon}` between our toggler button. Lastly, import the icons from react-icons.
+
+<pre className="code-title">src/Components/Layout/Styles.js</pre>
+```jsx{9,14,19}
+import { React, useState } from 'react';
+import { ThemeProvider } from "styled-components"
+import { GlobalStyle } from "../Theme/GlobalStyle";
+import { lightTheme, darkTheme } from '../Theme/Theme'
+import Footer from '../Footer'
+import HomeIntro from '../HomeIntro'
+import NavBar from '../Nav'
+import { Toggler } from './Styles'
+import { FiSun, FiMoon } from "react-icons/fi";
+
+const Layout = ({ children }) => {
+  const [theme, setTheme] = useState(true);
+  const toggleTheme = () => { theme === "light" ? setTheme("light") : setTheme("dark") }
+  const icon = theme === "light" ? <FiMoon size={26} /> : <FiSun size={26} />
+
+  return (
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <GlobalStyle />
+      <NavBar><Toggler onClick={() => toggleTheme()}>{icon}</Toggler></NavBar>
+      <HomeIntro />
+      {children}
+      <Footer />
+    </ThemeProvider>
+  );
+}
+
+export default Layout;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <Card>
 <h4>Resources</h4>

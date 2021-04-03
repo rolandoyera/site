@@ -37,26 +37,22 @@ export const PostDetailsWrapper = styled.div`
 `;
 
 export const PostTitle = styled.h1`
-  font-size: 2rem;
+  max-width: 740px;  
+  text-align: center;
+  margin: 0 auto;
+  font-size: calc(1rem + 1.5vw);
   font-weight: 800;
   color: ${themeGet('colors.textColor', '#292929')};
   line-height: 1.53;
   margin-bottom: 10px;
   @media (max-width: 1200px) {
-    font-size: 2rem;
     margin-bottom: 15px;
   }
-  @media (max-width: 990px) {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-  @media (max-width: 575px) {
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
+
 `;
 
 export const PostDate = styled.span`
+text-align: center;
   display: block;
   font-size: ${themeGet('fontSizes.3', '15')}px;
   color: ${themeGet('textColor', '#292929')};

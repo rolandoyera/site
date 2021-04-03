@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
+import { IoIosSearch } from 'react-icons/io';
 
 const HeaderWrapper = styled.nav`
   position: relative;
@@ -282,6 +283,29 @@ export const HamburgerIcon = styled.div`
       width: 20px;
     }
   }
+`;
+
+export const SearchIcon = styled.div`
+background-color: #D10068; 
+border: none; 
+color: white; 
+width: 2.5rem;
+height: 2.5rem;
+padding: .5rem;
+border-radius: 50%;
+  &:focus {
+    border: none !important;
+    outline: none !important;
+          }
+  &:active {
+    border: none !important;
+    outline: none !important;
+          }
+  &:hover {
+    background-color: #ff5bad;
+    transition: background-color .25s 
+          }
+
 `;
 
 export default HeaderWrapper;

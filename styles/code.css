@@ -20,6 +20,7 @@ pre[class*="language-"] {
 	-ms-hyphens: none;
 	hyphens: none;
 	z-index: 0;
+	max-height: 560px;
 }
 code[class*="language-bash"],
 pre[class*="language-bash"] {
@@ -31,8 +32,8 @@ pre[class*="language-bash"] {
 	color: #fff;
 	background: #2f2f2f;
 	font-family: "Fira Sans", monospace;
-	font-size: 1em;
-	line-height: 2em;
+	font-size: 0.9em;
+	line-height: 1.6em;
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
 	tab-size: 4;
@@ -240,4 +241,34 @@ pre[class*="language-"] {
 	border-bottom: #494949 1px dotted;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
+}
+.gatsby-highlight-code-line {
+	background-color: #444444;
+	display: block;
+	margin-right: -1.5em;
+	margin-left: -1.5em;
+	padding-right: 1em;
+	padding-left: 1.25em;
+	border-left: 0.2em solid #00d9ff;
+}
+
+.search {
+	border: none;
+	outline: none;
+}
+.search:focus {
+	border: none;
+	outline: none;
+}
+.search:active {
+	border: none;
+	outline: none;
+}
+
+.toc-links {
+	padding-left: 1rem;
+}
+
+.anchor {
+	padding-left: 1rem;
 }

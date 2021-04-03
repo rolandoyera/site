@@ -11,9 +11,11 @@ module.exports = {
     siteUrl: `https://javascriptarticles.com`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-netlify-cache`,
+    },
     `gatsby-plugin-netlify`,
     `gatsby-remark-reading-time`,
-    `gatsby-remark-prismjs`,
     {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
@@ -49,6 +51,24 @@ module.exports = {
         extensions: [`.md`, `.mdx`],
         gatsbyRemarkPlugins: [
           {
+            resolve: `gatsby-remark-table-of-contents`,
+            options: {
+              exclude: "Table of Contents",
+              tight: false,
+              ordered: false,
+              fromHeading: 1,
+              toHeading: 6,
+              className: "table-of-contents"
+            },
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              isIconAfterHeader: true,
+              offsetY: `100`,
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
@@ -62,14 +82,11 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-plugin-netlify-cache`,
-          },
-
-          {
             resolve: `gatsby-remark-mermaid`,
           },
           {
             resolve: `gatsby-remark-prismjs`,
+            options: { showLineNumbers: false, }
           },
           {
             resolve: `gatsby-remark-copy-linked-files`,

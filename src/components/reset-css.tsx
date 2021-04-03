@@ -83,9 +83,7 @@ const ResetCSS = createGlobalStyle`
   }
   ul {
     margin-left: 1.5rem;
-
   }
-
   article  ul {
     margin-bottom: 2.5rem;
   }
@@ -93,17 +91,13 @@ const ResetCSS = createGlobalStyle`
   article ul li{
     margin-bottom: 1rem;
   }
-
-
   a {
     text-decoration: none;
     box-shadow: none;
   }
-
   a:hover {
     text-decoration: none;
   }
-
   blockquote{
     font-family: 'Fira Sans',sans-serif;
     font-weight: 500;
@@ -126,7 +120,7 @@ li > code {
 }
 
   pre[class*="language-"] {
-    padding: 1.5em;
+    padding: 1.2em;
     margin: 2em 0;
     overflow: auto;
     font-family: 'Operator Mono', monospace;

@@ -13,6 +13,7 @@ import HeaderWrapper, {
   NavSearchWrapper,
   SearchCloseButton,
   NavSearchFromWrapper,
+  SearchIcon
 } from './navbar.style';
 import LogoImage from '../../images/logo.png';
 
@@ -62,19 +63,20 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({
         <MenuWrapper>
           <Menu items={MenuItems} />
         </MenuWrapper>
-        <NavSearchButton
+        <NavSearchButton className='search'
           type="button"
           aria-label="search"
           onClick={toggleHandle}
         >
-          <IoIosSearch size="23px" />
+          <SearchIcon><IoIosSearch size="33px" /></SearchIcon>
+          
         </NavSearchButton>
       </NavbarWrapper>
 
       <NavSearchWrapper className={state.toggle === true ? 'expand' : ''}>
         <NavSearchFromWrapper>
           <SearchContainer />
-          <SearchCloseButton
+          <SearchCloseButton className='search'
             type="submit"
             aria-label="close"
             onClick={toggleHandle}

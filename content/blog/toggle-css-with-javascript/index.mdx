@@ -25,12 +25,14 @@ Easily and quickly target any HTML element’s CSS class with a couple of lines 
 
 Let's start by targeting our button and we'll access it by its id with the `getElementById()` method. For brevity, we’ll name the button “theButton,” but you can call it whatever you’d like and pass it as a parameter.
 
+<pre className="code-title">scripts/index.js</pre>
 ```js
 document.getElementById("theButton");
 ```
 
 Our button is on the ready so next we have to add a method to listen for the click on the button. We’ll use the `addEventListener()` method and pass “click” as a parameter.
 
+<pre className="code-title">scripts/index.js</pre>
 ```js
 document.getElementById("theButton").addEventListener("click");
 ```
@@ -41,6 +43,7 @@ To recap this section, we're accessing our code via the "document" object then p
 
 Next, we’re going to implement our function. We have to name our function, and again, for brevity, we’ll name our function “theFunction,” but you can name it whatever you’d like and pass it as a parameter next to “click.”
 
+<pre className="code-title">scripts/index.js</pre>
 ```javascript
 document.getElementById("theButton").addEventListener("click", theFunction);
 function theFunction() {}
@@ -50,6 +53,7 @@ function theFunction() {}
 
 We still have to choose a target and assign a variable to it. We’re going to do this inside the function, so the variable is only available to this function and will not get executed by any other functions. This is called a locally scoped variable, and scope determines the accessibility of variables to the function. We’re going to use “x” as our variable name and once again use the `getElementById()` method and assign “theTarget” as our id.
 
+<pre className="code-title">scripts/index.js</pre>
 ```js
 document.getElementById("theButton").addEventListener("click", theFunction);
 function theFunction() {
@@ -60,6 +64,7 @@ function theFunction() {
 
 We’re going to use the if…else statement here to toggle our CSS class. The if...else is a conditional statement that executes given a specified condition.The if…else is straightforward to implement; if our class has “x,” then show “y”; else, if “y” is present, show “x.” If you want to learn more about the JavaScript if...else statement [read this article](https://javascriptarticles.com/javascript-if-else-statement/ "JavaScript If...else Statement"). Lastly, we’ll use “styleOne” and “styleTwo” as our class names to toggle.
 
+<pre className="code-title">scripts/index.js</pre>
 ```js
 document.getElementById("theButton").addEventListener("click", theFunction);
 function theFunction() {
@@ -74,8 +79,8 @@ function theFunction() {
 
 And there’s you’re complete function. To recap, we used a button and listened for a click to target our element. We used a locally scoped variable and used the if…else statement to toggle our CSS classes. Here’s the complete code with HTML and CSS.
 
+<pre className="code-title">src/index.html</pre>
 ```html
-
 <style>
 	.styleOne {
     display: none !important;
