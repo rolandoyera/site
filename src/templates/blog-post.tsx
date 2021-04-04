@@ -45,10 +45,10 @@ const BlogPostTemplate = (props: any) => {
   const siteUrl = props.data.site.siteMetadata.siteUrl;
   const shareUrl = urljoin(siteUrl, slug);
 
-  // const disqusConfig = {
-  //   shortname: process.env.GATSBY_DISQUS_NAME,
-  //   config: { identifier: slug, title },
-  // };
+  const disqusConfig = {
+    shortname: process.env.GATSBY_DISQUS_NAME,
+    config: { identifier: slug, title },
+  };
   return (
     <Layout>
       <SEO
@@ -72,7 +72,6 @@ const BlogPostTemplate = (props: any) => {
         />
       
         <PostContainer>
-          
           <MDXProvider components={ ShortCodes} >
              {!!post.tableOfContents.items && <TableOfContents post={post.tableOfContents} />}
 						<MDXRenderer>{post.body}</MDXRenderer>
@@ -111,7 +110,7 @@ const BlogPostTemplate = (props: any) => {
         <BlogPostComment
           className={post.frontmatter.cover == null ? 'center' : ''}
         >
-          {/* <DiscussionEmbed {...disqusConfig} /> */}
+          <DiscussionEmbed {...disqusConfig} />
         </BlogPostComment>
       </BlogPostDetailsWrapper>
 

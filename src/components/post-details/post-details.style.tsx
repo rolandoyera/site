@@ -107,7 +107,6 @@ export const PostDescriptionWrapper = styled.div`
 `;
 
 export const PostContainer = styled.div`
-  font-size: ${themeGet('fontSizes.4', '16')}px;
   max-width: 700px;
   margin: 0 auto;
 
