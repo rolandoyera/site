@@ -18,21 +18,23 @@ from-heading: 1
 to-heading: 6
 ```
 
-In this article we'll learn how to apply a theme and toggle a dark mode with the provided tools from styled-components. Applying themes with styled-components and a react.js framework is something that's easy to implement so this will be a sinch. 
+In this article, we'll learn how to apply a theme and toggle a dark mode with the provided tools from styled-components. Using themes with styled-components and a react.js framework is something that's easy to implement, so this will be a sinch. 
 
 If you're not ready for theming and want to know the basics on how to style with styled-components, read my article [How To Use Styled-Components With React.js](https://javascriptarticles.com/how-to-use-styled-components-with-reactjs/). 
 
-I would suggest using a styled-components plug-in for your code editor, if you don't already have one. It's a [syntax highlighter and IntelliSense](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components) for styled-components. It doesn't have to be this one but make sure you get one to handle the whole CSS-in-Js thing.
+I would suggest using a styled-components plug-in for your code editor if you don't already have one. It's a [syntax highlighter and IntelliSense](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components) for styled-components.
 
 ## Getting Started
 
-You can find the [source files on my GitHub repo](https://github.com/rolandoyera/styled-components-themes) to follow along or if you're in a rush and just want the files, enjoy ( leave me a star ⭐ ). 
+You can find the [source files on my GitHub repo](https://github.com/rolandoyera/styled-components-themes) to follow along or if you're in a rush and want the files, enjoy ( leave me a star ⭐ ). 
 
 If you want to start from scratch, build your framework with "create-react-app". Sames rules apply here for Gatsby.js or Next.js. You can use anything that utilizes React.
 
 ## Using ThemeProvider
 
-Styled-components theming API requires that we wrap our program with a wrapper component called `<ThemeProvider>`. Everything in that wrapper, no matter the depth will have access to the API. Creating global styles with `<createGlobalStyle>` does not depend on this wrapper. 
+Styled-components theming API requires that we wrap our program with a wrapper component called `<ThemeProvider>`. Everything in that wrapper, no matter the depth, will have access to the API. Creating global styles with `<createGlobalStyle>` does not depend on this wrapper. 
+
+
 
 This is what my Layout Component looks like at the moment:
 
@@ -91,7 +93,7 @@ const Layout = ({ children }) => {
 export default Layout;
 ```
 
-Next, we're going to import React's state hook and define our `{theme}` variable. Also, we'll use the ternary operator to specify our theme conditions to the ThemeProvider. 
+Next, we will import React's state hook and define our `{theme}` variable. Also, we'll use the ternary operator to specify our theme conditions to the ThemeProvider. 
 
 <pre className="code-title">src/Components/Layout/index.js</pre>
 ```jsx{1,9,12}
@@ -119,11 +121,11 @@ const Layout = ({ children }) => {
 export default Layout;
 ```
 
-In the code above, we're telling the ThemeProvider that if the theme is equal to "light" display lightTheme, otherwise, display darkTheme. This all works thanks to React's state hook. But it's not working at the moment, we haven't defined lightTheme or darkTheme, so let's do that. 
+In the code above, we're telling the ThemeProvider that if the theme is equal to "light," display lightTheme; otherwise, display darkTheme. This implementation all works thanks to React's state hook. But it's not working at the moment; we haven't defined lightTheme or darkTheme, so let's do that.  
 
 ## Setting Theme Properties
 
-I have a Theme folder where my global styles file is and I'm going to create a Theme.js file in there as well. In that file, we can start creating the light and dark color modes.
+I have a Theme folder where my global styles file is, and I'm going to create a Theme.js file in there as well. In that file, we can start making the light and dark color modes.
 
 <pre className="code-title">src/Components/Theme/Theme.js</pre>
 ```jsx
@@ -154,9 +156,9 @@ import NavBar from '../Nav'
 
 ## Interpolation
 
-This next step will help us apply our dynamic styles to our light and dark modes. The interpolation that styled-components uses is performed by template literals and `${expressions}` as placeholders. Our expressions will define the colors and we'll use props along with the `theme` variable and the names we defined in our lightTheme and darkTheme objects. We're going to apply that in a function expression via es6's arrow function.
+This next step will help us apply our dynamic styles to our light and dark modes. The interpolation that styled-components uses is performed by template literals and `${expressions}` as placeholders. Our expressions will define the colors, and we'll use props along with the `theme` variable and the names we specified in our lightTheme and darkTheme objects. We're going to apply that in a function expression via es6's arrow function.
 
-That was way to much to describe this: `${props => props.theme.bodyBg}`. I'll use this in place of any hard coded property values that I have in the gobal styles file as so:
+That was way too much to describe this: `${props => props.theme.bodyBg}`. I'll use this in place of any hardcoded property values that I have in the global styles file as so:
 
 <pre className="code-title">src/Components/Theme/GlobalStyles.js</pre>
 ```js
@@ -199,7 +201,7 @@ h1,h2,h3,h4,h5,h6 {
 `;
 ```
 
-Notice that I used a new property name called `transitionTime`. Lets apply this in our light and dark theme objects to gain a better understanding of how this works.
+Notice that I used a new property name called `transitionTime.` Let's apply this in our light and dark theme objects to understand better how this works.
 
 <pre className="code-title">src/Components/Theme/Theme.js</pre>
 ```js
@@ -217,9 +219,9 @@ export const darkTheme = {
 }
 ```
 
-We create `name: value` properties and make the necessary adjustments in the light and dark theme objects. We then place our newly created property in place of our CSS value wherever we'd like to use it. You can see in the code above that I have a `headings` property. I use this in place of any color values for "h" tags. 
+We create `name: value` properties and make the necessary adjustments in the light and dark theme objects. We then place our newly constructed property in place of our CSS value wherever we'd like to use it. You can see in the code above that I have a `headings` property. I use this in place of any color values for "h" tags. 
 
-I use the `transitionTime` property for anything that changes when toggled for light and dark mode. This way it's not abrupt and if I want to change the timing I can do it in one spot to change them all.
+I use the `transitionTime` property for anything that changes when toggled for light and dark mode. This way, it's not abrupt, and if I want to change the timing, I can do it in one spot to change them all.
 
 ```CSS
 h1 {
@@ -230,7 +232,7 @@ h1 {
 
 ## Theme Toggling
 
-We're going to create an arrow function to toggle the theme with the ternary operator. Once again, if light is equal to light, set it to dark, otherwise set it to light.
+We're going to create an arrow function to toggle the theme with the ternary operator. Once again, if light is equal to light, set it to dark; otherwise, set it to light.
 
 <pre className="code-title">src/Components/Layout/index.js</pre>
 ```jsx{11}
@@ -260,7 +262,7 @@ const Layout = ({ children }) => {
 export default Layout;
 ```
 
-We can't toggle without a toggle. I made a Styles.js file which is in my Layout folder, and placed the CSS there made with styled-components. It's going to be a button and we'll switch it up with icons for light and dark mode.
+We can't toggle without a toggle. I made a Styles.js file in my Layout folder and placed the CSS there with styled-components. It will be a button, and we'll switch it up with icons for light and dark mode.
 
 <pre className="code-title">src/Components/Layout/Styles.js</pre>
 ```jsx
@@ -289,7 +291,7 @@ cursor: pointer;
 `;
 ```
 
-Let's import our toggle button and we're going to use the onClick method to toggle the theme.
+Let's import our toggle button, and we're going to use the onClick method to toggle the theme.
 
 <pre className="code-title">src/Components/Layout/Styles.js</pre>
 ```jsx{8,17}
@@ -322,7 +324,7 @@ export default Layout;
 
 We're almost ready to fire this thing up! Let's make our icon.
 
-We're going set a new variable using the ternary operator, once again. Our `icon` is equal to theme which is === to "light", if it's light show the moon icon, if it's dark show the sun icon. We'll then pass the `{icon}` between our toggler button. Lastly, import the icons from react-icons.
+We're going to set a new variable using the ternary operator once again. Our `icon` is equal to the theme, which is === to "light," if it's light, show the moon icon; if it's dark, show the sun icon. We'll then pass the `{icon}` between our toggler button. Lastly, import the icons from react-icons.
 
 <pre className="code-title">src/Components/Layout/Styles.js</pre>
 ```jsx{9,14,19}
