@@ -15,6 +15,7 @@ module.exports = {
       resolve: `gatsby-plugin-netlify-cache`,
     },
     `gatsby-plugin-netlify`,
+    `gatsby-plugin-sitemap`,
     `gatsby-remark-reading-time`,
     {
       resolve: "gatsby-plugin-web-font-loader",
@@ -51,21 +52,11 @@ module.exports = {
         extensions: [`.md`, `.mdx`],
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-table-of-contents`,
-            options: {
-              exclude: "Table of Contents",
-              tight: false,
-              ordered: false,
-              fromHeading: 1,
-              toHeading: 6,
-              className: "table-of-contents"
-            },
-          },
-          {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               isIconAfterHeader: true,
               offsetY: `100`,
+              elements: [`h1`, `h2`, `h3`],
             },
           },
           {

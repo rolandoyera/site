@@ -14,7 +14,7 @@ export const NavbarWrapper = styled.div`
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 75px;
+  padding: 30px 75px;
   background-color: #fff;
   transition: 0.25s ease-in-out;
   @media (max-width: 1400px) {

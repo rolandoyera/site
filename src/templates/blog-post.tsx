@@ -12,6 +12,7 @@ import PostDetails from '../components/post-details/post-details';
 import Article from '../components/Article'
 import {PostContainer} from '../components/post-details/post-details.style'
 import {ShortCodes} from '../components/ShortCodes'
+import TableOfContents from './TableOfContents'
 
 import {
   FacebookShareButton,
@@ -71,7 +72,9 @@ const BlogPostTemplate = (props: any) => {
         />
       
         <PostContainer>
+          
           <MDXProvider components={ ShortCodes} >
+             {!!post.tableOfContents.items && <TableOfContents post={post.tableOfContents} />}
 						<MDXRenderer>{post.body}</MDXRenderer>
 					</MDXProvider>
         </PostContainer>
@@ -153,7 +156,9 @@ export const pageQuery = graphql`
     }
     mdx(fields: { slug: { eq: $slug } }) {
       id
+
       body
+      tableOfContents
       fields {
           readingTime {
             text

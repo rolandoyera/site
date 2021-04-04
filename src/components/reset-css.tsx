@@ -13,6 +13,7 @@ const ResetCSS = createGlobalStyle`
     font-size: 1rem;
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
+    scroll-behavior: smooth;
   }
 
   *,
@@ -66,6 +67,7 @@ const ResetCSS = createGlobalStyle`
     font-size: 1.1rem;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
+
   }
 
   p {
@@ -161,8 +163,8 @@ li > code {
     .header {
       box-shadow: 0 0 15px rgba(0,0,0,.08);
       .navbar{
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 2px;
+        padding-bottom: 2px;
 
       }
     }

@@ -8,15 +8,11 @@ canonical: https://javascriptarticles.com/how-to-use-themes-and-dark-mode-with-s
 published: true
 ---
 
-import { FirstStageButton, PrimaryButton, SecondaryButton } from "./button.js";
+See this site [live here](https://developher.netlify.app/).
 
-## Table of Contents
+Download source [files here](https://github.com/rolandoyera/styled-components-reactjs-theme).
 
-```toc
-exclude: Table of Contents
-from-heading: 1
-to-heading: 6
-```
+
 
 In this article, we'll learn how to apply a theme and toggle a dark mode with the provided tools from styled-components. Using themes with styled-components and a react.js framework is something that's easy to implement, so this will be a sinch. 
 
@@ -93,7 +89,7 @@ const Layout = ({ children }) => {
 export default Layout;
 ```
 
-Next, we will import React's state hook and define our `{theme}` variable. Also, we'll use the ternary operator to specify our theme conditions to the ThemeProvider. 
+Next, we'll import React's state hook and define our `{theme}` variable. Also, we'll use the ternary operator to specify our theme conditions to the ThemeProvider. 
 
 <pre className="code-title">src/Components/Layout/index.js</pre>
 ```jsx{1,9,12}
@@ -158,8 +154,6 @@ import NavBar from '../Nav'
 
 This next step will help us apply our dynamic styles to our light and dark modes. The interpolation that styled-components uses is performed by template literals and `${expressions}` as placeholders. Our expressions will define the colors, and we'll use props along with the `theme` variable and the names we specified in our lightTheme and darkTheme objects. We're going to apply that in a function expression via es6's arrow function.
 
-That was way too much to describe this: `${props => props.theme.bodyBg}`. I'll use this in place of any hardcoded property values that I have in the global styles file as so:
-
 <pre className="code-title">src/Components/Theme/GlobalStyles.js</pre>
 ```js
 import { createGlobalStyle } from 'styled-components'
@@ -221,7 +215,9 @@ export const darkTheme = {
 
 We create `name: value` properties and make the necessary adjustments in the light and dark theme objects. We then place our newly constructed property in place of our CSS value wherever we'd like to use it. You can see in the code above that I have a `headings` property. I use this in place of any color values for "h" tags. 
 
-I use the `transitionTime` property for anything that changes when toggled for light and dark mode. This way, it's not abrupt, and if I want to change the timing, I can do it in one spot to change them all.
+I’ll use the transitionTime property for anything that changes value when toggled for light and dark mode. This way, it’s not abrupt, and if I want to change the timing, I can do it in one spot and change them all. Ditto with any property that you create; that’s the beauty of using themes.
+
+
 
 ```CSS
 h1 {
@@ -232,7 +228,7 @@ h1 {
 
 ## Theme Toggling
 
-We're going to create an arrow function to toggle the theme with the ternary operator. Once again, if light is equal to light, set it to dark; otherwise, set it to light.
+We’re going to create an arrow function to toggle the theme with the ternary operator. With this function, we’ll state if the theme is equal to light, set it to dark; otherwise, set it to light.
 
 <pre className="code-title">src/Components/Layout/index.js</pre>
 ```jsx{11}
@@ -373,9 +369,10 @@ export default Layout;
 
 
 <Card>
-<h4>Resources</h4>
+<h3>Resources Used For This Article</h3>
 <br />
-<a className="footnote" href="https://styled-components.com/docs/basics#getting-started">styled-components- Getting Started</a><br />
+<a className="footnote" href="https://styled-components.com/docs/advanced">styled-components- Advanced Usage</a><br />
 <a className="footnote" href="https://reactjs.org/docs/components-and-props.html">reactjs.org- Components and Props</a><br />
+<a className="footnote" href="https://dmitripavlutin.com/string-interpolation-in-javascript/">Dmitri Pavlutin- String Interpolation in JavaScript</a><br />
 
 </Card>
