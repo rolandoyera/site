@@ -118,9 +118,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-offline`,
       options: {
-        precachePages: ['/**/!(404).html'],
         debug: false,
-      }
+        workboxConfig: {
+          globPatterns: ['*.html']
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-react-helmet`,

@@ -47,7 +47,6 @@ export default function TableOfContents(props) {
   let url = post.items.map(function (post) {
     return post['url'].substring(1)
   })
-  console.log(post)
 
   return (
     <Nav>
