@@ -267,3 +267,7 @@ pre[class*="language-"] {
 .anchor {
 	padding-left: 1rem;
 }
+
+#resources-used-for-this-article {
+	font-size: 1.2rem;
+}
