@@ -1,0 +1,124 @@
+---
+title: Javascript for Loop
+date: "2021-04-10"
+cover: ./unsplash.jpg
+tags: ["javascript"]
+canonical: https://javascriptarticles.com/javascript-for-loop/
+description: The JavaScript for loop is one of eight statements available in the programming language to iterate through, or over, an array.
+published: true
+---
+
+The JavaScript for loop is one of eight statements available in the programming language to iterate through, or over, an array.
+
+Iteration is the process of repetition to achieve a particular outcome. The outcome of each iteration is the starting point of the next iteration.
+
+This will make more and more and more sense as you iterate over the eight available iterations (you see what I did there?).
+
+Seriously, though, think of the available loops in JavaScript. Most likely, you'll learn one and then move on to the next, right? Right! Or not!
+
+Each loop will give you a different outcome. Which one to use, well, depends. How are you learning all the loops in JavaScript? One at a time where you learn one loop then move on to the next? In which order? Are you <em>not</em> interested in some of them, but <em>are</em> in others? Exactly..
+
+Let's examine the obligatory syntax that won't tell us much.
+
+```js
+for(parameter1, parameter2, paramater3) {
+        ☝️          ☝️          ☝️
+}
+```
+
+<br />
+
+## Parameter 1
+
+The for loop will repeat until the condition you specify returns false. An initializing expression is used, most commonly, to initialize the iteration counter.
+
+```js
+for(Let learn = 0; parameter2, paramater3) {
+          ☝️          
+}
+```
+
+We're going to use the 8 loops of JavaScript I spoke about earlier as our theme and for my dry jokes. We declared above that ```learn``` is our varible and is equal to ```0```.
+
+<br />
+
+## Parameter 2
+
+This is the conditional parameter. As you can see, at the moment, this is true. We declared our variable in parameter1, learn is equal to 0, and this conditional parameter states that
+learn (0) is less than 8. 
+
+Our program is almost ready, remember that the JavaScript for loop will continue until our specified condition is false. In otherwords, we want to continue to learn until we learn all 8, or until we reach 0, or until 0 is no longer less than 8.
+
+```js
+for(Let learn = 0; learn < 8, learn++) {
+                     ☝️          
+}
+```
+
+<br /><br />
+
+## Parameter 3
+
+We need to tell the program to go over over each, but how?
+
+I introduce to you, the incremental operator ++ (crowd cheers in the distance). We want to iterate, or learn, incrementally, one by one until we're done.
+
+```js
+for(Let learn = 0; learn < 8; learn++) {
+                                ☝️          
+}
+```
+
+While this is example is great as a learning platform, and my humor, it doesn't tell me much about how I can use it.
+
+Let's use the 8 loop statements again, but their names:
+
+  + for statement
+  + do...while statement
+  + while statement
+  + labeled statement
+  + break statement
+  + continue statement
+  + for...in statement
+  + for...of statement
+
+
+I had to type that in, one by one, which was a nightmare. No, not really, but, I am in the process of making a website for my photograghy and I photograph birds. I would imagine at one point I want to list all the birds I've photographed, right? I have a database where I actually wrote a desciption about each bird and their habits, migration times, and so on. Believe me, it's a lot more than 8.
+
+I couldn't possible write each one on the site. It's bad enough that I had to write each one the first time, so now what, copy and paste? Negative.
+
+<pre className="code-title">src/photos/birds/index.html</pre>
+```js
+let birds = [
+  "Boat-tailed Grackle",
+  "Great Egret",
+  "Red-bellied Woodpecker",
+  "Blue Heron",
+  "Osprey",
+  "Blue Jay",
+  "Baltimore Oriole",
+  "Etc"
+];
+let thisBird = "";
+let bird = "i";
+
+for (i = 0; i < birds.length; i++) {
+  thisBird += "<li>" + birds[i] + "</li>";
+}
+
+document.querySelector("#tweet").innerHTML = thisBird;
+```
+
+This is only an example of one of the countless ways you can do it.
+
+I hope this helps you on your JavaScript journey..
+
+You can learn about the [JavaScript foreach](https://javascriptarticles.com/javascript-foreach-loop-through-an-array/) method here, if you're interested.
+
+<Card>
+<h4>Resources</h4>
+<br />
+<a className="footnote" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration">MDN- Loops & Iteration</a><br />
+
+
+</Card>

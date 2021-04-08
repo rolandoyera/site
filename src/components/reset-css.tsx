@@ -128,7 +128,9 @@ li > code {
     font-family: 'Operator Mono', monospace;
     
   }
-
+em {
+  font-family: 'Operator Mono', monospace;
+}
 
   table {
     display: block;
