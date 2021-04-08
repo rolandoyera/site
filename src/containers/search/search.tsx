@@ -83,6 +83,8 @@ function Search() {
 
   const { totalData, searchResults, searchQuery } = state;
   const queryResults = searchResults;
+  const inputRef = React.useRef(null);
+
 
   return (
     <SearchWrapper>
@@ -91,8 +93,12 @@ function Search() {
           id="Search"
           value={searchQuery}
           onChange={searchData}
-          placeholder="Enter Your Search Topic"
+          placeholder="Search For an Article..."
           autoComplete="off"
+          ref={inputRef}
+          onMouseEnter={() => {
+          inputRef.current.focus()
+        }}
         />
       </SearchForm>
       <SearchResult>

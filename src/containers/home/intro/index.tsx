@@ -36,7 +36,7 @@ const SocialLinks = [
   // },
   {
     icon: <IoLogoGithub />,
-    url: '#',
+    url: 'https://github.com/rolandoyera',
     tooltip: 'Github',
   },
 ];

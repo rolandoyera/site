@@ -20,7 +20,8 @@ export const SearchForm = styled.form`
     border: 0;
     background: transparent;
     &:focus {
-      outline: none;
+      outline: 1px solid hsla(330, 100%, 65%, .4);
+      box-shadow: 0 0 0 0.25rem rgba(209, 0, 105, 0.2);
     }
     @media (max-width: 990px) {
       font-size: 18px;
