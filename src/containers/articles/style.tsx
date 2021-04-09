@@ -38,13 +38,17 @@ export const ImageContainer = styled.div`
   position: relative;
   z-index:1; 
   overflow: hidden;
-  background-color: #000000;
+
 `;
 
 export const AboutImage = styled.div`
 position:relative;
-margin-top: -180px;
+margin-top: calc(-180px - 14.9vw);
 z-index:0;
+@media (max-width: 990px) {
+      margin-top: -80px;
+    }
+
 `;
 
 export const AboutDetails = styled.div`
@@ -64,7 +68,7 @@ export const AboutDetails = styled.div`
   }
 `;
 export const SocialProfiles = styled.div`
-  margin-top: 60px;
+  margin: 0 auto;
   position: relative;
   @media (max-width: 767px) {
     margin-top: 40px;
