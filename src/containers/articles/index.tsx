@@ -7,7 +7,7 @@ import {
   IoLogoFacebook,
   IoLogoTwitter,
   IoLogoInstagram,
-  IoLogoLinkedin,
+  IoLogoGithub,
 } from 'react-icons/io';
 import {
   AboutWrapper,
@@ -21,23 +21,23 @@ import {
 const SocialLinks = [
   {
     icon: <IoLogoFacebook />,
-    url: 'https://www.facebook.com/redqinc/',
+    url: 'https://www.facebook.com/rolysface',
     tooltip: 'Facebook',
   },
   {
     icon: <IoLogoInstagram />,
-    url: 'https://www.instagram.com/redqinc/',
+    url: 'https://www.instagram.com/rolandoyera/',
     tooltip: 'Instagram',
   },
+  // {
+  //   icon: <IoLogoTwitter />,
+  //   url: '#',
+  //   tooltip: 'Twitter',
+  // },
   {
-    icon: <IoLogoTwitter />,
-    url: 'https://twitter.com/redqinc',
-    tooltip: 'Twitter',
-  },
-  {
-    icon: <IoLogoLinkedin />,
-    url: 'https://www.linkedin.com/company/redqinc/',
-    tooltip: 'Linked In',
+    icon: <IoLogoGithub />,
+    url: 'https://github.com/rolandoyera',
+    tooltip: 'Github',
   },
 ];
 
