@@ -3,7 +3,7 @@ import { themeGet } from '@styled-system/theme-get';
 
 export const AboutWrapper = styled.div`
   position: relative;
-  padding: 90px 75px 0 75px;
+  padding: 0 ;
   @media (max-width: 990px) {
     padding: 80px 45px 30px 45px;
   }
@@ -13,44 +13,45 @@ export const AboutWrapper = styled.div`
 `;
 
 export const AboutPageTitle = styled.div`
-  margin-bottom: 45px;
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  transform: translate(-50%);
+  z-index:2;
+  max-width: 600px;
+  margin: 0 auto;
   @media (max-width: 767px) {
     margin-bottom: 30px;
   }
-  h2 {
-    font-size: 30px;
+  h1 {
+    font-size: calc(1.325rem + 0.9vw);
+    margin: 0 auto;
     font-weight: 700;
-    color: ${themeGet('colors.textColor', '#292929')};
+    color: white !important;
     line-height: 1.53;
-    margin-bottom: 10px;
-    @media (max-width: 990px) {
-      font-size: 26px;
-    }
-    @media (max-width: 767px) {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
   }
 `;
 
+export const ImageContainer = styled.div`
+  width: 100%; 
+  height: 30vh; 
+  position: relative;
+  z-index:1; 
+  overflow: hidden;
+  background-color: #000000;
+`;
+
 export const AboutImage = styled.div`
-  margin-bottom: 90px;
-  @media (max-width: 990px) {
-    margin-bottom: 60px;
-  }
-  @media (max-width: 767px) {
-    margin-bottom: 40px;
-  }
+position:relative;
+margin-top: -180px;
+z-index:0;
 `;
 
 export const AboutDetails = styled.div`
   width: 870px;
   max-width: 100%;
   margin: 0 auto;
-
   h2 {
-    font-size: 21px;
-    font-weight: 500;
     color: ${themeGet('colors.textColor', '#292929')};
     margin-bottom: 40px;
     @media (max-width: 990px) {

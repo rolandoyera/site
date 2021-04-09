@@ -10,7 +10,6 @@ const ResetCSS = createGlobalStyle`
   color: white; 
 }
   html {
-    font-size: 1rem;
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
     scroll-behavior: smooth;

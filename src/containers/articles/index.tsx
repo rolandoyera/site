@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import SocialProfile from '../../components/social-profile/social-profile';
+import Posts from './posts';
 import {
   IoLogoFacebook,
   IoLogoTwitter,
@@ -14,6 +15,7 @@ import {
   AboutPageTitle,
   AboutDetails,
   SocialProfiles,
+  ImageContainer
 } from './style';
 
 const SocialLinks = [
@@ -44,9 +46,9 @@ interface AboutProps {}
 const About: React.FunctionComponent<AboutProps> = () => {
   const Data = useStaticQuery(graphql`
     query {
-      avatar: file(absolutePath: { regex: "/about.jpg/" }) {
+      avatar: file(absolutePath: { regex: "/javascript-articles.jpg/" }) {
         childImageSharp {
-          fluid(maxWidth: 1770, quality: 90) {
+          fluid(maxWidth: 1920, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -63,32 +65,18 @@ const About: React.FunctionComponent<AboutProps> = () => {
   return (
     <AboutWrapper>
       <AboutPageTitle>
-        <h2>About StoryHub</h2>
+        <h1>Articles</h1>
         <p>
-          StoryHub is a beautiful Gatsby Blog theme designed to showcase your
-          work in style. Perfect for designers, artists, photographers and
-          developers to use for their portfolio website.
+
         </p>
       </AboutPageTitle>
-
+      <ImageContainer>
       <AboutImage>
         <Image fluid={Data.avatar.childImageSharp.fluid} alt="author" />
       </AboutImage>
-
+    </ImageContainer>
       <AboutDetails>
-        <h2>Hey there, what’s up?</h2>
-        <p>
-          RedQ Team is a creative agency specializing in building scalable,
-          high-performance web & mobile application. Our main concern is
-          creating more value into the application so that can help our
-          customers to grow their business.
-        </p>
-        <p>
-          RedQ Team is a creative agency specializing in building scalable,
-          high-performance web & mobile application. Our main concern is
-          creating more value into the application so that can help our
-          customers to grow their business.
-        </p>
+        <Posts />
 
         <SocialProfiles>
           <SocialProfile items={SocialLinks} />
