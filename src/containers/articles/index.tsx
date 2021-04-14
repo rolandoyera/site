@@ -3,20 +3,9 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import SocialProfile from '../../components/social-profile/social-profile';
 import Posts from './posts';
-import {
-  IoLogoFacebook,
-  IoLogoTwitter,
-  IoLogoInstagram,
-  IoLogoGithub,
-} from 'react-icons/io';
-import {
-  AboutWrapper,
-  AboutImage,
-  AboutPageTitle,
-  AboutDetails,
-  SocialProfiles,
-  ImageContainer
-} from './style';
+import styled from 'styled-components';
+import { IoLogoFacebook, IoLogoInstagram, IoLogoGithub } from 'react-icons/io';
+import { AboutWrapper, AboutImage, AboutPageTitle, AboutDetails, SocialProfiles, ImageContainer } from './style';
 
 const SocialLinks = [
   {
@@ -40,6 +29,11 @@ const SocialLinks = [
     tooltip: 'Github',
   },
 ];
+
+const Darker = styled.div`
+background-color: rgba(0,0,0,1);
+opacity: 1;
+`;
 
 interface AboutProps {}
 
@@ -70,14 +64,15 @@ const About: React.FunctionComponent<AboutProps> = () => {
 
         </p>
       </AboutPageTitle>
+            <Darker>
       <ImageContainer>
-      <AboutImage>
-        <Image fluid={Data.avatar.childImageSharp.fluid} alt="author" />
+        <AboutImage>
+        <Image style={{zIndex: '-1', position: 'relative'}} fluid={Data.avatar.childImageSharp.fluid} alt="author" />
       </AboutImage>
     </ImageContainer>
+    </Darker>
       <AboutDetails>
         <Posts />
-
         <SocialProfiles>
           <SocialProfile items={SocialLinks} />
         </SocialProfiles>

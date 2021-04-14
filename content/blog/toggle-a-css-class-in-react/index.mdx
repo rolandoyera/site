@@ -1,0 +1,199 @@
+---
+title: Toggle a CSS Class in React
+date: 2021-04-12
+tags: ["css", "javascript", 'reactjs']
+cover: ./unsplash.jpeg
+description: Easily target any HTML element's CSS class with a couple of lines of simple Javascript.
+canonical: https://javascriptarticles.com/toggle-css-with-javascript/
+published: true
+---
+
+import Accordion from "./ToggleReact";
+
+We're going to learn how to toggle a CSS class in react using `onClick` and `useState`. This same component can be used for any type of toggling.
+
+## Example
+
+<Card>
+	<Accordion label="What's the most popular string in Javascript?">
+          <h3>Hello World!</h3>
+  </Accordion>
+</Card>
+
+<br />
+<br />
+
+## Toggling Using State
+
+There's a lot of moving parts in this accordion example but it can all be managed with the state hook from React. In the example I'm using the useState hook to toggle an active class which is managing the state of the entire accordion. The opening of the drawer, the rotation of the icon, the color changes, all activated with an active class.
+
+Let's take a look at the initializing code:
+
+<pre className="code-title">components/Accordion.js</pre>
+```js
+const [state, setState] = useState("");
+```
+
+We have our state and setState variables set and is equal to the state of our component or `useState.` The useState, as you probably know is the hook from React and allows us to hook into the state of our element.
+
+We'll follow that up with initializing the toggle using an arrow function. Withing that function, we'll execute the code to toggle the state.
+
+<pre className="code-title">components/Accordion.js</pre>
+```js
+  const [state, setState] = useState("");
+  const toggleAccordion = () => {
+    setState(state === "" ? "active" : "");
+  }
+```
+
+We initially have an empty string, which is the initial state, then we're asking to set the state to active which will trigger the CSS needed to perform the styling. 
+
+Next we'll place the `onClick` function on our button and put the `state` variable in className. Now, when the button is toggled, the class `active` will be inserted into the DOM and trigger our CSS styling.
+
+```jsx
+<button onClick={toggleAccordion} className={`${state}`}>
+```
+
+You might have a seperate CSS class that needs to be placed in className. That would look like this:
+
+```jsx
+<button onClick={toggleAccordion} className={`my-other-class ${state}`}>
+```
+
+## Toggling CSS in React
+
+There are a lot of different ways to toggle CSS in React. Once you find the method that suits you, there's a lot of ways to trigger the CSS. 
+
+You can toggle from one class to another, or like in this example, I'm simple adding an active class name to our component.
+
+Kepping in mind that the `active` class will make things, well, active, you can build the CSS to suit your application:
+
+<pre className="code-title">src/styles/style.css</pre>
+```css
+.accordion-button {
+  background-color: white;
+}
+.accordion-button.active {
+  background-color: hsla(216, 90%, 52%, .2);
+}
+```
+
+These are not the snippets that I actually used in the example. I'm trying to keep things as generic as possible, or unopinionated as possble, to keep our minds open on how we can utilize this.
+
+I actually use styled-components so all of this looks significantly different, but the concept is identical. Here's the complete code of the accordion component I built for the example:
+
+<pre className="code-title">components/Accordion.js</pre>
+```jsx
+import React, { useState } from "react";
+import Chevron from "./Chevron";
+import styled from "styled-components"
+
+export default function Accordion(props) {
+  const [state, setState] = useState("");
+  const toggleAccordion = () => {
+    setState(state === "" ? "active" : "");
+  }
+
+  return (
+    <AccordionItem>
+      <AccordionButtonStyle onClick={toggleAccordion} className={`${state}`}>
+        <Header className={`${state}`}>
+          {props.label}
+        </Header>
+        <Chevron className={`${state}`} width={20} />
+      </AccordionButtonStyle>
+      <AccordionBodyStyle className={`${state}`}>
+        <div style={{ padding: '1.25rem' }}>{props.children}</div>
+      </AccordionBodyStyle>
+    </AccordionItem>
+  );
+}
+
+const AccordionItem = styled.div`
+	margin-bottom: -1px;
+	background-color: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+`;
+
+const AccordionButtonStyle = styled.button`
+	position: relative;
+	display: flex;
+	align-items: center !important;
+    margin: 0 !important;
+	width: 100%;
+	padding: 1rem 1.25rem;
+	font-size: 1rem;
+	color: #212529;
+    background-color: #fff;
+    cursor: pointer;
+	text-align: left;
+	border: 1px solid transparent;
+	border-radius: 0;
+	overflow-anchor: none;
+    outline: 0 !important;
+	transition: all 0.15s ease-in-out;
+  &:focus {
+    border-color: hsl(216, 90%, 72%);
+    -webkit-box-shadow: 0 0 0 0.25rem hsla(216, 90%, 52%, .25);
+          box-shadow: 0 0 0 0.25rem  hsla(216, 90%, 52%, .25);
+    z-index: 3;
+  }
+  &.active {
+    background-color: hsla(216, 90%, 52%, .2);
+  }
+`;
+
+const Header = styled.h2`
+	font-size: 1rem !important;
+	margin: 0 !important;
+	font-weight: 500;
+	line-height: 1.2;
+  &.active {
+    color: hsl(216, 90%, 52%);
+  }
+`;
+
+const AccordionBodyStyle = styled.div`
+  background-color: white;
+  overflow: hidden;
+  width: 100%;
+  max-height: 0;
+  transition: max-height .25s ease-in-out;
+  &.active {
+    max-height: 300px;
+  }
+`;
+}
+```
+
+This is the code that is used in the app to set up our accordion:
+
+```js
+<Accordion label="What's the most popular string in Javascript?">
+  <h3>Hello World!</h3>
+</Accordion>
+```
+
+And there’s you’re complete component.
+
+There's a lot to unpack here so I made a sandbox to play around in:
+
+<iframe src="https://codesandbox.io/embed/toggle-css-in-reactjs-0tq79?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:340px; border:0; border-radius: 4px; overflow:hidden;"
+     title="toggle-css-in-reactjs"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+<br /><br />
+
+I hope this will was able to help you on your learning journey.
+
+<Card>
+<h4>Resources</h4>
+<br />
+<a className="footnote" href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener">MDN- Add Event Listener</a><br />
+<a className="footnote" href="https://developer.mozilla.org/en-US/docs/Glossary/Parameter">MDN- Parameters</a><br />
+<a className="footnote" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements">MDN- Statements and declarations</a>
+
+</Card>
