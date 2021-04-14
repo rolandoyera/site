@@ -3,14 +3,14 @@ title: Toggle a CSS Class in React
 date: 2021-04-12
 tags: ["css", "javascript", 'reactjs']
 cover: ./unsplash.jpeg
-description: We're going to learn how to toggle a CSS class in react using `onClick` and `useState`. This same component can be used for any type of toggling.
+description: We're going to learn how to toggle a CSS class in react using onClick and useState. This same component can be used for any type of toggling.
 canonical: https://javascriptarticles.com/toggle-a-css-class-in-react/
 published: true
 ---
 
 import Accordion from "./ToggleReact";
 
-We're going to learn how to toggle a CSS class in react using `onClick` and `useState`. This same component can be used for any type of toggling.
+We’re going to learn how to toggle a CSS class in react using `onClick` and `useState`. The same component can be used for any toggling.
 
 ## Example
 
@@ -25,7 +25,7 @@ We're going to learn how to toggle a CSS class in react using `onClick` and `use
 
 ## Toggling Using State
 
-There's a lot of moving parts in this accordion example but it can all be managed with the state hook from React. In the example I'm using the useState hook to toggle an active class which is managing the state of the entire accordion. The opening of the drawer, the rotation of the icon, the color changes, all activated with an active class.
+There are many moving parts in this accordion example, but it can all be managed with the state hook from React. In the example, I’m using the useState hook to toggle an active class driving the state of the entire accordion. The drawer’s opening, the icon’s rotation, the color changes, all activated with an active class.
 
 Let's take a look at the initializing code:
 
@@ -34,9 +34,9 @@ Let's take a look at the initializing code:
 const [state, setState] = useState("");
 ```
 
-We have our state and setState variables set and is equal to the state of our component or `useState.` The useState, as you probably know is the hook from React and allows us to hook into the state of our element.
+We have our state, and setState variables set and are equal to the state of our component or useState. The useState, as you probably know, is the hook from React and allows us to hook into the state of our element.
 
-We'll follow that up with initializing the toggle using an arrow function. Withing that function, we'll execute the code to toggle the state.
+We’ll follow that up by initializing the toggle using an arrow function. Within that function, we’ll execute the code to toggle the state.
 
 <pre className="code-title">components/Accordion.js</pre>
 ```js
@@ -46,9 +46,9 @@ We'll follow that up with initializing the toggle using an arrow function. Withi
   }
 ```
 
-We initially have an empty string, which is the initial state, then we're asking to set the state to active which will trigger the CSS needed to perform the styling. 
+We initially have an empty string, which is the initial state, then we’re asking to set the condition to active, which will trigger the CSS needed to perform the styling.
 
-Next we'll place the `onClick` function on our button and put the `state` variable in className. Now, when the button is toggled, the class `active` will be inserted into the DOM and trigger our CSS styling.
+Next, we’ll place the onClick function on our button and put the state variable in className. When the button is toggled, the class active will be inserted into the DOM and trigger our CSS styling.
 
 ```jsx
 <button onClick={toggleAccordion} className={`${state}`}>
@@ -62,11 +62,11 @@ You might have a seperate CSS class that needs to be placed in className. That w
 
 ## Toggling CSS in React
 
-There are a lot of different ways to toggle CSS in React. Once you find the method that suits you, there's a lot of ways to trigger the CSS. 
+There are a lot of different ways to toggle CSS in React. Once you find the method that suits you, there are many ways to trigger the CSS.
 
-You can toggle from one class to another, or like in this example, I'm simple adding an active class name to our component.
+You can toggle from one class to another, or like in this example, I’m simply adding an active class name to our component.
 
-Kepping in mind that the `active` class will make things, well, active, you can build the CSS to suit your application:
+Keeping in mind that the active class will make things, well, active, you can build the CSS to suit your application:
 
 <pre className="code-title">src/styles/style.css</pre>
 ```css
@@ -78,9 +78,9 @@ Kepping in mind that the `active` class will make things, well, active, you can 
 }
 ```
 
-These are not the snippets that I actually used in the example. I'm trying to keep things as generic as possible, or unopinionated as possble, to keep our minds open on how we can utilize this.
+These are not the snippets that I used in the example. I’m trying to keep things as generic as possible or unopinionated to keep our minds open on how we can utilize this.
 
-I actually use styled-components so all of this looks significantly different, but the concept is identical. Here's the complete code of the accordion component I built for the example:
+I use styled-components, so all of this looks significantly different, but the concept is identical. Here’s the complete code of the accordion component I built for the example:
 
 <pre className="code-title">components/Accordion.js</pre>
 ```jsx
