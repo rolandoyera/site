@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
+import {Font} from '../../../theme/font'
+import {Color} from '../../../theme/colors'
 
 const BlogPostsWrapper = styled.main`
   margin: 60px auto 0;
@@ -32,10 +33,10 @@ const BlogPostsWrapper = styled.main`
 `;
 
 export const SecTitle = styled.div`
-  color: ${themeGet('colors.textColor', '#292929')};
-  font-size: 16px;
-  font-weight: 500;
-  font-family: ${themeGet('fontFamily.0', "'Fira Sans',sans-serif")};
+  color: ${Color.text};
+  font-size: ${Font.size.lg};
+  font-weight: ${Font.weight.bold};
+  font-family: ${Font.family.sans};
   letter-spacing: 0.17em;
   position: relative;
   margin-bottom: 30px;
@@ -44,7 +45,7 @@ export const SecTitle = styled.div`
     content: '';
     width: 68px;
     height: 1px;
-    background: #292929;
+    background: ${Color.text};
     display: block;
     margin-top: 8px;
   }

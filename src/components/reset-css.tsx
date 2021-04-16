@@ -1,12 +1,14 @@
 import { createGlobalStyle } from "styled-components"
+import {Font} from '../theme/font'
+import {Color} from '../theme/colors'
 
 const ResetCSS = createGlobalStyle`
 ::selection {
-  background: #D10068;
+  background: ${Color.primary.color};
   color: white; 
 }
 ::-moz-selection {
-  background: #D10068;
+  background: ${Color.primary.color};
   color: white; 
 }
   html {
@@ -55,32 +57,31 @@ const ResetCSS = createGlobalStyle`
   h5,
   h6{
     margin-top: 0;
-    font-family: "Merriweather", serif;
-    font-weight: 900;
+    font-family: ${Font.family.sans};
   }
 
   body {
-    font-family: 'Fira Sans',sans-serif;
+    font-family: ${Font.family.sans};
     margin: 0;
     padding: 0;
-    font-size: 1.1rem;
+    font-size: ${Font.size.md};
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
 
   }
 
   p {
-    line-height: 1.65;
+    line-height: ${Font.height};
     margin: 0 0 2em;
-    font-weight: 300 !important;
-    font-size:1.1rem;
+    font-weight: ${Font.weight.md} !important;
+    font-size: ${Font.size.md};
   }
   
   input, 
   textarea, 
   select, 
   button {
-    font-family: 'Fira Sans', sans-serif;
+    font-family: ${Font.family.sans};
   }
   ul {
     margin-left: 1.5rem;
@@ -100,12 +101,11 @@ const ResetCSS = createGlobalStyle`
     text-decoration: none;
   }
   blockquote{
-    font-family: 'Fira Sans',sans-serif;
-    font-weight: 500;
+    font-family: ${Font.family.sans};
   }
 
   :not(pre) > code[class*="language-"], pre[class*="language-"] {
-    color: #D10068;
+    color: ${Color.primary.color};
     font-family: 'Operator Mono', monospace;
     font-size: 1rem;
   }

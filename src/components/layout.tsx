@@ -33,7 +33,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
         </Footer>
         <ScrollToTop
           showUnder={300}
-          duration={700}
+          duration={100}
           easing="easeInOutCubic"
           style={{ bottom: 30, right: 20 }}
         >

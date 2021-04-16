@@ -22,7 +22,7 @@ const SignupSchema = Yup.object().shape({
   message: Yup.string().required('Required'),
 });
 
-const Contact: React.SFC<{}> = () => {
+const Contact: React.FC<{}> = () => {
   return (
     <Formik
       initialValues={{ firstName: '', email: '', message: '' }}

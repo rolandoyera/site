@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
+import { Font } from '../../theme/font'
+import { Color } from '../../theme/colors'
 
 const InputWrapper = styled.div`
   position: relative;
@@ -10,10 +11,10 @@ const InputWrapper = styled.div`
     justify-content: space-between;
 
     > label {
-      color: ${themeGet('colors.textColor', '#292929')};
-      font-size: ${themeGet('fontSizes.3', '15')}px;
-      line-height: ${themeGet('lineHeights.normal', '1')};
-      font-weight: ${themeGet('fontWeights.4', '500')};
+      color: ${Color.text};
+      font-size: ${Font.size.md};
+      line-height: 1;
+      font-weight: ${Font.weight.bold};
     }
   }
 
@@ -26,7 +27,7 @@ const InputWrapper = styled.div`
 
   .inner-wrap {
     width: 100%;
-    margin-top: ${themeGet('space.4', '15')}px;
+    margin-top: 1rem;
     box-sizing: border-box;
     position: relative;
 
@@ -42,13 +43,12 @@ const InputWrapper = styled.div`
     input[type='password'] {
       appearance: none;
       width: 100%;
-      height: ${themeGet('heights.2', '44')}px;
-      border: 1px solid ${themeGet('colors.borderColor', '#DBDBDB')};
-      color: ${themeGet('colors.textColor', '#292929')};
-      font-size: ${themeGet('fontSizes.3', '15')}px;
-      line-height: ${themeGet('lineHeights.normalText', '1.5')};
-      font-weight: ${themeGet('fontWeights.3', '400')};
-      padding: 0 ${themeGet('space.4', '15')}px;
+      height: 44px;
+      border: 1px solid ${Color.borderLight};
+      color: ${Color.text};
+      font-size: ${Font.size.md};
+      line-height: ${Font.height};
+      padding: 0 16px;
       box-sizing: border-box;
       border-radius: 0;
       transition: border-color 0.25s ease;
@@ -59,11 +59,11 @@ const InputWrapper = styled.div`
       }
 
       &:focus {
-        border-color: ${themeGet('colors.textColor', '#292929')};
+        border-color: ${Color.text};;
       }
 
       &::placeholder {
-        color: ${themeGet('colors.textColor', '#292929')};
+        color: ${Color.text};
       }
     }
 
@@ -77,8 +77,8 @@ const InputWrapper = styled.div`
 
     textarea {
       height: auto;
-      min-height: ${themeGet('heights.9', '230')}px;
-      padding-top: ${themeGet('space.4', '15')}px;
+      min-height: 230px;
+      padding-top: 16px;
       resize: none;
     }
   }
@@ -95,10 +95,10 @@ const InputWrapper = styled.div`
       position: relative;
 
       .search-icon {
-        width: ${themeGet('widths.2', '45')}px;
+        width: 44px;
         height: 100%;
-        font-size: ${themeGet('fontSizes.3', '15')}px;
-        color: ${themeGet('colors.textColor', '#292929')};
+        font-size: ${Font.size.md};
+        color: ${Color.text};
         display: flex;
         align-items: center;
         justify-content: center;
@@ -113,11 +113,11 @@ const InputWrapper = styled.div`
       }
 
       .icon-left {
-        padding-left: ${themeGet('space.9', '50')}px;
+        padding-left: 50px;
       }
 
       .icon-right {
-        padding-right: ${themeGet('space.9', '50')}px;
+        padding-right: 50px;
       }
     }
   }
@@ -126,7 +126,7 @@ const InputWrapper = styled.div`
     label {
       position: absolute;
       left: 15px;
-      color: ${themeGet('colors.inactiveColor', '#767676')};
+      color: ${Color.inactive.text};
       font-weight: 400;
       top: 3px;
       transition: all 0.2s ease;
@@ -146,7 +146,7 @@ const InputWrapper = styled.div`
       padding-right: 15px;
       height: auto;
       background: transparent;
-      border-color: ${themeGet('colors.textColor', '#292929')};
+      border-color: ${Color.text};
     }
 
     textarea {
@@ -204,13 +204,13 @@ const InputWrapper = styled.div`
     /* Material input focus style */
     &.is-focus {
       input {
-        border-color: ${themeGet('colors.inactiveIcon', '#ebebeb')};
+        border-color: ${Color.borderLight};
       }
 
       label {
         top: -10px;
         font-size: 12px;
-        color: ${themeGet('colors.textColor', '#484848')};
+        color: #484848;
       }
 
       .highlight {

@@ -2,15 +2,15 @@
 title: How To Use Styled-Components With React.js
 date: "2021-03-15"
 tags: ["reactjs", "css", "styled-components"]
-description: In this article we'll learn how to use styled-components with React.js. Styled-components is a CSS-in-JS library and is not a concept unique to React.js but broadly...
+description: In this article, we’ll learn how to use styled-components with React.js. Styled-components is a CSS-in-JS library and is not a concept unique to React.js but broadly...
 cover: ./unsplash.jpg
 canonical: https://javascriptarticles.com/how-to-use-styled-components-with-reactjs/
 published: true
 ---
 
-import { PrimaryButton, SecondaryButton } from "./button.js";
+import { PrimaryButton, SecondaryButton, PlainButton } from "./button.js";
 
-In this article we'll learn how to use styled-components with React.js. Styled-components is a CSS-in-JS library and is not a concept unique to React.js but broadly used in single-page applications such as React.js, Angular.js, etc. It essentially allows you to write CSS as part of your “component.” We’re going to use styled-components with create-react-app (CRA) to cover some concepts and core functionality.
+In this article, we’ll learn how to use styled-components with React.js. Styled-components is a CSS-in-JS library and is not a concept unique to React.js but broadly used in single-page applications such as React.js, Angular.js, etc. It essentially allows you to write CSS as part of your “component.” We’re going to use styled-components with create-react-app (CRA) to cover some concepts and core functionality.
 
 These concepts will work with any framework using react.js, such as Gatsby.js or Next.js.
 
@@ -88,9 +88,9 @@ We can create a unique tag naming convention using styled-components that utiliz
 
 This concept makes it easy to read and understand code but, consider how it will render on the client-side. Instead of div tags, consider using section or article tags as wrappers for better structure and accessibility when possible. Doing this makes for good practice, plus search engines and browsers like it.
 
-## Basic Usage
+## Basic Components
 
-Our CSS syntax with styled-components will use regular kebab-case instead of camel-case, such as `margin-top` instead of `marginTop`. All of the same CSS rules apply here as if we were using a standard CSS stylesheet. We can, and will, use JavaScript inside our CSS, which is powerful and fun to use. This functionality makes it easy for theme application or component state changes.
+Our CSS syntax with styled-components will use regular kebab-case instead of camel-case, such as margin-top instead of marginTop. All of the same CSS rules apply here as if we were using a standard CSS stylesheet. We can, and will, use JavaScript inside our CSS, which is powerful and fun to use. This functionality makes it easy for theme application or component state changes.
 
 Let’s put an h1 tag around our “Hello World” title, and we’ll make a new element called “H1”. We’ll do this by:
 
@@ -125,31 +125,160 @@ We’re using the standard JavaScript syntax to assign our variable `const H1`; 
 const H1 = styled.h1` CSS here `;
 ```
 
-This would be perfectly acceptable, and is, if we were not exporting the title as a component outside of our file. Meaning, if we had other elements in this file and wanted to export just the title as a component, we could not. This is a perfect segway for using the global styles library from styled-components.
+The code above is your basic set-up for any HTML element you’d like to style. A div would be `const Div = styled.div`, a button would be `const Button = styled.button`, and so on.
 
-## Global Styles
+## Extending Components
 
-Functionality for global styles is offered with styled-components, and we’ll make use of it. First, we need to create a separate file and import the `createGlobalStyle` module. We'll also import the `styled` component for our newly created file:
+Extending is an easy way to have different variants of your components. It keeps your styling code organized, and it’ll also cut down on the amount of code. An excellent example of trying this would be a button, so let’s make one, and we’ll extend it to make a secondary button.
 
-<pre className="code-title">src/GlobalStyle.js</pre>
+Next steps:
+
++ create a Button.js file in your src folder
++ import styled from styled-components
++ add button syntax and CSS
+
+
+<pre className="code-title">src/Button.js</pre>
 ```jsx
-import styled, { createGlobalStyle } from "styled-components";
+import styled from 'styled-components'
+
+export const PrimaryButton = styled.button`
+  color: #fff;
+  background-color: #0d6efd;
+  border:1px solid transparent;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin: 2rem 0;
+  cursor: pointer;
+`;
 ```
 
-We can use this feature for styling the entire app with global CSS. We’ll do some global styling and move our newly designed “H1” jsx element from the app.js file. 
+<PlainButton> Clickety Click </PlainButton>
 
-What we'll do for our new file:
+<br/>
+<br/>
 
-+ create a new file called GlobalStyle.js
-+ import styled and createGlobalStyle from styled-components
-+ apply some CSS
-+ cut the H1 element from App.js and paste it into this file
-+ add the `export` keyword to the H1 code `(export const H1)`
-+ create a container component
+Next we'll extend this button to make a secondary button.
+
+
+<pre className="code-title">src/Button.js</pre>
+```jsx
+import styled from 'styled-components'
+
+export const PrimaryButton = styled.button`
+  color: #fff;
+  background-color: #0d6efd;
+  border:1px solid transparent;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin: 2rem 0;
+  cursor: pointer;
+`;
+
+export const SecondaryButton = styled(PrimaryButton)`
+  color: #0d6efd;
+  background-color: transparent;
+`;
+```
+
+Notice the secondary button method we’re using, `styled(PrimaryButton)`. Since we’re extending the original `styled.button`, which uses dot-notation, we need to add a “method” or parenthesis instead of the dot to extend it, which is how we arrived at `styled(PrimaryButton)`. If we wanted to add a tertiary button, we could add another method and extend SecondaryButton, `styled(SecondaryButton)`.
+
+Since we’re extending the primary button, we only need to add or change any styling that’s different from the primary. This would be the equivalent of Bootstrap’s button CSS classes as so:
+
+```HTML
+<button class="btn btn-primary">Click Me</button>
+```
+
+One big problem with our buttons is that they’re lifeless. We’ll need to add pseudo-classes for hover and focus CSS.
+
+## Pseudo Classes
+
+Adding pseudo-classes in styled-components uses a syntax that’s similar to SCSS. We’ll need to nest it and use `&:` to make `&:hover` or `&:yourPsuedoClass`. 
+
+Let’s add those to our buttons as follows:
+
+<pre className="code-title">src/Button.js</pre>
+```jsx
+import styled from 'styled-components'
+
+export const PrimaryButton = styled.button`
+  color: #fff;
+  background-color: #0d6efd;
+  border:1px solid transparent;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin: 2rem 0;
+  cursor: pointer;
+  transition: all 0.15s;
+    &:hover {
+      background-color: #3988ff;
+    }
+    &:focus {
+      color: #fff;
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);
+      outline: none;
+    }
+`;
+
+export const SecondaryButton = styled(PrimaryButton)`
+  color: #0d6efd;
+  background-color: transparent;
+    &:hover {
+      background-color: #3988ff;
+      color: #fff;
+    }
+`;
+```
+
+<PrimaryButton> Clickety Click </PrimaryButton>{" "}
+
+<SecondaryButton>Just Click</SecondaryButton>
+
+<br />
+<br />
+
+Not the best-looking buttons, but I think it gets the point across. Let's import the buttons into our app.js file:
+
+<pre className="code-title">src/App.js</pre>
+```jsx
+import { PrimaryButton, SecondaryButton } from './Button'
+
+function App() {
+  return (
+    <>
+      <H1>Hello World</H1>
+      <PrimaryButton>Clickety Click</PrimaryButton>
+      <SecondaryButton>Just Click</SecondaryButton>
+    </>
+  )
+}
+
+export default App;
+```
+
+<br />
+<br />
+
+
+## Using Global Styles
+
+styled-components has a function to create global styles for your app. This is great for resetting CSS or applying styles that are used throughout your entire app. First, we need to create a separate file and import the `createGlobalStyle` module.
 
 <pre className="code-title">src/GlobalStyle.js</pre>
 ```jsx
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
+```
+
+As I said earlier, this feature is great for resetting CSS. What this file will do is place the CSS in the head of every page on your site, and all normal CSS syntax rules apply here also. Let’s have a look at some code:
+
+<pre className="code-title">src/GlobalStyle.js</pre>
+```jsx
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -159,50 +288,34 @@ export const GlobalStyle = createGlobalStyle`
   list-style: none;
 }
 body {
-  background-color: #141a2c;
+  background-color: #fff;
   line-height: 1.5;
   font-size: 1.1rem;
   font-family: sans-serif;
   font-weight: 300;
-  color: black;
+  color: #000;
 }
 `;
-export const H1 = styled.h1`
-  font-size: 2.5rem;
-  font-family: sans-serif;
-  text-align: center;
-  color: #ffffff;
-  margin: 2rem 0;
-`;
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 800px;
-  margin: 0 auto;
-`;
+
 ```
 
-Now that we’ve seen the code above, notice how we used `export const` this time instead of just const. Using export will allow us to apply and export multiple elements in a file individually. Not to be confused with `export default`. Export default will only allow one component in the file to be exported.
+The possibilities are endless but keep in mind that this will go into the head of all your files. Be on the lookout for any conflicting code.
 
-So let’s now have a look at importing our new components into App.js.
-
-What to do in our App.js file:
-
-+ add an import statement for GlobalStyle, H1, and Container
-+ add our new Container to encase our code
-+ add our new css component to be rendered `<GlobalStyle />`
+We’ll need to import this into our app in order for it to work. We’ll do that in our App.js file since it’s controlling the entire app.
 
 <pre className="code-title">src/App.js</pre>
 ```jsx
-import { GlobalStyle, H1, Container } from "./GlobalStyle";
+import { PrimaryButton, SecondaryButton } from './Button'
+import { GlobalStyle } from "./GlobalStyle";
 
 function App() {
   return (
-    <Container>
-      <GlobalStyle />
+    <>
+    <GlobalStyle />
       <H1>Hello World</H1>
-    </Container>
+      <PrimaryButton>Clickety Click</PrimaryButton>
+      <SecondaryButton>Just Click</SecondaryButton>
+    </>
   )
 }
 
@@ -219,174 +332,13 @@ A Styled Component is the combination of an element, JSX, and the CSS rules that
 
 The `H1` that we see in React is the JavaScript tag that will render HTML, so a proper element needs to be attached to it. When you’re styling your components or elements with styled-components, keep this in mind. You can use any HTML element like `styled.button`, `styled.div`, `styled.input`, etc. There’s an exception to this when you’re extending components. 
 
-## Extending Components & Pseudo Classes
 
-Extending is an easy way to have different variants of your components. It keeps your styling code organized, and it’ll also cut down on the amount of code. An excellent example of trying this would be a button, so let’s make one, and we’ll also see how to apply pseudo-classes.
-
-Next steps:
-
-+ create a Button.js file in your src folder
-+ import styled from styled-components
-+ add button syntax and CSS
-
-
-<pre className="code-title">src/Button.js</pre>
-```jsx
-import styled from 'styled-components'
-
-export const PrimaryButton = styled.button`
-	color: #fff;
-	background-color: #0d6efd;
-    border:1px solid transparent;
-	font-size: 1.1rem;
-	padding: 0.5rem 1rem;
-	border-radius: 5px;
-    margin: 2rem 0;
-	transition: all 0.15s;
-	&:hover {
-		background-color: #3988ff;
-		cursor: pointer;
-	}
-	&:focus {
-		color: #fff;
-		background-color: #0d6efd;
-		border-color: #0d6efd;
-		box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);
-		outline: none;
-	}
-`;
-```
-
-<PrimaryButton> Clickety Click </PrimaryButton>
-
-<br/>
-<br/>
-
-Adding pseudo-classes in styled-components uses a syntax that’s similar to SCSS. We’ll need to nest it and use `&:` to make `&:yourPsuedoClass`. Let’s now create a secondary button so we can explore extending components.
-
-
-<pre className="code-title">src/Button.js</pre>
-```jsx
-import styled from 'styled-components'
-
-export const PrimaryButton = styled.button`
-  color: #fff;
-  background-color: #0d6efd;
-  border:1px solid transparent;
-  font-size: 1.1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  margin: 2rem 0;
-  transition: all 0.15s;
-	&:hover {
-		background-color: #3988ff;
-		cursor: pointer;
-	}
-	&:focus {
-		color: #fff;
-		background-color: #0d6efd;
-		border-color: #0d6efd;
-		box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);
-		outline: none;
-	}
-`;
-
-export const SecondaryButton = styled(PrimaryButton)`
-  color: #0d6efd;
-  background-color: transparent;
-  margin: 2rem 0;
-  &:hover {
-    background-color: #3988ff;
-    color: #fff;
-  }
-`;
-```
-
-Notice the secondary button method we’re using, `styled(PrimaryButton)`. Since we’re extending the original `styled.button`, which uses dot-notation, we need to add a “method” or parenthesis instead of the dot to extend it, which is how we arrived at `styled(PrimaryButton)`. If we wanted to add a tertiary button, we could add another method and extend SecondaryButton, `styled(SecondaryButton)`.
-
-Since we’re extending the primary button, we can only add or change styling that’s different from the primary. There’s no removing since we’re building on top of the original.
-
-Let’s import it into our App.js file and give it a test drive.
-
-<pre className="code-title">src/App.js</pre>
-```jsx
-import { GlobalStyle, H1, Container } from "./GlobalStyle";
-import { PrimaryButton, SecondaryButton } from './Button'
-
-function App() {
-  return (
-    <Container>
-      <GlobalStyle />
-      <H1>Hello World</H1>
-      <PrimaryButton>Clickety Click</PrimaryButton>
-      <SecondaryButton>Just Click</SecondaryButton>
-    </Container>
-
-  )
-}
-
-export default App;
-```
-<PrimaryButton> Clickety Click </PrimaryButton>{" "}
-
-<SecondaryButton>Just Click</SecondaryButton>
-
-<br />
-<br />
-
-Not the best-looking secondary, but I think it gets the point across. If you’re wondering about a tertiary button, here’s what that code would look like:
-
-```jsx
-export const PrimaryButton = styled.button`
-// CSS code
-`;
-export const SecondaryButton = styled.(PrimaryButton)`
-// CSS code
-`;
-export const TertiaryButton = styled.(SecondaryButton)`
-// CSS code
-`;
-```
-
-<br />
-<br />
-
-## Extending Components With Props
-
-The official Styled-Components documentation suggests using interpolations as a method to extend components. While helpful, it can be a little limiting. Let’s code a primary button again, but we’ll use props to extend it.
-
-<pre className="code-title">src/Button.js</pre>
-```jsx
-import styled from 'styled-components'
-
-export const Button = styled.button`
-  color: #fff;
-  background-color: ${(props) => (props.secondary ? "#ff7300" : "#0d6efd")};
-  border:1px solid transparent;
-  font-size: 1.1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  margin: 2rem 0;
-  transition: background-color .25s;
-  &:hover {
-    background-color: ${(props) => (props.secondary ? "#ff9a47" : "#3988ff")};
-	  cursor: pointer;
-  } 	&:focus {
-    color: #fff;
-    background-color: ${(props) => (props.secondary ? "#ffa962" : "#5d9eff")};
-    border-color: ${(props) => (props.secondary ? "#ffa962" : "#5d9eff")};
-    box-shadow: 0 0 0 0.25rem ${(props) => (props.secondary ? "rgba(255, 184, 52, 0.5)" : "rgba(49, 132, 253, 0.5)")};
-    outline: none;
-	}
-`;
-
-```
-
-There’s nothing wrong with the props method; it just not as flexible as the extension method for buttons.
 
 To recap, we created an H1 and global CSS component and styled them with styled-components. We also created button components and extended them to make primary and secondary buttons, and we learned how to use pseudo-classes with styled-components. Lastly, we learned how styled-components render the elements in the browser via React.js.
 
-This was fun to make, and I hope this helps you on your JavaScript journey.
+Please check out my article on [themes and dark mode with styled-components](https://javascriptarticles.com/how-to-use-themes-and-dark-mode-with-styled-components-and-reactjs/).
+
+This was fun to make, and I hope this helps you on your learning journey.
 
 
 

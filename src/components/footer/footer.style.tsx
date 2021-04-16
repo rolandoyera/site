@@ -1,14 +1,15 @@
 import styled from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
+import {Color} from '../../theme/colors'
+import {Font} from '../../theme/font'
 
 const FooterWrapper = styled.footer`
   position: relative;
   overflow: hidden;
-  color: ${themeGet('colors.textColor', '#292929')};
-  font-size: ${themeGet('fontSizes.3', '15')}px;
+  color: ${Color.text};
+  font-size: ${Font.size.md};
   padding: 30px 15px;
   text-align: center;
-  border-top: 1px solid #f3f3f3;
+  border-top: 1px solid ${Color.borderLight};
   margin-top: 120px;
   @media (max-width: 1200px) {
     margin-top: 90px;
@@ -22,11 +23,11 @@ const FooterWrapper = styled.footer`
   }
 
   a {
-    color: ${themeGet('colors.textColor', '#292929')};
-    font-size: ${themeGet('fontSizes.3', '15')}px;
+    color: ${Color.text};
+    font-size: ${Font.size.md};
     transition: 0.15s ease-in-out;
     &:hover {
-      color: ${themeGet('colors.primary', '#D10068')};
+      color: ${Color.primary.color};
     }
   }
 `;

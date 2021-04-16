@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
+import {Font} from '../../theme/font'
+import {Color} from '../../theme/colors'
 
 export const PostDetailsWrapper = styled.div`
   position: relative;
@@ -40,10 +41,11 @@ export const PostTitle = styled.h1`
   max-width: 740px;  
   text-align: center;
   margin: 0 auto;
-  font-size: calc(1rem + 1.5vw);
-  font-weight: 800;
-  color: ${themeGet('colors.textColor', '#292929')};
-  line-height: 1.53;
+  font-family: ${Font.family.sans};
+  font-size: ${Font.size.h1};
+  font-weight: ${Font.heading.weight};
+  color: ${Color.text};
+  line-height: ${Font.heading.height};
   margin-bottom: 10px;
   @media (max-width: 1200px) {
     margin-bottom: 15px;
@@ -54,15 +56,12 @@ export const PostTitle = styled.h1`
 export const PostDate = styled.span`
 text-align: center;
   display: block;
-  font-size: ${themeGet('fontSizes.3', '15')}px;
-  color: ${themeGet('textColor', '#292929')};
-  font-weight: 400;
+  font-size: ${Font.size.md};
+  color: ${Color.text};
+  font-weight: ${Font.weight};
   text-transform: uppercase;
   @media (max-width: 990px) {
-    font-size: 14px;
-  }
-  @media (max-width: 575px) {
-    font-size: 13px;
+    ${Font.size.sm};
   }
 `;
 
@@ -118,7 +117,7 @@ export const PostContainer = styled.div`
   }
 
   h2 {
-    font-size: 25px;
+    font-size: ${Font.size.h2};
     margin-bottom: 0.75em;
   }
 
@@ -140,9 +139,8 @@ export const PostContainer = styled.div`
 
 
   blockquote {
-    font-family: 'Poppins', sans-serif;
+    font-family: ${Font.family.sans};
     font-size: 21px;
-    font-weight: 500;
     line-height: 2;
     margin: 60px 0;
     @media (max-width: 1200px) {
@@ -159,7 +157,7 @@ export const PostContainer = styled.div`
       width: 30px;
       height: 1px;
       display: block;
-      background: #292929;
+      background: ${Color.text};
     }
     &:before {
       margin-bottom: 60px;
@@ -201,15 +199,14 @@ export const PostContainer = styled.div`
     h4 {
       font-size: 16px;
       margin: 0;
-      font-family: 'Fira Sans', sans-serif;
       font-weight: 400;
     }
   }
 
   a {
-    font-weight: 500;
+    font-weight: ${Font.weight.bold};
     transition: 0.15s ease-in-out;
-    color: ${themeGet('primary', '#D10068')};
+    color: ${Color.primary.color};
   }
 `;
 
@@ -222,8 +219,8 @@ export const PostTags = styled.div`
   a {
     display: block;
     margin-right: 30px;
-    font-size: 14px;
-    font-weight: 400;
-    color: ${themeGet('primary', '#D10068')};
+    font-size: ${Font.size.md};
+    font-weight: ${Font.weight.md};
+    color: ${Color.primary.color};
   }
 `;

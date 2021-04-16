@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
-import { IoIosSearch } from 'react-icons/io';
+import {Font} from '../../theme/font'
+import {Color} from '../../theme/colors'
 
 const HeaderWrapper = styled.nav`
   position: relative;
@@ -16,7 +16,7 @@ export const NavbarWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 10px 75px;
-  background-color: #fff;
+  background-color: ${Color.white};
   transition: 0.25s ease-in-out;
   @media (max-width: 1400px) {
     padding: 0px 45px;
@@ -68,18 +68,18 @@ export const MenuItem = styled.li`
     padding: 0px 10px;
     align-items: center;
     white-space: nowrap;
-    font-size: ${themeGet('fontSizes.3', '15')}px;
-    line-height: ${themeGet('lineHeights.normal', '1')};
-    font-weight: ${themeGet('fontWeights.3', '400')};
-    color: ${themeGet('colors.lightTextColor', '#757575')};
+    font-size: ${Font.size.md};
+    line-height: 1;
+    font-weight: ${Font.weight.bold};
+    color: ${Color.inactive.text};
     transition: 0.15s ease-in-out;
 
     &:hover {
-      color: ${themeGet('colors.textColor', '#292929')};
+      color: ${Color.text};
     }
     &.active-link {
-      color: ${themeGet('colors.textColor', '#292929')};
-      font-weight: ${themeGet('fontWeights.4', '500')};
+      color: ${Color.text};
+      font-weight: ${Font.weight.bold};
     }
   }
 `;
@@ -112,7 +112,7 @@ export const SearchCloseButton = styled.button`
   cursor: pointer;
   z-index: 1;
   padding: 0;
-  color: #757575;
+  color: ${Color.inactive.text};
   font-size: 45px;
   margin-left: -54px;
   @media (max-width: 990px) {
@@ -234,7 +234,7 @@ export const DrawerContentWrapper = styled.div`
           top: 50%;
           left: 0;
           opacity: 0;
-          background: ${themeGet('colors.textColor', '#292929')};
+          background: ${Color.text};
           transform: translateY(-50%);
         }
       }
@@ -246,7 +246,7 @@ export const DrawerHead = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: 1px solid ${Color.borderLight};
   padding: 3px 0;
 `;
 
@@ -277,7 +277,7 @@ export const HamburgerIcon = styled.div`
   span {
     display: block;
     height: 2px;
-    background-color: ${themeGet('colors.textColor', '#292929')};
+    background-color: ${Color.text};
     margin-bottom: 5px;
     &:last-child {
       margin-bottom: 0;
@@ -287,7 +287,7 @@ export const HamburgerIcon = styled.div`
 `;
 
 export const SearchIcon = styled.div`
-background-color: #D10068; 
+background-color: ${Color.primary.color}; 
 border: none; 
 color: white; 
 width: 2.5rem;
@@ -303,7 +303,7 @@ border-radius: 50%;
     outline: none !important;
           }
   &:hover {
-    background-color: #ff5bad;
+    background-color: ${Color.primary.hover}; 
     transition: background-color .25s 
           }
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
+import {Font} from '../theme/font'
+import {Color} from '../theme/colors'
 
 export const BlogPostsWrapper = styled.div`
   margin: 0 auto;
@@ -51,10 +52,8 @@ export const RelatedPostWrapper = styled.section`
 `;
 
 export const RelatedPostTitle = styled.h2`
-  color: ${themeGet('colors.textColor', '#292929')};
-  font-size: 16px;
-
-  font-family: ${themeGet('fontFamily.0', "'Fira Sans',sans-serif")};
+  color: ${Color.text};
+  font-size: ${Font.size.md};
   letter-spacing: 0.17em;
   position: relative;
   margin-bottom: 30px;
@@ -63,7 +62,7 @@ export const RelatedPostTitle = styled.h2`
     content: '';
     width: 68px;
     height: 1px;
-    background: #292929;
+    background: ${Color.text};
     display: block;
     margin-top: 8px;
   }
@@ -197,7 +196,7 @@ export const TagPageHeading = styled.div`
     display: block;
     width: 90px;
     height: 1px;
-    background: #292929;
+    background: ${Color.text};
     margin-top: 15px;
   }
 `;
@@ -205,7 +204,7 @@ export const TagPageHeading = styled.div`
 export const TagName = styled.h1`
   font-size: 30px;
 
-  color: ${themeGet('colors.primary', '#D10068')};
+  color: ${Color.primary.color};
   margin-bottom: 8px;
   @media (max-width: 990px) {
     font-size: 26px;
@@ -257,14 +256,14 @@ export const PostShare = styled.div`
     margin-left: 25px;
     font-size: 22px;
     outline: 0;
-    color: ${themeGet('colors.textColor', '#292929')};
+    color: ${Color.primary.color};
     transition: 0.15s ease-in-out;
     @media (max-width: 767px) {
       font-size: 18px;
       margin-left: 20px;
     }
     &:hover {
-      color: ${themeGet('colors.primary', '#D10068')};
+      color: ${Color.primary.color};
     }
     svg {
       display: block;
@@ -301,7 +300,7 @@ export const PostTags = styled.div`
     margin-right: 30px;
     font-size: 14px;
     font-weight: 400;
-    color: ${themeGet('primary', '#D10068')};
+    color: ${Color.primary.color};
     @media (max-width: 990px) {
       font-size: 13px;
       margin-right: 25px;

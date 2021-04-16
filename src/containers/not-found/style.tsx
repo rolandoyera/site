@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
+import {Color} from '../../theme/colors'
 
 export const NotFoundWrapper = styled.div`
   position: relative;
@@ -100,12 +100,12 @@ export const Goback = styled.div`
     align-items: center;
     font-size: 15px;
     font-weight: 500;
-    color: ${themeGet('colors.textColor', '#292929')};
+    color: ${Color.text};
     transition: 0.15s ease-in-out;
     &:hover {
-      color: ${themeGet('colors.primary', '#D10068')};
+      color: ${Color.primary.color};
       ${Icon} {
-        background-color: ${themeGet('colors.primary', '#D10068')};
+        background-color: ${Color.primary.color};
       }
     }
   }

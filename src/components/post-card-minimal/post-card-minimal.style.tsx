@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
+import {Font} from '../../theme/font'
+import {Color} from '../../theme/colors'
 
 export const PostCardWrapper = styled.article`
   position: relative;
@@ -54,7 +55,7 @@ export const PostDate = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: ${themeGet('colors.textColor', '#292929')};
+  color: ${Color.text};
   transition: 0.35s ease-in-out;
   @media (max-width: 1200px) {
     font-size: 70px;
@@ -80,21 +81,21 @@ export const PostContent = styled.div`
 `;
 
 export const PostTitle = styled.h2`
-  font-size: calc(1.325rem + 0.9vw);
-  font-weight: 700;
-  color: ${themeGet('colors.textColor', '#292929')};
-  line-height: 1.2;
+  font-size: ${Font.size.h2};
+  font-weight: ${Font.heading.weight};
+  color: ${Color.text};
+  line-height: ${Font.heading.height};
   margin-bottom: 10px;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: ${Font.family.sans};
   a {
-    color: ${themeGet('colors.textColor', '#292929')};
+    color: ${Color.text};
   }
 
 `;
 
 export const Excerpt = styled.p`
-  font-size: 1rem;
-  color: ${themeGet('textColor', '#292929')};
+  font-size: ${Font.size.md};
+  color: ${Color.text};
   font-weight: 300;
   margin-bottom: 0;
 `;
@@ -108,11 +109,10 @@ export const PostTags = styled.div`
   a {
     display: block;
     margin-right: 30px;
-    font-size: 14px;
-    font-weight: 400;
-    color: ${themeGet('primary', '#D10068')};
+    font-size: ${Font.size.md};
+    font-weight: ${Font.weight.bold};
+    color: ${Color.primary.color};
     @media (max-width: 990px) {
-      font-size: 13px;
       margin-right: 25px;
     }
   }
@@ -140,12 +140,12 @@ export const PostDateAndPreview = styled.div`
 export const ReadMore = styled.div`
   margin-top: 16px;
   a {
-    font-size: .85rem;
+    font-size: ${Font.size.sm};;
     font-weight: 500;
-    color: ${themeGet('textColor', '#292929')};
+    color: ${Color.text};
     transition: 0.15s ease-in-out;
     &:hover {
-      color: ${themeGet('primary', '#D10068')};
+      color: ${Color.primary.color};
     }
   }
 `;

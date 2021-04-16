@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
+import {Font} from '../../theme/font'
+import {Color} from '../../theme/colors'
 
 export const SocialProfileWrapper = styled.ul`
   display: inline-flex;
@@ -11,8 +12,8 @@ export const Tooltip = styled.div`
   pointer-events: none;
   padding: 0.4rem 0.8rem;
   border-radius: 3px;
-  color: #333;
-  font-size: 13px;
+  color: ${Color.text};
+  font-size: ${Font.size.sm};
   bottom: 90%;
   left: 50%;
   opacity: 0;
@@ -53,7 +54,7 @@ export const SocialProfileItem = styled.li`
   }
 
   a {
-    color: ${themeGet('colors.textColor', '#292929')};
+    color: ${Color.text};;
     font-size: 22px;
     padding: 0.2em;
     display: block;

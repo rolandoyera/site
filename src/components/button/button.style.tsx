@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
+import {Color} from '../../theme/colors'
+import {Font} from '../../theme/font'
 
 type ButtonStyleProps = {
   fullwidth?: boolean;
@@ -10,13 +11,13 @@ const ButtonStyle = styled('button')<ButtonStyleProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: ${themeGet('colors.white', '#fff')};
-  background-color: ${themeGet('colors.black', '#292929')};
-  height: ${themeGet('heights.2', '44')}px;
+  color: ${Color.white};
+  background-color: ${Color.text};
+  height: 44px;
   width: ${(props) => (props.fullwidth ? '100%' : 'auto')};
-  font-family: ${themeGet('fontFamily.0', "'Fira Sans', sans-serif")};
-  font-size: ${themeGet('fontSizes.3', '15')}px;
-  font-weight: ${themeGet('fontWeights.4', '500')};
+  font-family: ${Font.family.sans};
+  font-size: ${Font.size.md};
+  font-weight: ${Font.weight.bold};
   text-decoration: none;
   padding-top: 0;
   padding-bottom: 0;
@@ -40,14 +41,14 @@ const ButtonStyle = styled('button')<ButtonStyleProps>`
   }
 
   &.disabled {
-    color: ${themeGet('inactiveColor', '#767676')};
-    background-color: ${themeGet('inactiveBG', '#e6e6e6')};
-    border-color: ${themeGet('inactiveBG', '#e6e6e6')};
+    color: ${Color.inactive.text};
+    background-color: ${Color.inactive.color};
+    border-color: ${Color.inactive.color};
 
     &:hover {
-      color: ${themeGet('inactiveColor', '#767676')};
-      background-color: ${themeGet('inactiveBG', '#e6e6e6')};
-      border-color: ${themeGet('inactiveBG', '#e6e6e6')};
+      color: ${Color.inactive.text};
+      background-color: ${Color.inactive.color};
+      border-color: ${Color.inactive.color};
     }
   }
 
