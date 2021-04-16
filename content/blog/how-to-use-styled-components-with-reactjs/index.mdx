@@ -246,19 +246,42 @@ Not the best-looking buttons, but I think it gets the point across. Let's import
 
 <pre className="code-title">src/App.js</pre>
 ```jsx
+import styled from 'styled-components'
 import { PrimaryButton, SecondaryButton } from './Button'
+
+const H1 = styled.h1`
+  font-size: 2.5rem;
+  font-family: sans-serif;
+  text-align: center;
+  margin: 2rem 0;
+`;
 
 function App() {
   return (
-    <>
+    <Container>
       <H1>Hello World</H1>
-      <PrimaryButton>Clickety Click</PrimaryButton>
-      <SecondaryButton>Just Click</SecondaryButton>
-    </>
+      <Row>
+        <PrimaryButton>Clickety Click</PrimaryButton>
+        <SecondaryButton>Just Click</SecondaryButton>
+      </Row>
+    </Container>
   )
 }
 
 export default App;
+
+const Container = styled.div`
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const Row = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
 ```
 
 <br />
@@ -305,21 +328,43 @@ We’ll need to import this into our app in order for it to work. We’ll do tha
 
 <pre className="code-title">src/App.js</pre>
 ```jsx
+import styled from 'styled-components'
 import { PrimaryButton, SecondaryButton } from './Button'
-import { GlobalStyle } from "./GlobalStyle";
+
+const H1 = styled.h1`
+  font-size: 2.5rem;
+  font-family: sans-serif;
+  text-align: center;
+  margin: 2rem 0;
+`;
 
 function App() {
   return (
-    <>
-    <GlobalStyle />
+    <Container>
+      <GlobalStyle />
       <H1>Hello World</H1>
-      <PrimaryButton>Clickety Click</PrimaryButton>
-      <SecondaryButton>Just Click</SecondaryButton>
-    </>
+      <Row>
+        <PrimaryButton>Clickety Click</PrimaryButton>
+        <SecondaryButton>Just Click</SecondaryButton>
+      </Row>
+    </Container>
   )
 }
 
 export default App;
+
+const Container = styled.div`
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const Row = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
 ```
 
 Have a look at what we’ve done so far, which is not much, but notice how everything is styled without a single stylesheet. We have element-targeted CSS and global CSS coming out of our JavaScript files. That’s pretty cool.

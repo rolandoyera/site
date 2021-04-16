@@ -5,7 +5,7 @@ import { Color } from '../../theme/colors'
 
 
 const StyledLogo = styled.h2`
-  font-family: "Merriweather", serif;
+  font-family: ${Font.family.serif};
   letter-spacing: -.9px;
   font-weight: 900;
 	font-size: 1.4rem ;
