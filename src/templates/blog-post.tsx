@@ -4,7 +4,7 @@ import { MDXProvider } from "@mdx-js/react";
 import { graphql, Link } from 'gatsby';
 import _ from 'lodash';
 import urljoin from 'url-join';
-import { DiscussionEmbed } from 'disqus-react';
+// import { DiscussionEmbed } from 'disqus-react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import RelatedPostCard from '../components/related-posts/related-post-card';
@@ -107,11 +107,11 @@ const BlogPostTemplate = (props: any) => {
           </PostShare>
         </BlogPostFooter>
         </Article>
-        <BlogPostComment
+        {/* <BlogPostComment
           className={post.frontmatter.cover == null ? 'center' : ''}
         >
           <DiscussionEmbed {...disqusConfig} />
-        </BlogPostComment>
+        </BlogPostComment> */}
       </BlogPostDetailsWrapper>
 
       {edges.length !== 0 && (
