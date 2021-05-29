@@ -8,7 +8,7 @@ canonical: https://javascriptarticles.com/toggle-css-with-javascript/
 published: true
 ---
 
-import Toggle from "./Toggle";
+import {Toggle, ToggleOpen, ToggleReplace} from "./Toggle";
 
 Easily and quickly target any HTML element’s CSS class with a couple of lines of simple vanilla Javascript. With this method, you can hide and show a div or toggle between two classes. 
 
@@ -79,6 +79,21 @@ function theFunction() {
 }
 ```
 
+We can then use an arrow function to eliminate redundancy like this:
+
+<pre className="code-title">scripts/index.js</pre>
+```js
+document.getElementById('theButton').addEventListener('click',
+  (theFunction = () => {
+    let x = document.getElementById('theTarget')
+    if (x.className === 'styleOne') {
+      x.className = 'styleTwo'
+		} else {
+			  x.className = 'styleOne'
+			}
+	}))
+```
+
 And there’s you’re complete function. To recap, we used a button and listened for a click to target our element. We used a locally scoped variable and used the if…else statement to toggle our CSS classes. Here’s the complete code with HTML and CSS.
 
 <pre className="code-title">src/index.html</pre>
@@ -107,25 +122,88 @@ And there’s you’re complete function. To recap, we used a button and listene
 </div>
 
 <script>
-	document.getElementById("theButton").addEventListener("click", theFunction);
-	function theFunction() {
-		let x = document.getElementById("theTarget");
-		if (x.className === "styleOne") {
-			x.className = "styleTwo";
+  document.getElementById('theButton').addEventListener('click',
+  (theFunction = () => {
+    let x = document.getElementById('theTarget')
+    if (x.className === 'styleOne') {
+      x.className = 'styleTwo'
 		} else {
-			x.className = "styleOne";
-		}
-	}
+			  x.className = 'styleOne'
+			}
+	}))
 </script>
 ```
 
-I hope this will was able to help you on your learning journey.
+<br />
+<br />
+
+## Using toggle( )
+
+Alternatively, you can use the ```toggle()``` method to add an additional class. For instance, if you were toggling an accordion or dropdown, you could use ```.open``` or ```.active```. 
+
+## Example
+
+<ToggleOpen />
+
+
+<br />
+<br />
+
+The code looks very similar, but we replace the if...else statement with the toggle method. In this case, ```.open``` is added and removed to an already existing class. With this method, your additional class can have a different height to open or expand the element.
+
+<pre className="code-title">scripts/index.js</pre>
+```js
+document.getElementById('theButton').addEventListener(
+	'click',
+	(theFunction = () => {
+		let x = document.getElementById('theTarget')
+		x.classList.toggle('open')
+	})
+)
+```
+
+<br />
+<br />
+
+## Using replace( )
+
+This method would be ideal for a modal or pop-up. On page load, it's visible, but once it's clicked, it's hidden. This is just one of the many ways you can use the replace method.
+
+
+## Example
+
+<ToggleReplace />
+
+<br />
+<br />
+
+Using ```.replace()``` will require two arguments, your initial class, and a class to replace it. This method will not toggle the classes back and forth; it's a one-shot deal.  
+
+The code is identical to the toggle method. Just replace ```.toggle``` with ```.replace``` and make sure two arguments are listed; otherwise, you'll get an error.
+
+
+
+<pre className="code-title">scripts/index.js</pre>
+```js
+document.getElementById('theButton').addEventListener(
+	'click',
+	(theFunction = () => {
+		let x = document.getElementById('theTarget')
+		x.classList.replace('style', 'close')
+	})
+)
+```
+
+<br />
+<br />
+
+That's all for now. I hope this helps you on your learning journey.
 
 <Card>
 <h4>Resources</h4>
 <br />
-<a className="footnote" href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener">MDN- Add Event Listener</a><br />
-<a className="footnote" href="https://developer.mozilla.org/en-US/docs/Glossary/Parameter">MDN- Parameters</a><br />
-<a className="footnote" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements">MDN- Statements and declarations</a>
+<a className="footnote" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList">MDN- Element.classList</a><br />
+<a className="footnote" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/className">MDN- Element.className</a><br />
+
 
 </Card>
