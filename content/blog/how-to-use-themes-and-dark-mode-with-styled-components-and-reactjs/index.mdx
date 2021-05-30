@@ -303,7 +303,7 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyle />
-      <NavBar><Toggler onClick={() => toggleTheme()}></Toggler></NavBar>
+      <NavBar><Toggler onClick={toggleTheme}>{icon}</Toggler></NavBar>
       <HomeIntro />
       {children}
       <Footer />
