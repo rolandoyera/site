@@ -110,11 +110,10 @@ const SEO: React.FunctionComponent<SEOProps> = ({ description, canonical, lang, 
 						  }
 						: []
 				)
-				.concat(meta)}
-			script={[
-				{
-					type: 'application/ld+json',
-					innerHTML: `"@context": "https://schema.org",
+				.concat(meta)}>
+			<script type='application/ld+json'>
+				{`
+        {
       "@type": "NewsArticle",
       "headline": "${title}",
       "image": [
@@ -125,10 +124,10 @@ const SEO: React.FunctionComponent<SEOProps> = ({ description, canonical, lang, 
           "@type": "Person",
           "name": "Rolando Yera"
         }]
-    `,
-				},
-			]}
-		/>
+        }
+      `}
+			</script>
+		</Helmet>
 	)
 }
 
