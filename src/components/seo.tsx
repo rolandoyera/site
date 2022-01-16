@@ -82,23 +82,23 @@ const SEO: React.FunctionComponent<SEOProps> = ({ description, canonical, lang, 
 					content: `Javascript Articles`,
 				},
 				{
-					name: `twitter:card`,
+					property: `twitter:card`,
 					content: `summary`,
 				},
 				{
-					name: `twitter:creator`,
+					property: `twitter:creator`,
 					content: '@rolandoyera',
 				},
 				{
-					name: `twitter:title`,
+					property: `twitter:title`,
 					content: title,
 				},
 				{
-					name: `twitter:image`,
+					property: `twitter:image`,
 					content: `${image ? `https://javascriptarticles.com${image}` : ''}`,
 				},
 				{
-					name: `twitter:description`,
+					property: `twitter:description`,
 					content: metaDescription,
 				},
 			]
