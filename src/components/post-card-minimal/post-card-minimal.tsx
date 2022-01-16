@@ -83,8 +83,8 @@ const PostCardMinimal: React.FunctionComponent<PostCardMinimalProps> = ({
 					</PostTitle>
 					{description && <Excerpt className='excerpt'>{description}</Excerpt>}
 					<ReadMore>
-						<Link to={url} title={`Read More: ${title}`}>
-							Read More
+						<Link to={url} title={`Read Article: ${title}`}>
+							Read Article
 						</Link>
 					</ReadMore>
 				</PostContent>
