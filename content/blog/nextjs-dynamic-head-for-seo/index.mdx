@@ -99,6 +99,7 @@ export default MyDocument
 
 Next, we'll need to create a file for our dynamic head component. I called mine HeadSeo.js; this is where most of our metadata mark-up will reside.
 
+<pre className="code-title">./components/HeadSeo.js</pre>
 ```js
 import Head from "next/head"
 
@@ -115,6 +116,7 @@ export default HeadSeo
 
 Next, initialize meta-variables to be used in other components. Items such as title, description, and image URL can be used many times here, reducing the amount of code needed in our other components. I found that using the title, description, canonicalUrl, ogTwitterImage, and ogType was sufficient for any meta tag thrown at me.
 
+<pre className="code-title">./components/HeadSeo.js</pre>
 ```js
 import Head from "next/head"
 
@@ -139,7 +141,7 @@ export default HeadSeo
 
 We can start returning our meta tags along with the global variables we created earlier with these initialized.
 
-
+<pre className="code-title">./components/HeadSeo.js</pre>
 ```js
 import Head from "next/head"
 import siteMetadata from "@data/siteMetadata"

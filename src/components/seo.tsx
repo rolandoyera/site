@@ -9,9 +9,13 @@ type SEOProps = {
 	keywords?: any
 	title: string
 	canonical?: string
+	image?: string
+	date?: any
+	ogType?: string
+	url?: string
 }
 
-const SEO: React.FunctionComponent<SEOProps> = ({ description, canonical, lang, meta, keywords, title }) => {
+const SEO: React.FunctionComponent<SEOProps> = ({ description, canonical, lang, meta, keywords, title, image, date, ogType, url }) => {
 	const { site } = useStaticQuery(
 		graphql`
 			query {
@@ -26,6 +30,9 @@ const SEO: React.FunctionComponent<SEOProps> = ({ description, canonical, lang, 
 					nodes {
 						frontmatter {
 							canonical
+							cover {
+								publicURL
+							}
 						}
 					}
 				}
@@ -34,6 +41,8 @@ const SEO: React.FunctionComponent<SEOProps> = ({ description, canonical, lang, 
 	)
 
 	const metaDescription = description || site.siteMetadata.description
+
+	console.log('LOG', site)
 
 	return (
 		<Helmet
@@ -58,7 +67,19 @@ const SEO: React.FunctionComponent<SEOProps> = ({ description, canonical, lang, 
 				},
 				{
 					property: `og:type`,
-					content: `website`,
+					content: `${ogType ? ogType : 'website'}`,
+				},
+				{
+					property: `og:image`,
+					content: `${image ? `https://javascriptarticles.com${image}` : ''}`,
+				},
+				{
+					property: `og:url`,
+					content: url,
+				},
+				{
+					property: `og:site_name`,
+					content: `Javascript Articles`,
 				},
 				{
 					name: `twitter:card`,
@@ -73,6 +94,10 @@ const SEO: React.FunctionComponent<SEOProps> = ({ description, canonical, lang, 
 					content: title,
 				},
 				{
+					name: `twitter:image`,
+					content: `${image ? `https://javascriptarticles.com${image}` : ''}`,
+				},
+				{
 					name: `twitter:description`,
 					content: metaDescription,
 				},
@@ -85,8 +110,22 @@ const SEO: React.FunctionComponent<SEOProps> = ({ description, canonical, lang, 
 						  }
 						: []
 				)
-				.concat(meta)}
-		/>
+				.concat(meta)}>
+			{date ? (
+				<script type='application/ld+json'>{`"@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "${title}",
+      "image": [
+        "https://javascriptarticles.com${image}"
+       ],
+      "datePublished": "${date}",
+      "author": [{
+          "@type": "Person",
+          "name": "Rolando Yera"
+        }]
+    `}</script>
+			) : null}
+		</Helmet>
 	)
 }
 
