@@ -48,6 +48,7 @@ const BlogPostTemplate = (props: any) => {
 				description={post.frontmatter.description || post.excerpt}
 				canonical={post.frontmatter.canonical}
 				image={post.frontmatter.cover.publicURL}
+				date={new Date(post.frontmatter.date)}
 				ogType={'article'}
 				url={`https://javascriptarticles${slug}`}
 			/>
