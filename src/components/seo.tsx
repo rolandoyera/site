@@ -110,22 +110,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({ description, canonical, lang, 
 						  }
 						: []
 				)
-				.concat(meta)}>
-			{date ? (
-				<script type='application/ld+json'>{`"@context": "https://schema.org",
-      "@type": "NewsArticle",
-      "headline": "${title}",
-      "image": [
-        "https://javascriptarticles.com${image}"
-       ],
-      "datePublished": "${date}",
-      "author": [{
-          "@type": "Person",
-          "name": "Rolando Yera"
-        }]
-    `}</script>
-			) : null}
-		</Helmet>
+				.concat(meta)}></Helmet>
 	)
 }
 
