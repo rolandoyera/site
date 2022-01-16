@@ -1,0 +1,9 @@
+.ts-image {
+	width: 20px;
+	height: 20px;
+	margin-right: 1rem;
+}
+.ts-image-container {
+	display: flex;
+	margin: 3rem 0 -20px;
+}
