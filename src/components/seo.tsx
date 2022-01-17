@@ -13,9 +13,22 @@ type SEOProps = {
 	date?: any
 	ogType?: string
 	url?: string
+	schemaMarkup?: any
 }
 
-const SEO: React.FunctionComponent<SEOProps> = ({ description, canonical, lang, meta, keywords, title, image, date, ogType, url }) => {
+const SEO: React.FunctionComponent<SEOProps> = ({
+	description,
+	canonical,
+	lang,
+	meta,
+	keywords,
+	title,
+	image,
+	date,
+	ogType,
+	url,
+	schemaMarkup,
+}) => {
 	const { site } = useStaticQuery(
 		graphql`
 			query {
@@ -111,22 +124,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({ description, canonical, lang, 
 						: []
 				)
 				.concat(meta)}>
-			<script type='application/ld+json'>
-				{`
-        {
-      "@type": "NewsArticle",
-      "headline": "${title}",
-      "image": [
-        "https://javascriptarticles.com${image}"
-       ],
-      "datePublished": "${date}",
-      "author": [{
-          "@type": "Person",
-          "name": "Rolando Yera"
-        }]
-        }
-      `}
-			</script>
+			{schemaMarkup && <script type='application/ld+json'>{JSON.stringify(schemaMarkup)}</script>}
 		</Helmet>
 	)
 }

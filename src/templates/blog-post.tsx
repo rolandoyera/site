@@ -41,6 +41,26 @@ const BlogPostTemplate = (props: any) => {
 		shortname: process.env.GATSBY_DISQUS_NAME,
 		config: { identifier: slug, title },
 	}
+	/* prettier-ignore-start */
+	const schema = {
+		// prettier-ignore
+		"@type": "NewsArticle",
+		// prettier-ignore
+		"headline": `${title}`,
+		// prettier-ignore
+		"image": [`https://javascriptarticles.com`],
+		// prettier-ignore
+		"datePublished": post.frontmatter.date,
+		// prettier-ignore
+		"author": [
+			{
+				'@type': 'Person',
+        // prettier-ignore
+				"name": 'Rolando Yera',
+			},
+		],
+	}
+	/* prettier-ignore-end */
 	return (
 		<Layout>
 			<SEO
@@ -51,6 +71,7 @@ const BlogPostTemplate = (props: any) => {
 				date={new Date(post.frontmatter.date)}
 				ogType={'article'}
 				url={`https://javascriptarticles${slug}`}
+				schemaMarkup={schema}
 			/>
 			<BlogPostDetailsWrapper>
 				<Article>
